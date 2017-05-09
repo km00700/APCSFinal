@@ -55,8 +55,8 @@ public class LevelOne implements Level {
         TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 4, -1);
         TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 5, -1);
         TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 3, 0);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 4, 1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 5, 2);
+        //TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 4, 1);
+        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 5, 1);
 	}
 
 	@Override

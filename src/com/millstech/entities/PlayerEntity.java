@@ -143,7 +143,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	public void fall() {
 		if (isGrounded && jumping) {
 			position.y += 0.03f;
-			fallSpeed = -0.25;
+			fallSpeed = -0.15;
 			jumping = false;
 		} else if(isGrounded && !jumping) {
 			System.out.println((float) Math.rint(position.y / Map.UNIT));
