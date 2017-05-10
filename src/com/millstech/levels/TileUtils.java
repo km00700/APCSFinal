@@ -39,6 +39,14 @@ public class TileUtils {
         return e;
 	}
 	
+	public static Entity createBGImage(ModelTexture t) {
+		RawModel model;
+		model = OBJLoader.loadObjModel("bg", GameLoop.loader);
+	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(256 * Map.UNIT, 0 * Map.UNIT, -10.3f), 0, 270, 0, 2 * Map.UNIT);
+	    GameLoop.addToBGList(e);
+        return e;
+	}
+	
 	public static Platform createPlatform(ModelTexture t, int posX, int posY) {
 		RawModel model;
 		GameLoop.platformPos.add(new Vector3f(posX * Map.UNIT, posY * Map.UNIT, 0));

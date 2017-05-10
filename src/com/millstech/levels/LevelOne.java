@@ -4,6 +4,8 @@ import java.util.*;
 
 import com.millstech.engine.GameLoop;
 import com.millstech.entities.PlayerEntity;
+import com.millstech.levels.models.Pyramid;
+import com.millstech.levels.models.Tardis;
 import com.millstech.textures.ModelTexture;
 
 public class LevelOne implements Level {
@@ -36,11 +38,10 @@ public class LevelOne implements Level {
 
 	@Override
 	public void loadBackground() {
-		TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_top")), 5, 3);
-        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 5, 2);
-        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 6, 1);
-        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 6, 1);
-    }
+		TileUtils.createBGImage(new ModelTexture(GameLoop.loader.loadTexture("bg1")));
+		Tardis.loadTardis(30, 2);
+		Pyramid.loadPyramidGroup(11, 2);
+   }
 
 	@Override
 	public void loadForeground() {
@@ -49,7 +50,7 @@ public class LevelOne implements Level {
 
 	@Override
 	public void loadPlatforms() {
-		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 0, 0, 50, 1);
+		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 0, 0, 255, 1);
 		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 6, 2, 9, 2);
 		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 8, 3, 9, 3);
 		TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 11, 4);
@@ -65,5 +66,6 @@ public class LevelOne implements Level {
 	@Override
 	public void loadOffMap() {
 		TileUtils.createFGBlock(new ModelTexture(GameLoop.loader.loadTexture("test")), -9, 0, -1, 1);
+		TileUtils.createFGBlock(new ModelTexture(GameLoop.loader.loadTexture("test")), 255, 0, 264, 6);
 	}
 }

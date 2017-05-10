@@ -76,7 +76,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
         	else super.getModel().setTexture(standL);
 		} else {
 			if(Controls.right()) {
-				if(position.x < Map.UPPER_BOUND) {
+				if(position.x < Map.UPPER_BOUND - Map.UNIT) {
 					super.position.x += (float) walkSpeed;
 				}
 	            facingRight = true;

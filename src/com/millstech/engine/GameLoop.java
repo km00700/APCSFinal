@@ -20,7 +20,6 @@ public class GameLoop {
 	private static List<Entity> foregroundList = new ArrayList<Entity>();
 	public static List<Vector3f> platformPos = new ArrayList<Vector3f>();
 	public static Entity[][] platformList = new Entity[256][11];
-	public static Entity[][] obstacleList = new Entity[256][11];
 	
 	public static ModelLoader loader;
 	private static Camera camera;
