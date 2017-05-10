@@ -38,7 +38,7 @@ public class LevelOne implements Level {
 
 	@Override
 	public void loadBackground() {
-		TileUtils.createBGImage(new ModelTexture(GameLoop.loader.loadTexture("bg1")));
+		TileUtils.createBGImage(new ModelTexture(GameLoop.loader.loadTexture("bg/template")));
 		Tardis.loadTardis(30, 2);
 		Pyramid.loadPyramidGroup(11, 2);
    }
@@ -66,6 +66,6 @@ public class LevelOne implements Level {
 	@Override
 	public void loadOffMap() {
 		TileUtils.createFGBlock(new ModelTexture(GameLoop.loader.loadTexture("test")), -9, 0, -1, 1);
-		TileUtils.createFGBlock(new ModelTexture(GameLoop.loader.loadTexture("test")), 255, 0, 264, 6);
+		TileUtils.createFGBlock(new ModelTexture(GameLoop.loader.loadTexture("test")), 254, 0, 264, 6);
 	}
 }

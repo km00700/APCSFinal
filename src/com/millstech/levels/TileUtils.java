@@ -57,6 +57,15 @@ public class TileUtils {
 	    return p;
 	}
 	
+	public static Platform createClippablePlatform(ModelTexture t, int posX, int posY) {
+		RawModel model;
+		GameLoop.platformPos.add(new Vector3f(posX * Map.UNIT, posY * Map.UNIT, 0));
+	    model = OBJLoader.loadObjModel("tile", GameLoop.loader);
+	    Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * Map.UNIT, posY * Map.UNIT, -10.0f), 0, 270, 0, Map.UNIT);
+	    GameLoop.addToPlatformList(p);
+	    return p;
+	}
+	
 	public static void createBlockPlatform(ModelTexture t, int minX, int minY, int maxX, int maxY) {
 		for(int i = minX; i <= maxX; i++) {
 			for(int j = minY; j <= maxY; j++) {
