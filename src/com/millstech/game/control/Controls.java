@@ -22,7 +22,7 @@ public class Controls {
 	}
 	
 	public static boolean attack() {
-		return Keyboard.isKeyDown(attack) && Keyboard.isRepeatEvent();
+		return Keyboard.isKeyDown(attack) && !Keyboard.isRepeatEvent();
 	}
 
 }

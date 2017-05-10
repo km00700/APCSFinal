@@ -8,6 +8,7 @@ public interface Level {
 	public void loadBackground();
 	public void loadForeground();
 	public void loadPlatforms();
+	public void loadOffMap();
 	public void unloadLevel();
 	public PlayerEntity spawn();
 }

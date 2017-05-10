@@ -19,6 +19,8 @@ public class GameLoop {
 	private static List<Entity> backgroundList = new ArrayList<Entity>();
 	private static List<Entity> foregroundList = new ArrayList<Entity>();
 	public static List<Vector3f> platformPos = new ArrayList<Vector3f>();
+	public static Entity[][] platformList = new Entity[256][11];
+	public static Entity[][] obstacleList = new Entity[256][11];
 	
 	public static ModelLoader loader;
 	private static Camera camera;
@@ -76,7 +78,7 @@ public class GameLoop {
 		Controls.initialize();
         DisplayManager.createDisplay();
         loader = new ModelLoader();
-        camera = new Camera(0.0f, 0.75f * Map.UNIT, 0.0f);
+        camera = new Camera(0.0f, 1.25f * Map.UNIT, 0.0f);
         light = new Light(new Vector3f(0, 0, 0), new Vector3f(1, 1, 1));
         renderer = new MasterRender();
 	}
@@ -105,6 +107,7 @@ public class GameLoop {
 		entityList = new ArrayList<Entity>();
 		backgroundList = new ArrayList<Entity>();
 		foregroundList = new ArrayList<Entity>();
+		platformList = new Entity[256][11];
 	}
 	
 	public static void purgePlayers() {
@@ -113,5 +116,22 @@ public class GameLoop {
 				entityList.remove(i);
 				i--;
 		}
+	}
+
+	public static void registerPlatform(int posX, int posY, Entity e) {
+		platformList[posX][posY + 2] = e;
+	}
+	
+	public static boolean isPlatformAtLocation(int x, int y) { 
+		if(platformList[Math.max(x, 0)][Math.max(y - 2, 0)] != null) return true;
+		else return false;
+	}
+	
+	public static Entity getPlatformAtLocation(int x, int y) {
+		return platformList[Math.max(x, 0)][Math.max(y - 2, 0)];
+	}
+	
+	public static void spawn() {
+		character = currentLevel.spawn();
 	}
 }

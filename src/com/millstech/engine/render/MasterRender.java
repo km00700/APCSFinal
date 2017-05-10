@@ -66,7 +66,7 @@ public class MasterRender {
 	}
 	
 	public void prepare() {
-		prepare(0.0f, 0.0f, 0.0f);
+		prepare(0.0f, 0.75f, 1.0f);
 	}
 	
 	public void prepare(float red, float green, float blue) {

@@ -7,6 +7,8 @@ import com.millstech.entities.PlayerEntity;
 import com.millstech.textures.ModelTexture;
 
 public class LevelOne implements Level {
+	public int spawnX = 0, spawnY = 2;
+	
 	public LevelOne() {
 		unloadLevel();
 		loadLevel();
@@ -17,6 +19,7 @@ public class LevelOne implements Level {
 		loadBackground();
         loadPlatforms();
         loadForeground();
+        loadOffMap();
 	}
 	
 	public void unloadLevel() {
@@ -27,13 +30,16 @@ public class LevelOne implements Level {
 
 	@Override
 	public PlayerEntity spawn() {
-		return TileUtils.createCharacter(-2, 0);
+		GameLoop.purgePlayers();
+		return TileUtils.createCharacter(spawnX, spawnY);
 	}
 
 	@Override
 	public void loadBackground() {
-		TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_top")), 0, 1);
-        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 0, 0);
+		TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_top")), 5, 3);
+        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 5, 2);
+        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 6, 1);
+        TileUtils.createBGTile(new ModelTexture(GameLoop.loader.loadTexture("tardis_bottom")), 6, 1);
     }
 
 	@Override
@@ -43,24 +49,21 @@ public class LevelOne implements Level {
 
 	@Override
 	public void loadPlatforms() {
-		TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), -5, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), -4, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), -3, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), -2, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), -1, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 0, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 1, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 2, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 3, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 4, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 5, -1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 3, 0);
-        //TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 4, 1);
-        TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 5, 1);
+		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 0, 0, 50, 1);
+		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 6, 2, 9, 2);
+		TileUtils.createBlockPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 8, 3, 9, 3);
+		TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 11, 4);
+		TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 13, 4);
+		TileUtils.createPlatform(new ModelTexture(GameLoop.loader.loadTexture("test")), 16, 3);
 	}
-
+	
 	@Override
 	public void loadEntities() {
+		
+	}
 	
+	@Override
+	public void loadOffMap() {
+		TileUtils.createFGBlock(new ModelTexture(GameLoop.loader.loadTexture("test")), -9, 0, -1, 1);
 	}
 }

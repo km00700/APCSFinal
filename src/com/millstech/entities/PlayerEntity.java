@@ -14,10 +14,10 @@ import com.millstech.toolbox.Map;
 import com.millstech.toolbox.flags.Player;
 
 public class PlayerEntity extends Entity implements Player, GravityEntity {
-	private static final int animDelay = 10;
-	private int frameCounter = 0, wrIndex = 0, wlIndex = 0;
-	private double walkSpeed = 0.04, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.008;
-	private boolean isGrounded = true, jumping = false;
+	private static final int animDelay = 10, jumpCooldown = 10;
+	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
+	private double walkSpeed = 0.035, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.004, jumpPower = 0.085;
+	private boolean isGrounded = true, jumping = false, colliding = false;;
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = new ArrayList<ModelTexture>();
 	private List<ModelTexture> walkLeft = new ArrayList<ModelTexture>();
@@ -38,7 +38,6 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super(model, position, rotX, rotY, rotZ, scale);
-		
 		standR = new ModelTexture(GameLoop.loader.loadTexture("char/char_standingL"));
 		standL = new ModelTexture(GameLoop.loader.loadTexture("char/char_standingLI"));
 		
@@ -69,6 +68,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	
 	public void move() {                                                                                                                                                                     
 		checkIfGrounded();
+		checkForCollision();
 		if((Controls.right() && Controls.left()) || (!Controls.right() && !Controls.left())) {
 			wrIndex = 0;
         	wrIndex = 0;
@@ -90,13 +90,17 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	            animateBackward();
 	        }
 		}
-		
-		
-        if(Controls.jump()) {
-            jump();
+		if(Controls.jump()) {
+			if(cooldownCounter >= jumpCooldown && !colliding) {
+				cooldownCounter = 0;
+				jump();
+			} else {
+				cooldownCounter++;
+			}
+			
         }
         if(Controls.attack()) {
-        	System.out.println("TEST");
+        	GameLoop.spawn();
         }
         
         fall();
@@ -143,11 +147,9 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	public void fall() {
 		if (isGrounded && jumping) {
 			position.y += 0.03f;
-			fallSpeed = -0.15;
+			fallSpeed -= jumpPower;
 			jumping = false;
 		} else if(isGrounded && !jumping) {
-			System.out.println((float) Math.rint(position.y / Map.UNIT));
-			position.y = (float) Math.rint(position.y / Map.UNIT);
 			fallSpeed = 0;
 		} else {
 			fallSpeed += acceleration;
@@ -161,6 +163,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	public void checkIfGrounded() {
+		///*
 		for(Vector3f v : GameLoop.platformPos) {
 			if((Math.abs(position.x - v.x) < Map.UNIT / 2) && (position.y - v.y < Map.UNIT) && (position.y - v.y >= 0)) {
 				isGrounded = true;
@@ -169,5 +172,35 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 				isGrounded = false;
 			}
 		}
+		//*/
+		/*
+		if(GameLoop.isPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 3) && position.y - (GameLoop.getPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 3).position.y) < 0.76) {
+			isGrounded = true;
+		} else {
+			isGrounded = false;
+		}
+		*/
+	}
+	
+	public void checkForCollision() {
+		if(facingRight && GameLoop.isPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4)) {
+			if((GameLoop.getPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4).position.x - position.x) < 0.5) {
+				position.x -= 0.05;
+			}
+			if((GameLoop.getPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4).position.x - position.x) < 0.45) {
+				colliding = true;
+			}
+		} else if(!facingRight && GameLoop.isPlatformAtLocation(convertToBlockPos(position.x), convertToBlockPos(position.y) + 4)) {
+			if(position.x - (GameLoop.getPlatformAtLocation(convertToBlockPos(position.x), convertToBlockPos(position.y) + 4).position.x) < 0.5) {
+				position.x += 0.05;
+				colliding = true;
+			}
+		} else {
+			colliding = false;
+		}
+	}
+	
+	public int convertToBlockPos(float rawPos) {
+		return (int)(rawPos / Map.UNIT + (Map.UNIT / 2));
 	}
 }

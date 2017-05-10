@@ -45,6 +45,31 @@ public class TileUtils {
 	    model = OBJLoader.loadObjModel("tile", GameLoop.loader);
 	    Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * Map.UNIT, posY * Map.UNIT, -10.0f), 0, 270, 0, Map.UNIT);
 	    GameLoop.addToPlatformList(p);
+	    GameLoop.registerPlatform(posX, posY, p);
 	    return p;
+	}
+	
+	public static void createBlockPlatform(ModelTexture t, int minX, int minY, int maxX, int maxY) {
+		for(int i = minX; i <= maxX; i++) {
+			for(int j = minY; j <= maxY; j++) {
+				createPlatform(t, i, j);
+			}
+		}
+	}
+	
+	public static void createFGBlock(ModelTexture t, int minX, int minY, int maxX, int maxY) {
+		for(int i = minX; i <= maxX; i++) {
+			for(int j = minY; j <= maxY; j++) {
+				createFGTile(t, i, j);
+			}
+		}
+	}
+	
+	public static void createBGBlock(ModelTexture t, int minX, int minY, int maxX, int maxY) {
+		for(int i = minX; i <= maxX; i++) {
+			for(int j = minY; j <= maxY; j++) {
+				createBGTile(t, i, j);
+			}
+		}
 	}
 }
