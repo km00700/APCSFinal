@@ -1,15 +1,22 @@
 package com.millstech.entities;
 
 import org.lwjgl.util.vector.*;
+
+import com.millstech.game.Game;
 import com.millstech.models.*;
+import com.millstech.toolbox.GameConstants;
 
 public class Entity {
-
+	private boolean visible, scriptedVisibility, forceRender;
 	private TexturedModel model;
 	protected Vector3f position;
 	protected float rotX, rotY, rotZ;
 	protected float scale;
 	
+	public Entity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean alwaysRender) {
+		this(model, position, rotX, rotY, rotZ, scale);
+		forceRender = alwaysRender;
+	}
 	public Entity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super();
 		this.model = model;
@@ -92,5 +99,28 @@ public class Entity {
 		this.scale = scale;
 	}
 	
+	public boolean isVisible() {
+		return visible;
+	}
 	
+	public void setVisible(boolean v) {
+		visible = v;
+		scriptedVisibility = true;
+	}
+	
+	public void updateVisible() {
+		if((Math.abs(position.x - Game.character.position.x) < GameConstants.RENDER_DISTANCE && !scriptedVisibility) || forceRender) {
+			visible = true;
+		}	else {
+			visible = false;
+		}
+	}
+
+	public boolean hasScriptedVisibility() {
+		return scriptedVisibility;
+	}
+
+	public void setVisibleIsScripted(boolean scripted) {
+		scriptedVisibility = scripted;
+	}
 }
