@@ -17,7 +17,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private static final int animDelay = 5, jumpCooldown = 10;
 	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
 	private double walkSpeed = 0.035, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.004, jumpPower = 0.085;
-	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, scripted = false;
+	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, scripted = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = new ArrayList<ModelTexture>();
 	private List<ModelTexture> walkLeft = new ArrayList<ModelTexture>();
@@ -35,9 +35,12 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private ModelTexture walkL21;
 	private ModelTexture walkL22;
     
-	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean isScripted) {
+	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean isScripted, boolean movable, boolean jumpable, boolean gravity) {
 		this(model, position, rotX, rotY, rotZ, scale);
 		scripted = isScripted;
+		moveEnabled = movable;
+		jumpEnabled = jumpable;
+		useGravity = gravity;
 	}
 	
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
@@ -72,55 +75,39 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	public void move() {                                                                                                                                                                     
-		if(!scripted) {
-			checkJumpClearance();
-			checkForCollision();
-			checkIfGrounded();
-			if((Controls.right() && Controls.left()) || (!Controls.right() && !Controls.left())) {
-				wrIndex = 0;
-	        	wrIndex = 0;
-	        	if(facingRight) super.getModel().setTexture(standR);
-	        	else super.getModel().setTexture(standL);
-			} else {
-				if(Controls.right()) {
-					if(position.x < GameConstants.UPPER_BOUND - GameConstants.UNIT) {
-						super.position.x += (float) walkSpeed;
-					}
-		            facingRight = true;
-					animateForward();
-		        }
-		        if(Controls.left()) {
-		            if(position.x > GameConstants.LOWER_BOUND) {
-		            	position.x -= (float) walkSpeed;
-		            }
-		            facingRight = false;
-		            animateBackward();
-		        }
-			}
-			if(Controls.jump() && hasClearance) {
-				if(cooldownCounter >= jumpCooldown && !colliding) {
-					cooldownCounter = 0;
-					jump();
-				}
-			}
-	        if(Controls.attack()) {
-	        	// TODO Remove Testing calls
-	        	//Game.spawn();
-	        	Game.nextLevel();
-	        }
-	        cooldownCounter++;
-	        fall();
+		checkJumpClearance();
+		checkForCollision();
+		checkIfGrounded();
+		if((Controls.right() && Controls.left()) || (!Controls.right() && !Controls.left())) {
+			wrIndex = 0;
+			wrIndex = 0;
+			if(facingRight) super.getModel().setTexture(standR);
+			else super.getModel().setTexture(standL);
 		} else {
-			/*
-			 *    TODO SCRIPTED CONTROL
-			 * 
-			 *  Temporary stuff below
-			 */
-			setVisible(false);
-			if(Controls.attack()) {
-	        	Game.nextLevel();
-	        }
+			if(Controls.right() && moveEnabled) {
+				if(position.x < GameConstants.UPPER_BOUND - GameConstants.UNIT && Game.getCurrentLevel().getMaxX() > 0 && position.x / GameConstants.UNIT < Game.getCurrentLevel().getMaxX()) {
+					super.position.x += (float) walkSpeed;
+				}
+				facingRight = true;
+				animateForward();
+			}
+			if(Controls.left() && moveEnabled) {
+				if(position.x > GameConstants.LOWER_BOUND) {
+					position.x -= (float) walkSpeed;
+				}
+				facingRight = false;
+				animateBackward();
+			}
 		}
+		if(Controls.jump() && hasClearance && jumpEnabled) {
+			if(cooldownCounter >= jumpCooldown && !colliding) {
+				cooldownCounter = 0;
+				jump();
+			}
+		}
+		
+		cooldownCounter++;
+		fall();
 	}
 	
 	public void animateForward() {
@@ -168,7 +155,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 			jumping = false;
 		} else if(isGrounded && !jumping) {
 			fallSpeed = 0;
-		} else {
+		} else if(useGravity) {
 			fallSpeed += acceleration;
 			fallSpeed = Math.min(fallSpeed, maxFallSpeed);
 			position.y -= (float)fallSpeed;
@@ -183,8 +170,12 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 		for(Vector3f v : Game.platformPos) {
 			if((Math.abs(position.x - v.x) < GameConstants.UNIT / 2) && (position.y - v.y <= GameConstants.UNIT) && (position.y - v.y >= 0)) {
 				isGrounded = true;
-				if(position.y - v.y < 0.85f * GameConstants.UNIT) {
+				if(position.y - v.y < 0.85f * GameConstants.UNIT && position.y - v.y > 0.6f * GameConstants.UNIT) {
 					position.y += 0.15f * GameConstants.UNIT;
+				}
+				
+				if(position.y - v.y < 0.6f * GameConstants.UNIT && position.y - v.y > 0.0f * GameConstants.UNIT) {
+					position.y -= 0.15f * GameConstants.UNIT;
 				}
 				return;
 			} else {
@@ -231,6 +222,10 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	
 	public int convertToBlockPos(float rawPos) {
 		return (int)(rawPos / GameConstants.UNIT + (GameConstants.UNIT / 2));
+	}
+
+	public boolean isJumping() {
+		return jumping;
 	}
 	
 }

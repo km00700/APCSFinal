@@ -34,9 +34,9 @@ public class Tree {
 	public static void loadTreeTrunk(int x, int y, int height, int clippableLevel) {
 		for(int i = y; i < y + height; i++) {
 			if(i == y || i == y + (clippableLevel-1)) {
-				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i); //NoInteraction
 			} else {
-				TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i); //Interaction
 			}
 		}
 	}

@@ -11,6 +11,7 @@ import com.millstech.game.control.Controls;
 import com.millstech.game.playerinfo.LifeHandler;
 import com.millstech.game.story.LevelHandler;
 import com.millstech.levels.Level;
+import com.millstech.levels.*;
 import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.flags.Player;
 
@@ -21,10 +22,11 @@ public class Game {
 	private static List<Entity> foregroundList = new ArrayList<Entity>();
 	public static List<Vector3f> platformPos = new ArrayList<Vector3f>();
 	public static Entity[][] platformList = new Entity[256][11];
+	public static List<Level> unlocked = new ArrayList<Level>();
 	
 	public static ModelLoader loader;
-	private static LifeHandler lifeHandler;
-	private static LevelHandler levelHandler;
+	public static LifeHandler lifeHandler;
+	public static LevelHandler levelHandler;
 	private static Camera camera;
 	private static Light light;
 	private static MasterRender renderer;
@@ -36,6 +38,7 @@ public class Game {
             character.move();
             camera.follow(character);
             light.folow(character);
+            currentLevel.update();
             render();
         }
 	}
@@ -69,6 +72,7 @@ public class Game {
 	
 	public static void initialize() {
 		Controls.initialize();
+		unlocked.add(new LevelOne());
         DisplayManager.createDisplay();
         reset();
 	}
@@ -152,6 +156,12 @@ public class Game {
 		character = currentLevel.spawn();
 	}
 	
+	public static void setLevel(Level l) {
+		currentLevel = l;
+		currentLevel.loadLevel();
+		character = currentLevel.spawn();
+	}
+	
 	public static void close() {
 		renderer.cleanUp();
         loader.cleanUp();
@@ -164,5 +174,9 @@ public class Game {
 	
 	public static void kill() {
 		lifeHandler.takeLife();
+	}
+	
+	public static Level getCurrentLevel() {
+		return currentLevel;
 	}
 }

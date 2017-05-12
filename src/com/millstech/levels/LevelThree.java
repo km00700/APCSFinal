@@ -4,7 +4,7 @@ import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.textures.ModelTexture;
 
-public class LevelTwo implements Level {
+public class LevelThree implements Level {
 	public int spawnX = 3, spawnY = 4;
 	
 	@Override
@@ -59,6 +59,7 @@ public class LevelTwo implements Level {
 
 	@Override
 	public void completed() {
-		Game.unlocked.add(new LevelThree());
+		// TODO LEVEL 4
+		//Game.unlocked.add(new LevelFour());
 	}
 }

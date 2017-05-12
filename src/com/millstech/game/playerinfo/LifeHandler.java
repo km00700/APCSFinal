@@ -18,6 +18,7 @@ public class LifeHandler {
 			health--;
 		} else {
 			takeLife();
+			lives = GameConstants.DEFAULT_LIVES;
 		}
 	}
 	

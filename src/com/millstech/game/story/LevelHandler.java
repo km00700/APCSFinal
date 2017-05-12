@@ -12,6 +12,7 @@ public class LevelHandler {
 		levels.add(new MainMenu());
 		levels.add(new LevelOne());
 		levels.add(new LevelTwo());
+		levels.add(new LevelThree());
 	}
 	
 	public Level getNextLevel() {
@@ -38,5 +39,15 @@ public class LevelHandler {
 		Game.purgePlayers();
 		Game.purgeEntities();
 		Game.platformPos = new ArrayList<>();
+	}
+	
+	public Level loadTutorial() {
+		unloadLevel();
+		return new Tutorial();
+	}
+	
+	public Level loadLevelSelector() {
+		unloadLevel();
+		return new LevelSelector();
 	}
 }

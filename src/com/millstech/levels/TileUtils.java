@@ -19,8 +19,8 @@ public class TileUtils {
         return character;
 	}
 	
-	public static PlayerEntity createScriptedCharacter(int posX, int posY) {
-		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("tile", Game.loader), new ModelTexture(Game.loader.loadTexture("char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, true);
+	public static PlayerEntity createScriptedCharacter(int posX, int posY, boolean invisible, boolean moveEnabled, boolean JumpEnabled, boolean useGravity) {
+		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("tile", Game.loader), new ModelTexture(Game.loader.loadTexture("char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, invisible, moveEnabled, JumpEnabled, useGravity);
         Game.addToEntityList(character);
         return character;
 	}
