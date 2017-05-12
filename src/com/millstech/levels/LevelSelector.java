@@ -55,6 +55,7 @@ public class LevelSelector implements Level {
 		Tardis.loadTardis(10, 2);
 		Tardis.loadTardis(12, 2);
 		Tardis.loadTardis(14, 2);
+		Tardis.loadTardis(16, 2);
 	}
 		
 	@Override
@@ -64,7 +65,7 @@ public class LevelSelector implements Level {
 
 	@Override
 	public void loadPlatforms() { 
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("sand/sand")), 0, 0, 18, 1);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/sand/sand")), 0, 0, 18, 1);
 	}
 
 	@Override

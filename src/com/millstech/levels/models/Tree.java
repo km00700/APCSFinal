@@ -9,25 +9,87 @@ public class Tree {
 		LEFT, RIGHT;
 	}
 	
-	public static void loadTreeTop(int centerX, int y, int size) {
-		if(size == 5) {
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-2, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-2, y+1);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX-1, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+1);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX+1, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+1);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+2, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+2, y+1);
+	public static void loadTreeTop(int centerX, int y, int size, boolean tall) {
+		if(!tall) {
+			if (size == 6) {
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX-1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX+1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX+2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+3, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+3, y+1);
+			} else if(size == 5) {
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX-1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX+1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+2, y+1);
+			} else {
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+1, y+1);
+			}
 		} else {
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-1, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-1, y+1);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+1, y);
-			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+1, y+1);
+			if (size == 6) {
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-2, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX-1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX+1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX+2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+2, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+3, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+3, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+3, y+2);
+			} else if(size == 5) {
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-2, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX-1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/5")), centerX+1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+2, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+2, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+2, y+2);
+			} else {
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/7")), centerX-1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX-1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/3")), centerX-1, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/8")), centerX, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX, y+2);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/6")), centerX+1, y);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/2")), centerX+1, y+1);
+				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+1, y+2);
+			}
 		}
 	}
 	

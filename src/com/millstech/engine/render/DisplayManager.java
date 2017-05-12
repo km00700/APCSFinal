@@ -3,6 +3,8 @@ package com.millstech.engine.render;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.*;
 
+import com.millstech.toolbox.GameConstants;
+
 public class DisplayManager {
 	private static final int WIDTH = 1280, HEIGHT = 720, FPS_CAP = 120;
 	
@@ -18,9 +20,8 @@ public class DisplayManager {
 		try {
 			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
 			Display.create(new PixelFormat(), attribs);
-			Display.setTitle(title);
+			Display.setTitle(GameConstants.TITLE);
 		} catch (LWJGLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

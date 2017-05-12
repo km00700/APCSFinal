@@ -1,9 +1,5 @@
 package com.millstech.levels;
 
-import java.awt.MouseInfo;
-
-import org.lwjgl.opengl.Display;
-
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
@@ -13,7 +9,7 @@ import com.millstech.toolbox.GameConstants;
 
 public class MainMenu implements Level {
 
-	public final int TUTORIAL = 2, LEVEL_SELECTION = 16;
+	public final int TUTORIAL = 2, LEVEL_SELECTION = 9, CREDITS = 16;
 	
 	@Override
 	public void update() {
@@ -23,6 +19,9 @@ public class MainMenu implements Level {
 			}
 			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL_SELECTION) {
 				Game.setLevel(Game.levelHandler.loadLevelSelector());
+			}
+			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == CREDITS) {
+				//SET CREDITS Game.setLevel(Game.levelHandler.loadLevelSelector());
 			}
 		}
 	}
@@ -42,6 +41,7 @@ public class MainMenu implements Level {
 	@Override
 	public void loadBackground() { 
 		Tardis.loadTardis(2, 2);
+		Tardis.loadTardis(9, 2);
 		Tardis.loadTardis(16, 2);
 	}
 		

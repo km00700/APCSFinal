@@ -60,5 +60,6 @@ public class LevelTwo implements Level {
 	@Override
 	public void completed() {
 		Game.unlocked.add(new LevelThree());
+		Game.nextLevel();
 	}
 }

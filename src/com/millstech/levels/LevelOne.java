@@ -8,7 +8,7 @@ import com.millstech.levels.models.Tree;
 import com.millstech.textures.ModelTexture;
 
 public class LevelOne implements Level {
-	public int spawnX = 0, spawnY = 2;
+	public int spawnX = 2, spawnY = 2;
 	
 	@Override
 	public void update() {
@@ -32,13 +32,8 @@ public class LevelOne implements Level {
 
 	@Override
 	public void loadBackground() {
-		//TileUtils.createBGImage(new ModelTexture(GameLoop.loader.loadTexture("bg/template")));
-		Tardis.loadTardis(30, 2);
-		Pyramid.loadPyramidGroup(11, 2);
-		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("sand/endL")), 5, 2);
-		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("sand/endL")), 7, 3);
-		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("sand/endR")), 9, 3);
-		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("sand/endR")), 10, 2);
+		TileUtils.createBGImage(new ModelTexture(Game.loader.loadTexture("bg/l1")));
+		Tardis.loadTardis(35, 2);
 	}
 
 	@Override
@@ -48,18 +43,11 @@ public class LevelOne implements Level {
 
 	@Override
 	public void loadPlatforms() {
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("sand/sand")), 0, 0, 255, 1);
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("sand/sand")), 6, 2, 9, 2);
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("sand/sand")), 8, 3, 8, 3);
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("rock")), 35, 2, 40, 2);
+		//GROUND
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 0, 0, 255, 0);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 0, 1, 255, 1);
 		
-		TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("rock")), 29, 2);
 		
-		Tree.loadTreeTrunk(33, 2, 4, 3);
-		Tree.loadTreeTop(33, 6, 5);
-		Tree.loadBranches(33, 3, 2, Tree.branchSide.LEFT);
-		Tree.loadBranches(33, 4, 1, Tree.branchSide.RIGHT);
-		Tree.loadBranches(33, 3, 2, Tree.branchSide.RIGHT);
 	}
 	
 	@Override
@@ -69,8 +57,32 @@ public class LevelOne implements Level {
 	
 	@Override
 	public void loadOffMap() {
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("sand/sand")), -9, 0, -1, 1);
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("sand/sand")), 254, 0, 264, 1);
+		//GROUND
+		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), -9, 0, -1, 0);
+		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), -9, 1, -1, 1);
+		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 254, 0, 264, 0);
+		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 254, 1, 264, 1);
+		
+		//LEFT OF MAP
+		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/11")), 0, 4);
+		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/12")), 1, 4);
+		
+		Tree.loadTreeTrunk(-1, 2, 4, 3);
+		Tree.loadTreeTop(-1, 6, 5, true);
+		
+		Tree.loadTreeTrunk(-4, 2, 2, 3);
+		Tree.loadTreeTop(-4, 4, 3, false);
+		
+		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("rock")), -6, 2);
+		
+		Tree.loadTreeTrunk(-7, 2, 3, 3);
+		Tree.loadTreeTop(-7, 5, 5, true);
+		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/9")), -8, 3);
+		
+		Tree.loadTreeTrunk(-10, 2, 6, 3);
+		Tree.loadTreeTop(-10, 8, 5, true);
+		
+		//RIGHT OF MAP
 	}
 
 	@Override
@@ -81,5 +93,6 @@ public class LevelOne implements Level {
 	@Override
 	public void completed() {
 		Game.unlocked.add(new LevelTwo());
+		Game.nextLevel();
 	}
 }

@@ -16,7 +16,7 @@ import com.millstech.toolbox.flags.Player;
 public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private static final int animDelay = 5, jumpCooldown = 10;
 	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
-	private double walkSpeed = 0.035, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.004, jumpPower = 0.085;
+	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.004, jumpPower = 0.085;
 	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, scripted = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = new ArrayList<ModelTexture>();
@@ -105,7 +105,9 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 				jump();
 			}
 		}
-		
+		if(Controls.reload()) {
+			Game.getCurrentLevel().loadLevel();
+		}
 		cooldownCounter++;
 		fall();
 	}
