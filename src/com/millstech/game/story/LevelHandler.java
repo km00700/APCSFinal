@@ -13,6 +13,7 @@ public class LevelHandler {
 		levels.add(new LevelOne());
 		levels.add(new LevelTwo());
 		levels.add(new LevelThree());
+		//levels.add(new LevelFour());
 	}
 	
 	public Level getNextLevel() {
