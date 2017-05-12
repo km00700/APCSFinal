@@ -4,9 +4,9 @@ import org.lwjgl.util.vector.Vector3f;
 
 import com.millstech.models.TexturedModel;
 
-public class ClippableJumpablePlatform extends Platform {
+public class ClippablePlatform extends Platform {
 
-	public ClippableJumpablePlatform(TexturedModel model, Vector3f pos, int rotX, int rotY, int rotZ, float scale) {
+	public ClippablePlatform(TexturedModel model, Vector3f pos, int rotX, int rotY, int rotZ, float scale) {
 		super(model, pos, rotX, rotY, rotZ, scale);
 	}
 

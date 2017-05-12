@@ -18,7 +18,7 @@ public class Controls {
 	}
 	
 	public static boolean jump() {
-		return Keyboard.isKeyDown(jump) || Keyboard.isKeyDown(jump2);
+		return (Keyboard.isKeyDown(jump) || Keyboard.isKeyDown(jump2)) && !Keyboard.isRepeatEvent();
 	}
 	
 	public static boolean attack() {

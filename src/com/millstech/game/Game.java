@@ -64,10 +64,10 @@ public class Game {
 	}
 	
 	public static void initialize() {
-		Controls.initialize();
 		unlocked.add(new LevelOne());
         DisplayManager.createDisplay();
-        reset();
+        Controls.initialize();
+		reset();
 	}
 	
 	public static void reset() {

@@ -5,7 +5,7 @@ import org.lwjgl.util.vector.Vector3f;
 import com.millstech.engine.render.OBJLoader;
 import com.millstech.entities.Entity;
 import com.millstech.entities.PlayerEntity;
-import com.millstech.entities.map.ClippableJumpablePlatform;
+import com.millstech.entities.map.ClippablePlatform;
 import com.millstech.entities.map.Platform;
 import com.millstech.game.Game;
 import com.millstech.models.RawModel;
@@ -78,7 +78,7 @@ public class TileUtils {
 		RawModel model;
 		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
 	    model = OBJLoader.loadObjModel("tile", Game.loader);
-	    Platform p = new ClippableJumpablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+	    Platform p = new ClippablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
 	    Game.addToPlatformLayer(p);
 	    return p;
 	}
@@ -86,7 +86,7 @@ public class TileUtils {
 	public static Entity createNoInteractionPlatform(ModelTexture t, int posX, int posY) {
 		RawModel model;
 		model = OBJLoader.loadObjModel("tile", Game.loader);
-	    Entity p = new ClippableJumpablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+	    Entity p = new ClippablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
 	    Game.addToPlatformLayer((Platform) p);
 	    return p;
 	}

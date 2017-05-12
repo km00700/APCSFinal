@@ -6,7 +6,7 @@ import java.util.List;
 import org.lwjgl.util.vector.Vector3f;
 
 import com.millstech.engine.physics.GravityEntity;
-import com.millstech.entities.map.ClippableJumpablePlatform;
+import com.millstech.entities.map.ClippablePlatform;
 import com.millstech.entities.map.Platform;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
@@ -16,9 +16,9 @@ import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.flags.Player;
 
 public class PlayerEntity extends Entity implements Player, GravityEntity {
-	private static final int animDelay = 5, jumpCooldown = 10;
+	private static final int animDelay = 5, jumpCooldown = 5;
 	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
-	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.004, jumpPower = 0.085;
+	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; //.058 jump walk 0.038 //accel 0.002
 	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = new ArrayList<ModelTexture>();
@@ -171,7 +171,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	
 	public void checkIfGrounded() {
 		for(Vector3f v : Game.platformPos) {
-			if((Math.abs(position.x - v.x) < GameConstants.UNIT / 2) && (position.y - v.y <= GameConstants.UNIT) && (position.y - v.y >= 0)) {
+			if((Math.abs(position.x - v.x) < GameConstants.UNIT / 2) && (position.y - v.y <= GameConstants.UNIT) && (position.y - v.y >= 0.0f)) {
 				isGrounded = true;
 				if(position.y - v.y < 0.85f * GameConstants.UNIT && position.y - v.y > 0.6f * GameConstants.UNIT) {
 					position.y += 0.15f * GameConstants.UNIT;
@@ -189,7 +189,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	
 	public void checkJumpClearance() {
 		for(Platform p : Game.platforms) {
-			if((Math.abs(position.x - p.position.x) < GameConstants.UNIT / 2) && (p.position.y - position.y <= 1.15f * GameConstants.UNIT) && (position.y - p.position.y <= 0) && !(p instanceof ClippableJumpablePlatform)) {
+			if((Math.abs(position.x - p.position.x) < GameConstants.UNIT / 2) && (p.position.y - position.y <= 1.15f * GameConstants.UNIT) && (position.y - p.position.y <= 0) && !(p instanceof ClippablePlatform)) {
 				hasClearance = false;
 				return;
 			} else {

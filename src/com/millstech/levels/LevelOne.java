@@ -45,10 +45,18 @@ public class LevelOne implements Level {
 		//GROUND
 		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 0, 0, 255, 0);
 		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 0, 1, 23, 1);
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 28, 1, 255, 1);
 		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 24, 1, 27, 1);
 		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 24, 2, 27, 2);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 28, 1, 44, 1);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 45, 2, 46, 2);
+		TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("ground/grass")), 50, 2);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 47, 3, 49, 3);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 47, 2, 49, 2);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 45, 1, 50, 1);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/dirt")), 51, 1, 53, 1);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/grass")), 54, 1, 255, 1);
 		
+		//SCENERY
 		Tree.loadTreeTrunk(5, 2, 2);
 		Tree.loadTreeTop(5, 4, 3, false);
 		
@@ -149,6 +157,9 @@ public class LevelOne implements Level {
 		TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/4")), centerX+2, y+1);
 	
 		TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("rock")), 42, 2);
+		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("tree/log")), 50, 3, 54, 3);
+		TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("rock")), 54, 2);
+		TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), 55, 2);
 	}
 	
 	@Override
