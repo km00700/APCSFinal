@@ -93,12 +93,18 @@ public class Tree {
 		}
 	}
 	
-	public static void loadTreeTrunk(int x, int y, int height, int clippableLevel) {
+	public static void loadTreeTrunk(int x, int y, int height) {
+		for(int i = y; i < y + height; i++) {
+			TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i); //Interaction
+		}
+	}
+	
+	public static void loadClippableTreeTrunk(int x, int y, int height, int clippableLevel) {
 		for(int i = y; i < y + height; i++) {
 			if(i == y || i == y + (clippableLevel-1)) {
 				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i); //NoInteraction
 			} else {
-				TileUtils.createNoInteractionPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i); //Interaction
+				TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("tree/1")), x, i); //Interaction
 			}
 		}
 	}
@@ -106,17 +112,17 @@ public class Tree {
 	public static void loadBranches(int centerX, int y, int length, branchSide side) {
 		if(side == branchSide.LEFT) {
 			if(length == 1) {
-				TileUtils.createClippablePlatform(new ModelTexture(Game.loader.loadTexture("tree/9")), centerX - 1, y);
+				TileUtils.createClippableJumpablePlatform(new ModelTexture(Game.loader.loadTexture("tree/9")), centerX - 1, y);
 			} else {
-				TileUtils.createClippablePlatform(new ModelTexture(Game.loader.loadTexture("tree/9")), centerX - 2, y);
-				TileUtils.createClippablePlatform(new ModelTexture(Game.loader.loadTexture("tree/10")), centerX - 1, y);
+				TileUtils.createClippableJumpablePlatform(new ModelTexture(Game.loader.loadTexture("tree/9")), centerX - 2, y);
+				TileUtils.createClippableJumpablePlatform(new ModelTexture(Game.loader.loadTexture("tree/10")), centerX - 1, y);
 			}
 		} else {
 			if(length == 1) {
-				TileUtils.createClippablePlatform(new ModelTexture(Game.loader.loadTexture("tree/12")), centerX + 1, y);
+				TileUtils.createClippableJumpablePlatform(new ModelTexture(Game.loader.loadTexture("tree/12")), centerX + 1, y);
 			} else {
-				TileUtils.createClippablePlatform(new ModelTexture(Game.loader.loadTexture("tree/11")), centerX + 1, y);
-				TileUtils.createClippablePlatform(new ModelTexture(Game.loader.loadTexture("tree/12")), centerX + 2, y);
+				TileUtils.createClippableJumpablePlatform(new ModelTexture(Game.loader.loadTexture("tree/11")), centerX + 1, y);
+				TileUtils.createClippableJumpablePlatform(new ModelTexture(Game.loader.loadTexture("tree/12")), centerX + 2, y);
 			}
 		}
 	}

@@ -7,6 +7,7 @@ import org.lwjgl.util.vector.*;
 
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
+import com.millstech.entities.map.Platform;
 import com.millstech.game.control.Controls;
 import com.millstech.game.playerinfo.LifeHandler;
 import com.millstech.game.story.LevelHandler;
@@ -16,21 +17,21 @@ import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.flags.Player;
 
 public class Game {
-	public static List<Entity> allEntityList = new ArrayList<Entity>();
+	//Private Fields
 	private static List<Entity> entityList = new ArrayList<Entity>();
-	private static List<Entity> backgroundList = new ArrayList<Entity>();
-	private static List<Entity> foregroundList = new ArrayList<Entity>();
-	public static List<Vector3f> platformPos = new ArrayList<Vector3f>();
-	public static Entity[][] platformList = new Entity[256][11];
-	public static List<Level> unlocked = new ArrayList<Level>();
-	
-	public static ModelLoader loader;
-	public static LifeHandler lifeHandler;
-	public static LevelHandler levelHandler;
 	private static Camera camera;
 	private static Light light;
 	private static MasterRender renderer;
 	private static Level currentLevel;
+	private static List<Entity> allEntityList = new ArrayList<Entity>();
+	private static Entity[][] platformList = new Entity[256][11];
+	//Public Fields
+	public static List<Platform> platforms = new ArrayList<Platform>();
+	public static List<Vector3f> platformPos = new ArrayList<Vector3f>();
+	public static List<Level> unlocked = new ArrayList<Level>();
+	public static ModelLoader loader;
+	public static LifeHandler lifeHandler;
+	public static LevelHandler levelHandler;
 	public static PlayerEntity character;
 	
 	public static void loop() {
@@ -52,15 +53,7 @@ public class Game {
     }
 	
 	public static void render() {
-		for(Entity e : backgroundList) {
-        	renderer.processEntity(e);
-        }
-        
-        for(Entity e : entityList) {
-        	renderer.processEntity(e);
-        }
-        
-        for(Entity e : foregroundList) {
+		for(Entity e : allEntityList) {
         	renderer.processEntity(e);
         }
         
@@ -87,35 +80,42 @@ public class Game {
         loadLevel(0);
 	}
 	
-	public static void addToFGList(Entity e) {
+	public static void addToGraphicsLayer(Entity e) {
 		e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
-		foregroundList.add(e);
 		allEntityList.add(e);
 	}
 	
-	public static void addToEntityList(Entity e) {
+	public static void addToForegroundLayer(Entity e) {
+		e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
+		allEntityList.add(e);
+	}
+	
+	public static void addToEntityLayer(Entity e) {
 		e.increasePosition(0, 0, GameConstants.LAYER_SPACING);
-		entityList.add(e);
 		allEntityList.add(e);
 	}
 	
-	public static void addToPlatformList(Entity e) {
+	public static void addToPlatformLayer(Platform p) {
+		p.increasePosition(0, 0, 0.0f);
+		platforms.add((Platform) p);
+		allEntityList.add(p);
+	}
+	
+	public static void addToVisualPlatformLayer(Entity e) {
 		e.increasePosition(0, 0, 0.0f);
-		foregroundList.add(e);
 		allEntityList.add(e);
 	}
 	
-	public static void addToBGList(Entity e) {
+	public static void addToBackgroundLayer(Entity e) {
 		e.increasePosition(0, 0, -1 * GameConstants.LAYER_SPACING);
-		backgroundList.add(e);
 		allEntityList.add(e);
 	}
 	
 	public static void purgeEntities() {
 		allEntityList = new ArrayList<Entity>();
+		platforms = new ArrayList<Platform>();
+		platformPos = new ArrayList<Vector3f>();
 		entityList = new ArrayList<Entity>();
-		backgroundList = new ArrayList<Entity>();
-		foregroundList = new ArrayList<Entity>();
 		platformList = new Entity[256][11];
 	}
 	

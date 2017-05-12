@@ -5,6 +5,7 @@ import org.lwjgl.util.vector.Vector3f;
 import com.millstech.engine.render.OBJLoader;
 import com.millstech.entities.Entity;
 import com.millstech.entities.PlayerEntity;
+import com.millstech.entities.map.ClippableJumpablePlatform;
 import com.millstech.entities.map.Platform;
 import com.millstech.game.Game;
 import com.millstech.models.RawModel;
@@ -15,13 +16,13 @@ import com.millstech.toolbox.GameConstants;
 public class TileUtils {
 	public static PlayerEntity createCharacter(int posX, int posY) {
 		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("tile", Game.loader), new ModelTexture(Game.loader.loadTexture("char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-        Game.addToEntityList(character);
+        Game.addToEntityLayer(character);
         return character;
 	}
 	
 	public static PlayerEntity createScriptedCharacter(int posX, int posY, boolean invisible, boolean moveEnabled, boolean JumpEnabled, boolean useGravity) {
-		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("tile", Game.loader), new ModelTexture(Game.loader.loadTexture("char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, invisible, moveEnabled, JumpEnabled, useGravity);
-        Game.addToEntityList(character);
+		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("tile", Game.loader), new ModelTexture(Game.loader.loadTexture("char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, moveEnabled, JumpEnabled, useGravity);
+        Game.addToEntityLayer(character);
         return character;
 	}
 	
@@ -33,7 +34,7 @@ public class TileUtils {
 		RawModel model;
 		model = OBJLoader.loadObjModel("tile", Game.loader);
 	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToFGList(e);
+	    Game.addToForegroundLayer(e);
         return e;
 	}
 	
@@ -41,7 +42,7 @@ public class TileUtils {
 		RawModel model;
 		model = OBJLoader.loadObjModel("tile", Game.loader);
 	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToBGList(e);
+	    Game.addToBackgroundLayer(e);
         return e;
 	}
 	
@@ -50,7 +51,7 @@ public class TileUtils {
 		model = OBJLoader.loadObjModel("bg", Game.loader);
 	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(256 * GameConstants.UNIT, 0 * GameConstants.UNIT, -10.003f), 0, 270, 0, 2 * GameConstants.UNIT, true);
 	    e.increasePosition(0, 0, -10 * GameConstants.LAYER_SPACING);
-	    Game.addToBGList(e);
+	    Game.addToBackgroundLayer(e);
         return e;
 	}
 	
@@ -59,7 +60,7 @@ public class TileUtils {
 		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
 	    model = OBJLoader.loadObjModel("tile", Game.loader);
 	    Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToPlatformList(p);
+	    Game.addToPlatformLayer(p);
 	    Game.registerPlatform(posX, posY, p);
 	    return p;
 	}
@@ -69,15 +70,24 @@ public class TileUtils {
 		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
 	    model = OBJLoader.loadObjModel("tile", Game.loader);
 	    Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToPlatformList(p);
+	    Game.addToPlatformLayer(p);
+	    return p;
+	}
+	
+	public static Platform createClippableJumpablePlatform(ModelTexture t, int posX, int posY) {
+		RawModel model;
+		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
+	    model = OBJLoader.loadObjModel("tile", Game.loader);
+	    Platform p = new ClippableJumpablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+	    Game.addToPlatformLayer(p);
 	    return p;
 	}
 	
 	public static Entity createNoInteractionPlatform(ModelTexture t, int posX, int posY) {
 		RawModel model;
 		model = OBJLoader.loadObjModel("tile", Game.loader);
-	    Entity p = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToPlatformList(p);
+	    Entity p = new ClippableJumpablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+	    Game.addToPlatformLayer((Platform) p);
 	    return p;
 	}
 	

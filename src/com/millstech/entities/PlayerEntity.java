@@ -6,6 +6,8 @@ import java.util.List;
 import org.lwjgl.util.vector.Vector3f;
 
 import com.millstech.engine.physics.GravityEntity;
+import com.millstech.entities.map.ClippableJumpablePlatform;
+import com.millstech.entities.map.Platform;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.models.TexturedModel;
@@ -17,7 +19,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private static final int animDelay = 5, jumpCooldown = 10;
 	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
 	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.004, jumpPower = 0.085;
-	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, scripted = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
+	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = new ArrayList<ModelTexture>();
 	private List<ModelTexture> walkLeft = new ArrayList<ModelTexture>();
@@ -35,9 +37,8 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private ModelTexture walkL21;
 	private ModelTexture walkL22;
     
-	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean isScripted, boolean movable, boolean jumpable, boolean gravity) {
+	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean movable, boolean jumpable, boolean gravity) {
 		this(model, position, rotX, rotY, rotZ, scale);
-		scripted = isScripted;
 		moveEnabled = movable;
 		jumpEnabled = jumpable;
 		useGravity = gravity;
@@ -187,6 +188,15 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	public void checkJumpClearance() {
+		for(Platform p : Game.platforms) {
+			if((Math.abs(position.x - p.position.x) < GameConstants.UNIT / 2) && (p.position.y - position.y <= 1.15f * GameConstants.UNIT) && (position.y - p.position.y <= 0) && !(p instanceof ClippableJumpablePlatform)) {
+				hasClearance = false;
+				return;
+			} else {
+				hasClearance = true;
+			}
+		}
+		/*
 		for(Vector3f v : Game.platformPos) {
 			if((Math.abs(position.x - v.x) < GameConstants.UNIT / 2) && (v.y - position.y <= 1.15f * GameConstants.UNIT) && (position.y - v.y <= 0)) {
 				hasClearance = false;
@@ -195,6 +205,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 				hasClearance = true;
 			}
 		}
+		*/
 	}
 	
 	public void checkForCollision() {

@@ -48,7 +48,7 @@ public class TestLevel implements Level {
 		TileUtils.createPlatform(new ModelTexture(Game.loader.loadTexture("rock")), 29, 2);
 		
 		
-		Tree.loadTreeTrunk(32, 2, 4, 3);
+		Tree.loadTreeTrunk(32, 2, 4);
 		//Tree.loadTreeTop(32, 6, 5, true);
 		Tree.loadBranches(32, 3, 1, Tree.branchSide.RIGHT);
 		
@@ -73,7 +73,7 @@ public class TestLevel implements Level {
 		
 		centerX = 35;
 		
-		Tree.loadTreeTrunk(35, 2, 4, 3);
+		Tree.loadTreeTrunk(35, 2, 4);
 		//Tree.loadTreeTop(35, 6, 3, false);
 		Tree.loadBranches(35, 2, 1, Tree.branchSide.LEFT);
 		
