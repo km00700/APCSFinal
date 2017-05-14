@@ -4,8 +4,8 @@ import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.levels.models.Tardis;
-import com.millstech.textures.ModelTexture;
-import com.millstech.toolbox.GameConstants;
+import com.millstech.textures.Textures;
+import com.millstech.toolbox.MathUtils;
 
 public class MainMenu implements Level {
 
@@ -14,14 +14,15 @@ public class MainMenu implements Level {
 	@Override
 	public void update() {
 		if(Controls.attack()) {
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == TUTORIAL) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == TUTORIAL) {
 				Game.setLevel(Game.levelHandler.loadTutorial());
 			}
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL_SELECTION) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL_SELECTION) {
 				Game.setLevel(Game.levelHandler.loadLevelSelector());
 			}
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == CREDITS) {
-				//SET CREDITS Game.setLevel(Game.levelHandler.loadLevelSelector());
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == CREDITS) {
+				Game.setLevel(Game.levelHandler.loadCredits());
+				//Game.loadLevel(1);
 			}
 		}
 	}
@@ -52,19 +53,19 @@ public class MainMenu implements Level {
 
 	@Override
 	public void loadPlatforms() { 
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("test")), 0, 0, 18, 1);
+		TileUtils.createPlatformBlock(Textures.test, 0, 0, 18, 1);
 	}
 
 	@Override
 	public void loadOffMap() { 
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("missing")), -9, 0, -1, 1);
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("missing")), 19, 0, 27, 1);
+		TileUtils.createClippablePlatformBlock(Textures.missing, -9, 0, -1, 1);
+		TileUtils.createClippablePlatformBlock(Textures.missing, 19, 0, 27, 1);
 	}
 
 	@Override
 	public PlayerEntity spawn() {
 		Game.purgePlayers();
-		return TileUtils.createScriptedCharacter(9, 2, false, true, true, true);
+		return TileUtils.createScriptedCharacter(9, 2, true, true, false, true);
 	}
 
 	@Override
@@ -74,5 +75,8 @@ public class MainMenu implements Level {
 
 	@Override
 	public void completed() {}
+
+	@Override
+	public void onCheckpointTrigger() { }
 
 }

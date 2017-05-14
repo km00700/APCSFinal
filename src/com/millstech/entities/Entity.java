@@ -1,13 +1,16 @@
 package com.millstech.entities;
 
+import java.util.List;
+
 import org.lwjgl.util.vector.*;
 
 import com.millstech.game.Game;
 import com.millstech.models.*;
+import com.millstech.textures.ModelTexture;
 import com.millstech.toolbox.GameConstants;
 
 public class Entity {
-	private boolean visible, scriptedVisibility, forceRender;
+	private boolean visible, scriptedVisibility = true, forceRender;
 	private TexturedModel model;
 	protected Vector3f position;
 	protected float rotX, rotY, rotZ;
@@ -17,9 +20,19 @@ public class Entity {
 		this(model, position, rotX, rotY, rotZ, scale);
 		forceRender = alwaysRender;
 	}
+	
 	public Entity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
-		super();
 		this.model = model;
+		this.position = position;
+		this.rotX = rotX;
+		this.rotY = rotY;
+		this.rotZ = rotZ;
+		this.scale = scale;
+	}
+	
+	public Entity(List<ModelTexture> list, RawModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
+		TexturedModel texModel = new TexturedModel(model, list.get((int) (Math.random() * list.size())));
+		this.model = texModel;
 		this.position = position;
 		this.rotX = rotX;
 		this.rotY = rotY;
@@ -104,14 +117,17 @@ public class Entity {
 	}
 	
 	public void setVisible(boolean v) {
-		visible = v;
-		scriptedVisibility = true;
+		scriptedVisibility = v;
 	}
 	
 	public void updateVisible() {
-		if((Math.abs(position.x - Game.character.position.x) < GameConstants.RENDER_DISTANCE && !scriptedVisibility) || forceRender) {
+		if(forceRender) {
 			visible = true;
-		}	else {
+			return;
+		}
+		if((Math.abs(position.x - Game.character.position.x) < GameConstants.RENDER_DISTANCE)) {
+			visible = scriptedVisibility;
+		} else {
 			visible = false;
 		}
 	}

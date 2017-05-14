@@ -4,6 +4,7 @@ import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.levels.models.*;
 import com.millstech.textures.ModelTexture;
+import com.millstech.textures.Textures;
 
 public class TestLevel implements Level {
 	public int spawnX = 3, spawnY = 4;
@@ -29,7 +30,7 @@ public class TestLevel implements Level {
 
 	@Override
 	public void loadBackground() {
-		TileUtils.createBGImage(new ModelTexture(Game.loader.loadTexture("bg/template")));
+		TileUtils.createBGImage(Textures.level1);
 	}
 
 	@Override
@@ -107,4 +108,7 @@ public class TestLevel implements Level {
 		// TODO LEVEL 4
 		//Game.unlocked.add(new LevelFour());
 	}
+
+	@Override
+	public void onCheckpointTrigger() { }
 }

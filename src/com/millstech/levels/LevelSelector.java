@@ -4,8 +4,8 @@ import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.levels.models.Tardis;
-import com.millstech.textures.ModelTexture;
-import com.millstech.toolbox.GameConstants;
+import com.millstech.textures.Textures;
+import com.millstech.toolbox.MathUtils;
 
 public class LevelSelector implements Level {
 
@@ -14,22 +14,31 @@ public class LevelSelector implements Level {
 	@Override
 	public void update() {
 		if(Controls.attack()) {
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL1 && Game.unlocked.get(0) instanceof LevelOne) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL1 && Game.unlocked.size() >= 1 && Game.unlocked.get(0) instanceof LevelOne) {
 				Game.loadLevel(1);
 			}
 			
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL2 && Game.unlocked.get(0) instanceof LevelTwo) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL2 && Game.unlocked.size() >= 2 && Game.unlocked.get(1) instanceof LevelTwo) {
 				Game.loadLevel(2);
 			}
 			
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL3) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL3 && Game.unlocked.size() >= 3 && Game.unlocked.get(2) instanceof LevelThree) {
 				Game.loadLevel(3);
 			}
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL4) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL4 && Game.unlocked.size() >= 4) {
 				Game.loadLevel(4);
 			}
-			if(Math.rint(Game.character.getPosition().x / GameConstants.UNIT) == LEVEL5) {
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL5 && Game.unlocked.size() >= 5) {
 				Game.loadLevel(5);
+			}
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL5 && Game.unlocked.size() >= 6) {
+				Game.loadLevel(6);
+			}
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL5 && Game.unlocked.size() >= 7) {
+				Game.loadLevel(7);
+			}
+			if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == LEVEL5 && Game.unlocked.size() >= 8) {
+				Game.loadLevel(8);
 			}
 		}
 	}
@@ -65,19 +74,19 @@ public class LevelSelector implements Level {
 
 	@Override
 	public void loadPlatforms() { 
-		TileUtils.createPlatformBlock(new ModelTexture(Game.loader.loadTexture("ground/sand/sand")), 0, 0, 18, 1);
+		TileUtils.createPlatformBlock(Textures.sand, 0, 0, 18, 1);
 	}
 
 	@Override
 	public void loadOffMap() { 
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("missing")), -9, 0, -1, 1);
-		TileUtils.createClippablePlatformBlock(new ModelTexture(Game.loader.loadTexture("missing")), 19, 0, 27, 1);
+		TileUtils.createClippablePlatformBlock(Textures.missing, -9, 0, -1, 1);
+		TileUtils.createClippablePlatformBlock(Textures.missing, 19, 0, 27, 1);
 	}
 
 	@Override
 	public PlayerEntity spawn() {
 		Game.purgePlayers();
-		return TileUtils.createScriptedCharacter(9, 2, false, true, false, true);
+		return TileUtils.createScriptedCharacter(9, 2, true, true, false, true);
 	}
 
 	@Override
@@ -90,5 +99,8 @@ public class LevelSelector implements Level {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void onCheckpointTrigger() { }
 
 }

@@ -27,4 +27,8 @@ public class MathUtils {
         Matrix4f.translate(negativeCameraPos, viewMatrix, viewMatrix);
         return viewMatrix;
     }
+	
+	public static int convertToBlockPos(float rawPos) {
+		return (int)(rawPos / GameConstants.UNIT + (GameConstants.UNIT / 2));
+	}
 }

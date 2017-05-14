@@ -8,6 +8,7 @@ public interface Level {
 	public void loadEntities();
 	public void loadBackground();
 	public void loadForeground();
+	public void onCheckpointTrigger();
 	public void loadPlatforms();
 	public void loadOffMap();
 	public PlayerEntity spawn();

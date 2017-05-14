@@ -53,7 +53,7 @@ public class ModelLoader {
 			texture = TextureLoader.getTexture("PNG", new FileInputStream("res/" + fileName + ".png"));
 		} catch (FileNotFoundException e) {
 			try {
-				texture = TextureLoader.getTexture("PNG", new FileInputStream("res/missing.png"));
+				texture = TextureLoader.getTexture("PNG", new FileInputStream("res/game/missing.png"));
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

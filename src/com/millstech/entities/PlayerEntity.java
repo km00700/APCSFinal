@@ -1,6 +1,5 @@
 package com.millstech.entities;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.lwjgl.util.vector.Vector3f;
@@ -12,7 +11,9 @@ import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.models.TexturedModel;
 import com.millstech.textures.ModelTexture;
+import com.millstech.textures.Textures;
 import com.millstech.toolbox.GameConstants;
+import com.millstech.toolbox.MathUtils;
 import com.millstech.toolbox.flags.Player;
 
 public class PlayerEntity extends Entity implements Player, GravityEntity {
@@ -21,22 +22,9 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; //.058 jump walk 0.038 //accel 0.002
 	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
-	private List<ModelTexture> walkRight = new ArrayList<ModelTexture>();
-	private List<ModelTexture> walkLeft = new ArrayList<ModelTexture>();
+	private List<ModelTexture> walkRight = Textures.walkRight;
+	private List<ModelTexture> walkLeft = Textures.walkLeft;
 	
-	private ModelTexture standR;
-	private ModelTexture walkR00;
-	private ModelTexture walkR11;
-	private ModelTexture walkR12;
-	private ModelTexture walkR21;
-	private ModelTexture walkR22;
-	private ModelTexture standL;
-	private ModelTexture walkL00;
-	private ModelTexture walkL11;
-	private ModelTexture walkL12;
-	private ModelTexture walkL21;
-	private ModelTexture walkL22;
-    
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean movable, boolean jumpable, boolean gravity) {
 		this(model, position, rotX, rotY, rotZ, scale);
 		moveEnabled = movable;
@@ -47,32 +35,7 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super(model, position, rotX, rotY, rotZ, scale);
 		this.setVisibleIsScripted(false);
-		standR = new ModelTexture(Game.loader.loadTexture("char/char_standingL"));
-		standL = new ModelTexture(Game.loader.loadTexture("char/char_standingLI"));
 		
-		walkR00 = new ModelTexture(Game.loader.loadTexture("char/char_walking00L"));
-		walkR11 = new ModelTexture(Game.loader.loadTexture("char/char_walking11L"));
-		walkR12 = new ModelTexture(Game.loader.loadTexture("char/char_walking12L"));
-		walkR21 = new ModelTexture(Game.loader.loadTexture("char/char_walking21L"));
-		walkR22 = new ModelTexture(Game.loader.loadTexture("char/char_walking22L"));
-		walkRight.add(walkR00);
-		walkRight.add(walkR11);
-		walkRight.add(walkR12);
-		walkRight.add(walkR00);
-		walkRight.add(walkR21);
-		walkRight.add(walkR22);
-		
-		walkL00 = new ModelTexture(Game.loader.loadTexture("char/char_walking00LI"));
-		walkL11 = new ModelTexture(Game.loader.loadTexture("char/char_walking11LI"));
-		walkL12 = new ModelTexture(Game.loader.loadTexture("char/char_walking12LI"));
-		walkL21 = new ModelTexture(Game.loader.loadTexture("char/char_walking21LI"));
-		walkL22 = new ModelTexture(Game.loader.loadTexture("char/char_walking22LI"));
-		walkLeft.add(walkL00);
-		walkLeft.add(walkL11);
-		walkLeft.add(walkL12);
-		walkLeft.add(walkL00);                                                                       
-		walkLeft.add(walkL21);
-		walkLeft.add(walkL22);
 	}
 	
 	public void move() {                                                                                                                                                                     
@@ -82,8 +45,8 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 		if((Controls.right() && Controls.left()) || (!Controls.right() && !Controls.left())) {
 			wrIndex = 0;
 			wrIndex = 0;
-			if(facingRight) super.getModel().setTexture(standR);
-			else super.getModel().setTexture(standL);
+			if(facingRight) super.getModel().setTexture(Textures.standR);
+			else super.getModel().setTexture(Textures.standL);
 		} else {
 			if(Controls.right() && moveEnabled) {
 				if(position.x < GameConstants.UPPER_BOUND - GameConstants.UNIT && Game.getCurrentLevel().getMaxX() > 0 && position.x / GameConstants.UNIT < Game.getCurrentLevel().getMaxX()) {
@@ -132,9 +95,10 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	private ModelTexture walkRightNext() {
-		if(wrIndex < walkRight.size() - 1) {
+		if(wrIndex < walkRight.size()) {
+			ModelTexture t = walkRight.get(wrIndex);
 			wrIndex++;
-			return walkRight.get(wrIndex - 1);
+			return t;
 		} else {
 			wrIndex = 0;
 			return walkRight.get(0);
@@ -142,9 +106,10 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	private ModelTexture walkLeftNext() {
-		if(wlIndex < walkLeft.size() - 1) {
+		if(wlIndex < walkLeft.size()) {
+			ModelTexture t = walkLeft.get(wlIndex);
 			wlIndex++;
-			return walkLeft.get(wlIndex - 1);
+			return t;
 		} else {
 			wlIndex = 0;
 			return walkLeft.get(0);
@@ -209,16 +174,16 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	public void checkForCollision() {
-		if(facingRight && Game.isPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4)) {
-			if((Game.getPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4).position.x - position.x) < 0.5) {
+		if(facingRight && Game.isPlatformAtLocation(MathUtils.convertToBlockPos(position.x) + 1, MathUtils.convertToBlockPos(position.y) + 4)) {
+			if((Game.getPlatformAtLocation(MathUtils.convertToBlockPos(position.x) + 1, MathUtils.convertToBlockPos(position.y) + 4).position.x - position.x) < 0.5) {
 				position.x -= 0.05;
 				colliding = true;
 			}
-			if((Game.getPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4).position.x - position.x) < 0.45) {
+			if((Game.getPlatformAtLocation(MathUtils.convertToBlockPos(position.x) + 1, MathUtils.convertToBlockPos(position.y) + 4).position.x - position.x) < 0.45) {
 				colliding = true;
 			}
-		} else if(!facingRight && Game.isPlatformAtLocation(convertToBlockPos(position.x), convertToBlockPos(position.y) + 4)) {
-			if(position.x - (Game.getPlatformAtLocation(convertToBlockPos(position.x), convertToBlockPos(position.y) + 4).position.x) < 0.5) {
+		} else if(!facingRight && Game.isPlatformAtLocation(MathUtils.convertToBlockPos(position.x), MathUtils.convertToBlockPos(position.y) + 4)) {
+			if(position.x - (Game.getPlatformAtLocation(MathUtils.convertToBlockPos(position.x), MathUtils.convertToBlockPos(position.y) + 4).position.x) < 0.5) {
 				position.x += 0.05;
 				colliding = true;
 			}
@@ -228,15 +193,11 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	}
 	
 	public void checkForClip() {
-		if((Game.getPlatformAtLocation(convertToBlockPos(position.x) + 1, convertToBlockPos(position.y) + 4).position.x - position.x) < 0.5) {
+		if((Game.getPlatformAtLocation(MathUtils.convertToBlockPos(position.x) + 1, MathUtils.convertToBlockPos(position.y) + 4).position.x - position.x) < 0.5) {
 			
 		}
 	}
 	
-	public int convertToBlockPos(float rawPos) {
-		return (int)(rawPos / GameConstants.UNIT + (GameConstants.UNIT / 2));
-	}
-
 	public boolean isJumping() {
 		return jumping;
 	}

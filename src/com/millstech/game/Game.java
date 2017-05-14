@@ -8,6 +8,7 @@ import org.lwjgl.util.vector.*;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
+import com.millstech.entities.map.Updatable;
 import com.millstech.game.control.Controls;
 import com.millstech.game.playerinfo.LifeHandler;
 import com.millstech.game.story.LevelHandler;
@@ -15,7 +16,7 @@ import com.millstech.levels.Level;
 import com.millstech.levels.*;
 import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.flags.Player;
-
+//TODO ADD ANIM LIST
 public class Game {
 	//Private Fields
 	private static List<Entity> entityList = new ArrayList<Entity>();
@@ -24,6 +25,7 @@ public class Game {
 	private static MasterRender renderer;
 	private static Level currentLevel;
 	private static List<Entity> allEntityList = new ArrayList<Entity>();
+	private static List<Updatable> updateList = new ArrayList<Updatable>();
 	private static Entity[][] platformList = new Entity[256][11];
 	//Public Fields
 	public static List<Platform> platforms = new ArrayList<Platform>();
@@ -39,6 +41,7 @@ public class Game {
             character.move();
             camera.follow(character);
             light.folow(character);
+            checkUpdatables();
             currentLevel.update();
             render();
         }
@@ -81,7 +84,7 @@ public class Game {
 	}
 	
 	public static void addToGraphicsLayer(Entity e) {
-		e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
+		e.increasePosition(0, 0, 2.2f * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	
@@ -113,6 +116,7 @@ public class Game {
 	
 	public static void purgeEntities() {
 		allEntityList = new ArrayList<Entity>();
+		updateList = new ArrayList<Updatable>();
 		platforms = new ArrayList<Platform>();
 		platformPos = new ArrayList<Vector3f>();
 		entityList = new ArrayList<Entity>();
@@ -178,5 +182,15 @@ public class Game {
 	
 	public static Level getCurrentLevel() {
 		return currentLevel;
+	}
+	
+	public static void registerUpdatable(Updatable u) {
+		updateList.add(u);
+	}
+	
+	public static void checkUpdatables() {
+		for(Updatable u : updateList) {
+			u.update();
+		}
 	}
 }

@@ -18,20 +18,22 @@ public class LevelHandler {
 	
 	public Level getNextLevel() {
 		unloadLevel();
-		if(prevLevel + 1 < levels.size()) {
-			prevLevel++;	
+		if(prevLevel < levels.size() - 1) {
+			prevLevel++;
 			return levels.get(prevLevel);
 		} else {
-			prevLevel = 0;
+			prevLevel = -1;
 			return levels.get(0);
 		}
 	}
 	
-	public Level getLevel(int levelNum) {
+	public Level getLevel(int levelIndex) {
 		unloadLevel();
-		if(0 < levelNum && (levelNum <= levels.size())) {
-			return levels.get(levelNum--);
+		if(0 <= levelIndex && (levelIndex < levels.size())) {
+			prevLevel = levelIndex;
+			return levels.get(levelIndex);
 		} else {
+			prevLevel = 0;
 			return levels.get(0);
 		}
 	}
@@ -45,6 +47,11 @@ public class LevelHandler {
 	public Level loadTutorial() {
 		unloadLevel();
 		return new Tutorial();
+	}
+	
+	public Level loadCredits() {
+		unloadLevel();
+		return new Credits();
 	}
 	
 	public Level loadLevelSelector() {
