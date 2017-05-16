@@ -24,6 +24,8 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = Textures.walkRight;
 	private List<ModelTexture> walkLeft = Textures.walkLeft;
+	private ModelTexture idleR = Textures.standR;
+	private ModelTexture idleL = Textures.standL;
 	
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean movable, boolean jumpable, boolean gravity) {
 		this(model, position, rotX, rotY, rotZ, scale);
@@ -45,8 +47,8 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 		if((Controls.right() && Controls.left()) || (!Controls.right() && !Controls.left())) {
 			wrIndex = 0;
 			wrIndex = 0;
-			if(facingRight) super.getModel().setTexture(Textures.standR);
-			else super.getModel().setTexture(Textures.standL);
+			if(facingRight) super.getModel().setTexture(idleR);
+			else super.getModel().setTexture(idleL);
 		} else {
 			if(Controls.right() && moveEnabled) {
 				if(position.x < GameConstants.UPPER_BOUND - GameConstants.UNIT && Game.getCurrentLevel().getMaxX() > 0 && position.x / GameConstants.UNIT < Game.getCurrentLevel().getMaxX()) {
@@ -200,6 +202,27 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	
 	public boolean isJumping() {
 		return jumping;
+	}
+	
+	public void setPlayerType(PlayerType type) {
+		switch(type) {
+			case DOCTOR:
+				walkLeft = Textures.walkLeft;
+				walkRight = Textures.walkRight;
+				idleL = Textures.standL;
+				idleR = Textures.standR;
+				break;
+			case MARIO:
+				walkLeft = Textures.marioLeft;
+				walkRight = Textures.marioRight;
+				idleL = Textures.MstandL;
+				idleR = Textures.MstandR;
+				break;
+		}
+	}
+	
+	public enum PlayerType {
+		DOCTOR, MARIO;
 	}
 	
 }

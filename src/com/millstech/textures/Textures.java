@@ -76,11 +76,16 @@ public class Textures {
 	public static ModelTexture sandL = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/endL"));
 	public static ModelTexture sandR = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/endR"));
 	//Stone Variants
-	public static ModelTexture stone = new ModelTexture(Game.loader.loadTexture("terrain/ground/sstone/1"));
-	public static ModelTexture stoneUL = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/2"));
-	public static ModelTexture stoneUR = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/3"));
-	public static ModelTexture stoneDL = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/4"));
-	public static ModelTexture stoneDR = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/5"));
+	public static ModelTexture stone = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/1"));
+	public static ModelTexture stoneUL = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/2"));
+	public static ModelTexture stoneUR = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/3"));
+	public static ModelTexture stoneDL = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/4"));
+	public static ModelTexture stoneDR = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/5"));
+	public static ModelTexture stoneULI = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/6"));
+	public static ModelTexture stoneURI = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/7"));
+	public static ModelTexture stoneDLI = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/8"));
+	public static ModelTexture stoneDRI = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/9"));
+	public static ModelTexture stoneLedge = new ModelTexture(Game.loader.loadTexture("terrain/ground/stone/10"));
 	//Water
 	public static ModelTexture water1 = new ModelTexture(Game.loader.loadTexture("terrain/water/1"));
 	public static ModelTexture water2 = new ModelTexture(Game.loader.loadTexture("terrain/water/2"));

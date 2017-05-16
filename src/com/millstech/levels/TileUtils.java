@@ -209,4 +209,12 @@ public class TileUtils {
 			}
 		}
 	}
+
+	public static void createClippableJumpablePlatformBlock(ModelTexture t, int minX, int minY, int maxX, int maxY) {
+		for(int i = minX; i <= maxX; i++) {
+			for(int j = minY; j <= maxY; j++) {
+				createClippableJumpablePlatform(t, i, j);
+			}
+		}
+	}
 }

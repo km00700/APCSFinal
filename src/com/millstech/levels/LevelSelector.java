@@ -5,7 +5,9 @@ import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.levels.models.Tardis;
 import com.millstech.textures.Textures;
+import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.MathUtils;
+import com.millstech.toolbox.MathUtils.Coordinate;
 
 public class LevelSelector implements Level {
 
@@ -50,6 +52,8 @@ public class LevelSelector implements Level {
         loadPlatforms();
         loadForeground();
         loadOffMap();
+        Game.getCamera().setTilePosition(9 * GameConstants.UNIT, Coordinate.X);
+        Game.getLight().setTilePosition(9 * GameConstants.UNIT, Coordinate.X);
 	}
 
 	@Override
@@ -95,12 +99,13 @@ public class LevelSelector implements Level {
 	}
 
 	@Override
-	public void completed() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void completed() { }
 
 	@Override
 	public void onCheckpointTrigger() { }
 
+	@Override
+	public boolean hasDynamicCamera() {
+		return false;
+	}
 }

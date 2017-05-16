@@ -14,4 +14,5 @@ public interface Level {
 	public PlayerEntity spawn();
 	public int getMaxX();
 	public void completed();
+	public boolean hasDynamicCamera();
 }

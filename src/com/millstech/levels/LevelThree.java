@@ -80,4 +80,9 @@ public class LevelThree implements Level {
 	public void onCheckpointTrigger() {
 		// TODO Auto-generated method stub
 	}
+	
+	@Override
+	public boolean hasDynamicCamera() {
+		return true;
+	}
 }

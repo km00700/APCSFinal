@@ -31,7 +31,7 @@ public class Credits implements Level {
 
 	@Override
 	public void loadBackground() {
-		//TileUtils.createBGImage(Textures.level1);
+		TileUtils.createBGImage(Textures.level1);
 	}
 
 	@Override
@@ -69,4 +69,9 @@ public class Credits implements Level {
 
 	@Override
 	public void onCheckpointTrigger() { }
+
+	@Override
+	public boolean hasDynamicCamera() {
+		return true;
+	}
 }

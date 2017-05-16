@@ -54,7 +54,7 @@ public class LevelOne implements Level {
 	@Override
 	public void loadPlatforms() {
 		//GROUND
-		TileUtils.createPlatformBlock(Textures.dirt, 0, 0, 255, 0);
+		TileUtils.createPlatformBlock(Textures.dirt, 0, 0, 66, 0);
 		TileUtils.createPlatformBlock(Textures.grass, 0, 1, 23, 1);
 		TileUtils.createClippablePlatformBlock(Textures.dirt, 24, 1, 27, 1);
 		TileUtils.createPlatformBlock(Textures.grass, 24, 2, 27, 2);
@@ -65,7 +65,10 @@ public class LevelOne implements Level {
 		TileUtils.createPlatformBlock(Textures.dirt, 47, 2, 49, 2);
 		TileUtils.createPlatformBlock(Textures.dirt, 45, 1, 50, 1);
 		TileUtils.createPlatformBlock(Textures.dirt, 51, 1, 53, 1);
-		TileUtils.createPlatformBlock(Textures.grass, 54, 1, 255, 1);
+		TileUtils.createPlatformBlock(Textures.grass, 54, 1, 67, 1);
+		TileUtils.createPlatformBlock(Textures.stone, 67, 0, 94, 0);
+		TileUtils.createPlatformBlock(Textures.stone, 68, 1, 94, 1);
+		TileUtils.createPlatformBlock(Textures.stone, 74, 2, 75, 2);
 		
 		TileUtils.createAnimatedFGBlock(Textures.waterLAnim, 51, 0, 51, 1, 10);
 		TileUtils.createAnimatedFGBlock(Textures.waterAnim, 52, 0, 52, 1, 10);
@@ -186,17 +189,34 @@ public class LevelOne implements Level {
 		Tree.loadTreeTrunk(66, 2, 4);
 		Tree.loadTreeTop(65, 6, 4, false);
 		
+		TileUtils.createPlatform(Textures.rock, 71, 2);
+		TileUtils.createClippableJumpablePlatformBlock(Textures.stoneLedge, 76, 3, 77, 3);
+		TileUtils.createClippableJumpablePlatformBlock(Textures.stoneLedge, 78, 4, 79, 4);
+		TileUtils.createClippableJumpablePlatformBlock(Textures.stoneLedge, 80, 5, 81, 5);
+		//UL
+		TileUtils.createNoInteractionPlatform(Textures.stoneUL, 68, 6);
+		TileUtils.createNoInteractionPlatform(Textures.stoneUL, 72, 8);
+		TileUtils.createNoInteractionPlatform(Textures.stoneUL, 75, 10);
+		//DR
+		TileUtils.createNoInteractionPlatform(Textures.stoneDR, 71, 4);
+		TileUtils.createNoInteractionPlatform(Textures.stoneDR, 74, 6);
+		//DL
+		TileUtils.createNoInteractionPlatform(Textures.stoneDL, 68, 4);
+		//DR INSIDE
+		TileUtils.createNoInteractionPlatform(Textures.stoneULI, 71, 7);
+		TileUtils.createNoInteractionPlatform(Textures.stoneULI, 74, 9);
+		//UL INSIDE
+		TileUtils.createNoInteractionPlatform(Textures.stoneDRI, 72, 5);
+		TileUtils.createNoInteractionPlatform(Textures.stoneDRI, 75, 7);
+		//CAVE INTERIOR
 		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 69, 4, 70, 4);
-		
 		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 68, 5, 71, 5);
-		
 		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 69, 6, 73, 6);
+		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 72, 7, 74, 7);
+		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 73, 8, 94, 8);
+		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 75, 9, 94, 9);
+		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 76, 10, 94, 10);
 		
-		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 73, 7, 94, 7);
-		
-		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 75, 8, 94, 8);
-		
-		TileUtils.createNoInteractionPlatformBlock(Textures.stone, 76, 9, 94, 9);
 		
 	}
 	
@@ -250,5 +270,10 @@ public class LevelOne implements Level {
 	public void onCheckpointTrigger() {
 		spawnX = CHECKPOINT_X;
 		spawnY = CHECKPOINT_Y;
+	}
+	
+	@Override
+	public boolean hasDynamicCamera() {
+		return true;
 	}
 }

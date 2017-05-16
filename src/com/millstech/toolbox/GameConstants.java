@@ -6,6 +6,7 @@ public class GameConstants {
 	public static final String TITLE = "ADD A TITLE HERE YOU DIPSH!TS!";
 	
 	public static final float UNIT = 0.75f;
+	public static final float CAMERA_UNIT = 6.99300703288f;
 	public static final Vector3f DEFAULT_BG_COLOR = new Vector3f(0.0f, 0.75f, 1.0f); //LIGHT SKY(0.0f, 0.75f, 1.0f) DARK SKY(0.2f, 0.375f, 0.5f)
 	public static final float RENDER_DISTANCE = 8.0f; //8
 	public static final float LAYER_SPACING = 0.003f;

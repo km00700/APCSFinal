@@ -2,6 +2,10 @@ package com.millstech.entities;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import com.millstech.game.Game;
+import com.millstech.toolbox.GameConstants;
+import com.millstech.toolbox.MathUtils.*;
+
 public class Camera {
 
 	private Vector3f position = new Vector3f(0, 0, 0);
@@ -35,15 +39,41 @@ public class Camera {
 	}
 	
 	public void follow(Entity e) {
-		position.x = 0.143f * e.getPosition().x;
+		if(Game.getCurrentLevel().hasDynamicCamera()) {
+			position.x = 0.143f * e.getPosition().x;
+		}
 	}
 	
 	public void setPosition(Vector3f vec) {
 		position = vec;
 	}
 	
+	public void setTilePosition(Vector3f vec) {
+		position.x = 0.143f * vec.x;
+		position.y = 0.143f * vec.y;
+		position.z = 0.143f * vec.z;
+	}
+	
+	public void setTilePosition(float val, Coordinate c) {
+		switch(c) {
+		case X:
+			position.x = val / GameConstants.CAMERA_UNIT;
+			break;
+		case Y:
+			position.y = val / GameConstants.CAMERA_UNIT;
+			break;
+		case Z:
+			position.z = val / GameConstants.CAMERA_UNIT;
+			break;
+		}
+	}
+	
 	public Vector3f getPosition() {
 		return position;
+	}
+	
+	public Vector3f getTilePosition() {
+		return new Vector3f(position.x * 6.99300703288f, position.y, position.z);
 	}
 	
 	public float getPitch() {

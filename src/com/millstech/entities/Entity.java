@@ -125,7 +125,7 @@ public class Entity {
 			visible = true;
 			return;
 		}
-		if((Math.abs(position.x - Game.character.position.x) < GameConstants.RENDER_DISTANCE)) {
+		if((Math.abs(position.x - Game.getCamera().getTilePosition().x) < GameConstants.RENDER_DISTANCE)) {
 			visible = scriptedVisibility;
 		} else {
 			visible = false;

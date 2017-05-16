@@ -111,4 +111,9 @@ public class TestLevel implements Level {
 
 	@Override
 	public void onCheckpointTrigger() { }
+	
+	@Override
+	public boolean hasDynamicCamera() {
+		return true;
+	}
 }
