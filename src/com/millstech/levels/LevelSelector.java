@@ -82,10 +82,7 @@ public class LevelSelector implements Level {
 	}
 
 	@Override
-	public void loadOffMap() { 
-		TileUtils.createClippablePlatformBlock(Textures.missing, -9, 0, -1, 1);
-		TileUtils.createClippablePlatformBlock(Textures.missing, 19, 0, 27, 1);
-	}
+	public void loadOffMap() { }
 
 	@Override
 	public PlayerEntity spawn() {

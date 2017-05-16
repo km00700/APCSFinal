@@ -50,10 +50,10 @@ public class TileUtils {
         return e;
 	}
 	
-	public static Entity createMovingTile(ModelTexture t, int posX, int posY, float dx, float dy, Layer l) {
+	public static Entity createMovingTile(ModelTexture t, int posX, int posY, float dx, float dy, Layer l, float scale) {
 		RawModel model;
 		model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    MovingTile e = new MovingTile(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, dx, dy);
+	    MovingTile e = new MovingTile(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT * scale, posY * GameConstants.UNIT * scale, -10.0f), 0, 270, 0, GameConstants.UNIT * scale, dx, dy);
 	    switch(l) {
 	    case GRAPHICS:
 	    	Game.addToGraphicsLayer(e);
@@ -172,7 +172,7 @@ public class TileUtils {
 		}
 	}
 	
-	public static AnimatedEntity createAnimatedTile(List<ModelTexture> list, int posX, int posY, Layer l, int animDelay) {
+	public static AnimatedEntity createAnimatedTile(List<ModelTexture> list, int posX, int posY, Layer l, int animDelay, boolean platform) {
 		RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
 		AnimatedEntity e;
 		if(animDelay < 0) {
@@ -181,7 +181,8 @@ public class TileUtils {
 	    	e = new AnimatedEntity(new TexturedModel(model, Textures.test), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, animDelay);
 	    	e.loadAnimations(list);
 		}
-	    switch(l) {
+	    
+		switch(l) {
 		    case GRAPHICS:
 		    	Game.addToGraphicsLayer(e);
 		    	break;
@@ -198,14 +199,19 @@ public class TileUtils {
 		    	Game.addToBackgroundLayer(e);
 		    	break;
 	    }
-	    Game.registerUpdatable(e);
+
+		if(platform) {
+	    	createPlatform(Textures.invisable, posX, posY);
+	    }
+		
+		Game.registerUpdatable(e);
 	    return e;
 	}
 	
-	public static void createAnimatedFGBlock(List<ModelTexture> list, int minX, int minY, int maxX, int maxY, int animDelay) {
+	public static void createAnimatedBlock(List<ModelTexture> list, int minX, int minY, int maxX, int maxY, Layer l, int animDelay, boolean platform) {
 		for(int i = minX; i <= maxX; i++) {
 			for(int j = minY; j <= maxY; j++) {
-				createAnimatedTile(list, i, j, Layer.FOREGROUND, animDelay);
+				createAnimatedTile(list, i, j, l, animDelay, platform);
 			}
 		}
 	}

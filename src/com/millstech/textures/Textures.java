@@ -69,8 +69,10 @@ public class Textures {
 	//////////////////////////////
 	public static ModelTexture rock = new ModelTexture(Game.loader.loadTexture("terrain/rock"));
 	//Dirt Variants
-	public static ModelTexture dirt = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt"));
-	public static ModelTexture grass = new ModelTexture(Game.loader.loadTexture("terrain/ground/grass"));
+	public static ModelTexture dirt = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/dirt"));
+	public static ModelTexture grass = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/grass"));
+	public static ModelTexture grass2 = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/grass2"));
+	public static List<ModelTexture> grasses = new ArrayList<ModelTexture>(Arrays.asList(grass, grass2));
 	//Sand Variants
 	public static ModelTexture sand = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/sand"));
 	public static ModelTexture sandL = new ModelTexture(Game.loader.loadTexture("terrain/ground/sand/endL"));
@@ -122,8 +124,8 @@ public class Textures {
 	//public static ModelTexture  = new ModelTexture(Game.loader.loadTexture(""));
 	//public static ModelTexture  = new ModelTexture(Game.loader.loadTexture(""));
 	//CHECKPOINT
-	public static ModelTexture checkPoint = new ModelTexture(Game.loader.loadTexture("map-objects/tree/1"));
-	public static ModelTexture checkPoint_CAP = new ModelTexture(Game.loader.loadTexture("terrain/rock"));
+	public static ModelTexture checkPoint = new ModelTexture(Game.loader.loadTexture("map-objects/checkpoint/1"));
+	public static ModelTexture checkPoint_CAP = new ModelTexture(Game.loader.loadTexture("map-objects/checkpoint/2"));
 	public static List<ModelTexture> checkPointList = new ArrayList<ModelTexture>(Arrays.asList(checkPoint, checkPoint_CAP));
 	//////////////////////////////
 	//           GAME           //

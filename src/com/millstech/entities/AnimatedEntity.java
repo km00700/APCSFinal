@@ -22,11 +22,13 @@ public class AnimatedEntity extends Entity implements Updatable {
 	}
 	
 	public void update() {
-		if(timeCounter > animDelay) {
-			super.getModel().setTexture(animNext());
-			timeCounter = 0;
-		} else {
-			timeCounter++;
+		if(animDelay > 0) {
+			if(timeCounter > animDelay) {
+				super.getModel().setTexture(animNext());
+				timeCounter = 0;
+			} else {
+				timeCounter++;
+			}
 		}
 	}
 	

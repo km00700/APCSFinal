@@ -2,6 +2,7 @@ package com.millstech.levels;
 
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
+import com.millstech.levels.TileUtils.Layer;
 import com.millstech.levels.models.Tardis;
 import com.millstech.levels.models.Tree;
 import com.millstech.textures.Textures;
@@ -55,7 +56,7 @@ public class LevelOne implements Level {
 	public void loadPlatforms() {
 		//GROUND
 		TileUtils.createPlatformBlock(Textures.dirt, 0, 0, 66, 0);
-		TileUtils.createPlatformBlock(Textures.grass, 0, 1, 23, 1);
+		TileUtils.createAnimatedBlock(Textures.grasses, 0, 1, 23, 1, Layer.PLATFORM, -1, true);
 		TileUtils.createClippablePlatformBlock(Textures.dirt, 24, 1, 27, 1);
 		TileUtils.createPlatformBlock(Textures.grass, 24, 2, 27, 2);
 		TileUtils.createPlatformBlock(Textures.grass, 28, 1, 44, 1);
@@ -69,9 +70,9 @@ public class LevelOne implements Level {
 		TileUtils.createPlatformBlock(Textures.stone, 67, 0, 94, 1);
 		TileUtils.createPlatformBlock(Textures.stone, 74, 2, 75, 2);
 		
-		TileUtils.createAnimatedFGBlock(Textures.waterLAnim, 51, 0, 51, 1, 10);
-		TileUtils.createAnimatedFGBlock(Textures.waterAnim, 52, 0, 52, 1, 10);
-		TileUtils.createAnimatedFGBlock(Textures.waterRAnim, 53, 0, 53, 1, 10);
+		TileUtils.createAnimatedBlock(Textures.waterLAnim, 51, 0, 51, 1, Layer.FOREGROUND, 10, false);
+		TileUtils.createAnimatedBlock(Textures.waterAnim, 52, 0, 52, 1, Layer.FOREGROUND, 10, false);
+		TileUtils.createAnimatedBlock(Textures.waterRAnim, 53, 0, 53, 1, Layer.FOREGROUND, 10, false);
 		
 		//SCENERY
 		Tree.loadTreeTrunk(5, 2, 2);
