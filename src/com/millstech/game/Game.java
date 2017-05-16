@@ -76,7 +76,7 @@ public class Game {
 	public static void reset() {
 		loader = new ModelLoader();
         camera = new Camera(0.0f, 1.25f * GameConstants.UNIT, 0.0f);
-        light = new Light(new Vector3f(0, 0, 10), new Vector3f(1, 1, 1));
+        light = new Light(new Vector3f(0, 0, 1000), new Vector3f(1, 1, 1));
         renderer = new MasterRender();
         levelHandler = new LevelHandler();
         lifeHandler = new LifeHandler();
