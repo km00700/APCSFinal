@@ -3,8 +3,10 @@ package com.millstech.levels;
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.levels.models.*;
+import com.millstech.levels.models.prehistoric.Tree;
 import com.millstech.textures.ModelTexture;
 import com.millstech.textures.Textures;
+import com.millstech.toolbox.TileUtils;
 
 public class TestLevel implements Level {
 	public int spawnX = 3, spawnY = 4;

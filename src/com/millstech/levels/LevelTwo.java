@@ -2,9 +2,11 @@ package com.millstech.levels;
 
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
-import com.millstech.levels.models.Tardis;
+import com.millstech.levels.models.*;
+import com.millstech.levels.models.egypt.*;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.MathUtils;
+import com.millstech.toolbox.TileUtils;
 
 public class LevelTwo implements Level {
 	public int spawnX = 3, spawnY = 4;

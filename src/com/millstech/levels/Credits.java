@@ -4,6 +4,7 @@ import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.textures.CreditsTextures;
 import com.millstech.textures.Textures;
+import com.millstech.toolbox.TileUtils;
 
 public class Credits implements Level {
 	public int spawnX = 0, spawnY = 4, counter = 0, counterMax = 2857; //Max Counter = (-1 * bottomYValue / 0.006f) / scale
@@ -33,7 +34,7 @@ public class Credits implements Level {
 
 	@Override
 	public void loadBackground() {
-		TileUtils.createBGImage(Textures.level1);
+		TileUtils.createBGImage(Textures.credits);
 	}
 
 	@Override
