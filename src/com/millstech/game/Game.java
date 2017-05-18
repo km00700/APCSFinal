@@ -51,15 +51,12 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
-		soundTest();
-		/*
 		initialize();
 		debug(); //TODO remove debug
 		loop();
 		
 		close();
-		*/
-    }
+	}
 	
 	public static void soundTest() {
 		MasterAudio.initialize();
