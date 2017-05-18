@@ -5,6 +5,7 @@ import com.millstech.game.Game;
 import com.millstech.levels.models.Tardis;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.MathUtils;
+import com.millstech.toolbox.TileUtils;
 
 public class Tutorial implements Level {
 

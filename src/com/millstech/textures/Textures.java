@@ -48,6 +48,7 @@ public class Textures {
 	public static ModelTexture pyramid5 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/5"));
 	public static ModelTexture pyramid6 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/6"));
 	public static ModelTexture pyramid7 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/7"));
+	public static ModelTexture pyramid8 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/8"));
 	//Tree
 	public static ModelTexture tree1 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/1"));
 	public static ModelTexture tree2 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/2"));
@@ -63,7 +64,15 @@ public class Textures {
 	public static ModelTexture tree12 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/12"));
 	public static ModelTexture tree13 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/13"));
 	public static ModelTexture log = new ModelTexture(Game.loader.loadTexture("map-objects/tree/log"));
-	
+	//Column
+	public static ModelTexture column1 = new ModelTexture(Game.loader.loadTexture("map-objects/column/1"));
+	public static ModelTexture column2 = new ModelTexture(Game.loader.loadTexture("map-objects/column/2"));
+	public static ModelTexture column3 = new ModelTexture(Game.loader.loadTexture("map-objects/column/3"));
+	//Aqueduct
+	public static ModelTexture duct1 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/1"));
+	public static ModelTexture duct2 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/2"));
+	public static ModelTexture duct3 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/3"));
+	public static ModelTexture duct4 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/4"));
 	//////////////////////////////
 	//          TERRAIN         //
 	//////////////////////////////
@@ -121,6 +130,7 @@ public class Textures {
 	//         BACKGROUND       //
 	//////////////////////////////
 	public static ModelTexture level1 = new ModelTexture(Game.loader.loadTexture("background/l1"));
+	public static ModelTexture credits = new ModelTexture(Game.loader.loadTexture("background/credits"));
 	//public static ModelTexture  = new ModelTexture(Game.loader.loadTexture(""));
 	//public static ModelTexture  = new ModelTexture(Game.loader.loadTexture(""));
 	//CHECKPOINT

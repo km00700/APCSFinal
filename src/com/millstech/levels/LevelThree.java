@@ -3,8 +3,10 @@ package com.millstech.levels;
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.levels.models.Tardis;
+import com.millstech.levels.models.rome.*;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.MathUtils;
+import com.millstech.toolbox.TileUtils;
 
 public class LevelThree implements Level {
 	public int spawnX = 3, spawnY = 4;
@@ -42,7 +44,10 @@ public class LevelThree implements Level {
 
 	@Override
 	public void loadForeground() {
-	
+		TileUtils.createPlatform(Textures.column3, 5, 2);
+		Column.loadColumn(6, 2, 2);
+		Column.loadColumn(7, 2, 3);
+		Aqueduct.loadDuct(8, 2, 4, 8, true);
 	}
 
 	@Override

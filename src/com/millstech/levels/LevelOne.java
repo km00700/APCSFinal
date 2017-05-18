@@ -2,11 +2,12 @@ package com.millstech.levels;
 
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
-import com.millstech.levels.TileUtils.Layer;
 import com.millstech.levels.models.Tardis;
-import com.millstech.levels.models.Tree;
+import com.millstech.levels.models.prehistoric.Tree;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.MathUtils;
+import com.millstech.toolbox.TileUtils;
+import com.millstech.toolbox.TileUtils.Layer;
 
 public class LevelOne implements Level {
 	private int spawnX = 2, spawnY = 2;
