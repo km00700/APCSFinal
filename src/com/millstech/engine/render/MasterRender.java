@@ -9,6 +9,7 @@ import org.lwjgl.util.vector.Matrix4f;
 import com.millstech.engine.render.shaders.*;
 import com.millstech.entities.*;
 import com.millstech.models.*;
+import com.millstech.toolbox.GameConstants;
 
 public class MasterRender {
 	private StaticShader shader = new StaticShader();
@@ -50,14 +51,19 @@ public class MasterRender {
 	}
 	
 	public void processEntity(Entity entity) {
+		entity.updateVisible();
 		TexturedModel entityModel = entity.getModel();
 		List<Entity> batch = entities.get(entityModel);
 		if(batch != null) {
-			batch.add(entity);
+			if(entity.isVisible()) {
+				batch.add(entity);
+			}
 		} else {
 			List<Entity> newBatch = new ArrayList<Entity>();
-			newBatch.add(entity);
-			entities.put(entityModel, newBatch);
+			if(entity.isVisible()) {
+				newBatch.add(entity);
+				entities.put(entityModel, newBatch);
+			}
 		}
 	}
 	
@@ -66,7 +72,7 @@ public class MasterRender {
 	}
 	
 	public void prepare() {
-		prepare(0.0f, 0.0f, 0.0f);
+		prepare(GameConstants.DEFAULT_BG_COLOR.x, GameConstants.DEFAULT_BG_COLOR.y, GameConstants.DEFAULT_BG_COLOR.z);
 	}
 	
 	public void prepare(float red, float green, float blue) {
@@ -88,5 +94,5 @@ public class MasterRender {
         projectionMatrix.m23 = -1;
         projectionMatrix.m32 = -((2 * NEAR_PLANE * FAR_PLANE) / frustum_length);
         projectionMatrix.m33 = 0;
-	}
+    }
 }

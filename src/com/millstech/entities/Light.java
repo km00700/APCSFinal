@@ -2,6 +2,9 @@ package com.millstech.entities;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import com.millstech.game.Game;
+import com.millstech.toolbox.MathUtils.Coordinate;
+
 public class Light {
 
 	private Vector3f position;
@@ -14,11 +17,27 @@ public class Light {
 	}
 	
 	public void folow(Entity e) {
-		position.x = e.position.x;
+		if(Game.getCurrentLevel().hasDynamicCamera()) {
+			position.x = e.position.x;
+		}
 	}
 
 	public Vector3f getPosition() {
 		return position;
+	}
+	
+	public void setTilePosition(float val, Coordinate c) {
+		switch(c) {
+		case X:
+			position.x = val;
+			break;
+		case Y:
+			position.y = val;
+			break;
+		case Z:
+			position.z = val;
+			break;
+		}
 	}
 
 	public void setPosition(Vector3f position) {
