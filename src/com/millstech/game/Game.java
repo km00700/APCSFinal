@@ -5,13 +5,10 @@ import java.util.*;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.*;
 
-import com.millstech.engine.audio.MasterAudio;
-import com.millstech.engine.audio.Source;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
 import com.millstech.entities.map.Updatable;
-import com.millstech.game.audio.GameAudio;
 import com.millstech.game.control.Controls;
 import com.millstech.game.playerinfo.LifeHandler;
 import com.millstech.game.story.LevelHandler;
@@ -58,39 +55,16 @@ public class Game {
 		close();
 	}
 	
-	public static void soundTest() {
-		MasterAudio.initialize();
-		MasterAudio.setListenerProps();
-		
-		int buffer = MasterAudio.loadSound("res/audio/theme.wav");
-		Source source = new Source();
-		
-		char c = ' ';
-		while(c != 'q') {
-			try { 
-				c = (char) System.in.read();
-			} catch(Exception e) {}
-			if(c == 'p') {
-				source.play(buffer);
-			}
-		}
-		source.delete();
-		MasterAudio.cleanUp();
-	}
-	
 	public static void render() {
 		for(Entity e : allEntityList) {
         	renderer.processEntity(e);
         }
         
         renderer.render(light, camera);
-        
         DisplayManager.updateDisplay();         
-    
-	}
+    }
 	
 	public static void initialize() {
-		GameAudio.initialize(); //TODO AUDIO
 		unlocked.add(new LevelOne());
         DisplayManager.createDisplay();
         Controls.initialize();
