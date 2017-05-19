@@ -10,11 +10,6 @@ public class SoundThreadManager {
 		name = nameIn;
 	}
 	
-	public SoundThreadManager(RunnableSound rSoundIn, String nameIn) {
-		rSound = rSoundIn;
-		name = nameIn;
-	}
-	
 	public void start() {
 		rSound.reset();
 		sThread = new Thread(rSound, name);
