@@ -8,7 +8,6 @@ public class RunnableSound implements Runnable {
 		sound = soundIn;
 	}
 	
-	
 	@Override
 	public void run() {
 		while(!exit) {

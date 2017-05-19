@@ -2,6 +2,7 @@ package com.millstech.levels;
 
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
+import com.millstech.game.audio.Sounds;
 import com.millstech.game.control.Controls;
 import com.millstech.levels.models.Tardis;
 import com.millstech.textures.Textures;
@@ -32,6 +33,7 @@ public class MainMenu implements Level {
 	
 	@Override
 	public void loadLevel() {
+		Game.stopSound();
 		loadEntities();
 		loadBackground();
         loadPlatforms();
@@ -39,6 +41,8 @@ public class MainMenu implements Level {
         loadOffMap();
         Game.getCamera().setTilePosition(9 * GameConstants.UNIT, Coordinate.X);
         Game.getLight().setTilePosition(9 * GameConstants.UNIT, Coordinate.X);
+        Game.setCurrentMusic(Sounds.TheDoctor);
+        Game.startSound();
 	}
 
 	@Override

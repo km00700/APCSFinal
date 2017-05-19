@@ -5,8 +5,7 @@ import java.util.*;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.*;
 
-import com.millstech.engine.audio.Sound;
-import com.millstech.engine.audio.SoundThreadManager;
+import com.millstech.engine.audio.*;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
@@ -21,7 +20,7 @@ import com.millstech.toolbox.flags.Player;
 //TODO ADD ANIM LIST
 public class Game {
 	//Private Fields
-	private static SoundThreadManager currentMusic;
+	private static SoundThreadManager soundManager;
 	private static List<Entity> entityList = new ArrayList<Entity>();
 	private static Camera camera;
 	private static Light light;
@@ -51,53 +50,11 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
-		/*
-		AudioMaster.initialize();
-		AudioMaster.setListenerData();
-		//int buffer = AudioMaster.loadSound("res/audio/music/i_am_the_doctor.wav");
-		int buffer = AudioMaster.loadSound(AudioMaster.getStream("res/audio/music/i_am_the_doctor.wav"));
-		Source source = new Source(true);
-		source.play(buffer);
-		
-		source.delete();
-		AudioMaster.cleanUp();
-		*/
-		
-		
-		Sound s = new Sound("res/audio/music/i_am_the_doctor.wav", true);
-		currentMusic = new SoundThreadManager(s, "IATD");
-		
-		currentMusic.start();
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		System.out.println("stopping");
-		currentMusic.stop();
-		try {
-			Thread.sleep(1000);
-			System.out.println("restarting");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		currentMusic.startFromBeginning();
-		
-		try {
-			Thread.sleep(3000);
-			System.out.println("closing Sound");
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
-		currentMusic.stop();
-		/*
 		initialize();
 		debug(); //TODO remove debug
 		loop();
 		
 		close();
-		*/
 	}
 	
 	public static void render() {
@@ -111,7 +68,7 @@ public class Game {
 	
 	public static void initialize() {
 		unlocked.add(new LevelOne());
-        DisplayManager.createDisplay();
+		DisplayManager.createDisplay();
         Controls.initialize();
 		reset();
 	}
@@ -210,6 +167,7 @@ public class Game {
 	}
 	
 	public static void close() {
+		soundManager.stop();
 		renderer.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
@@ -250,19 +208,19 @@ public class Game {
 		Game.unlocked.add(new LevelThree());
 	}
 	
-	public void setCurrentMusic(SoundThreadManager stm) {
-		currentMusic = stm;
+	public static void setCurrentMusic(SoundThreadManager stm) {
+		soundManager = stm;
 	}
 	
-	public SoundThreadManager getCurrentMusic() {
-		return currentMusic;
+	public static SoundThreadManager getCurrentMusic() {
+		return soundManager;
 	}
 	
-	public void startSound() {
-		currentMusic.start();
+	public static void startSound() {
+		soundManager.start();
 	}
 	
-	public void stopSound() {
-		currentMusic.stop();
+	public static void stopSound() {
+		if(soundManager != null) soundManager.stop();
 	}
 }

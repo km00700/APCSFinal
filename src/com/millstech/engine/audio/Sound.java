@@ -8,7 +8,7 @@ import javax.sound.sampled.*;
 public class Sound {
 	private SourceDataLine line = null;
 	private Clip c;
-	public Sound(String fileName, boolean looping) {
+	public Sound(String fileName) {
 		File soundFile = new File(fileName);
 		AudioInputStream audioInputStream = null;
 		try {
@@ -23,7 +23,6 @@ public class Sound {
 		try {
 			c = AudioSystem.getClip();
 			c.open(audioInputStream);
-			if(looping) c.loop(Clip.LOOP_CONTINUOUSLY);
 		} catch (LineUnavailableException e) { } catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -35,6 +34,10 @@ public class Sound {
 
 	public void play() {
 		c.start();
+	}
+	
+	public void playLoop() {
+		c.loop(Clip.LOOP_CONTINUOUSLY);
 	}
 
 	public void setToStart() {
