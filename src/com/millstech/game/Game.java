@@ -65,22 +65,32 @@ public class Game {
 		
 		
 		Sound s = new Sound("res/audio/music/i_am_the_doctor.wav", true);
-		SoundThreadManager st = new SoundThreadManager(s, "IATD");
+		currentMusic = new SoundThreadManager(s, "IATD");
 		
-		st.start();
+		currentMusic.start();
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		st.stop();
+		System.out.println("stopping");
+		currentMusic.stop();
 		try {
 			Thread.sleep(1000);
 			System.out.println("restarting");
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		st.startFromBeginning();
+		currentMusic.startFromBeginning();
+		
+		try {
+			Thread.sleep(3000);
+			System.out.println("closing Sound");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		currentMusic.stop();
 		/*
 		initialize();
 		debug(); //TODO remove debug

@@ -14,7 +14,6 @@ public class RunnableSound implements Runnable {
 		while(!exit) {
 			sound.play();
 		}
-		System.out.println("stopping");
 		sound.stop();
 	}
 	
