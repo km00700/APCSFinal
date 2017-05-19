@@ -1,12 +1,14 @@
 package com.millstech.game;
 
-import java.io.*;
 import java.util.*;
 
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.*;
 
+import com.millstech.engine.audio.AudioMaster;
 import com.millstech.engine.audio.Sound;
+import com.millstech.engine.audio.SoundThreadManager;
+import com.millstech.engine.audio.Source;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
@@ -50,10 +52,33 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
-		Sound s = new Sound("res/audio/music/theme.wav");
-		//Sound t = new Sound("res/audio/music/theme.wav");
-		File x = new File("res/audio/music/theme.wav");
-		s.play();
+		/*
+		AudioMaster.initialize();
+		AudioMaster.setListenerData();
+		//int buffer = AudioMaster.loadSound("res/audio/music/i_am_the_doctor.wav");
+		int buffer = AudioMaster.loadSound(AudioMaster.getStream("res/audio/music/i_am_the_doctor.wav"));
+		Source source = new Source(true);
+		source.play(buffer);
+		
+		source.delete();
+		AudioMaster.cleanUp();
+		*/
+		
+		
+		Sound s = new Sound("res/audio/music/i_am_the_doctor.wav");
+		SoundThreadManager st = new SoundThreadManager(s, "IATD");
+		st.start();
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		st.stop();
+		System.out.println("SHOULD be stopped... ugh. Y U NO STOP!");	
+		//s.play();
+		//s.stop();
+		//System.out.println("stopped");
+		//s.play();
 		/*
 		initialize();
 		debug(); //TODO remove debug
