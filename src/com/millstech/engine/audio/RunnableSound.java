@@ -18,7 +18,15 @@ public class RunnableSound implements Runnable {
 		sound.stop();
 	}
 	
+	public void reset() {
+		exit = false;
+	}
+	
 	public void stopThread() {
 		exit = true;
+	}
+	
+	public Sound getSound() {
+		return sound;
 	}
 }

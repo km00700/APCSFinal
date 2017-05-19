@@ -5,10 +5,8 @@ import java.util.*;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.*;
 
-import com.millstech.engine.audio.AudioMaster;
 import com.millstech.engine.audio.Sound;
 import com.millstech.engine.audio.SoundThreadManager;
-import com.millstech.engine.audio.Source;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
@@ -23,6 +21,7 @@ import com.millstech.toolbox.flags.Player;
 //TODO ADD ANIM LIST
 public class Game {
 	//Private Fields
+	private static SoundThreadManager currentMusic;
 	private static List<Entity> entityList = new ArrayList<Entity>();
 	private static Camera camera;
 	private static Light light;
@@ -41,7 +40,7 @@ public class Game {
 	public static PlayerEntity character;
 	
 	public static void loop() {
-		while(!Display.isCloseRequested()){
+		while(!Display.isCloseRequested()) {
             character.move();
             camera.follow(character);
             light.folow(character);
@@ -65,20 +64,23 @@ public class Game {
 		*/
 		
 		
-		Sound s = new Sound("res/audio/music/i_am_the_doctor.wav");
+		Sound s = new Sound("res/audio/music/i_am_the_doctor.wav", true);
 		SoundThreadManager st = new SoundThreadManager(s, "IATD");
+		
 		st.start();
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		st.stop();
-		System.out.println("SHOULD be stopped... ugh. Y U NO STOP!");	
-		//s.play();
-		//s.stop();
-		//System.out.println("stopped");
-		//s.play();
+		try {
+			Thread.sleep(1000);
+			System.out.println("restarting");
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		st.startFromBeginning();
 		/*
 		initialize();
 		debug(); //TODO remove debug
@@ -236,5 +238,21 @@ public class Game {
 	public static void debug() {
 		Game.unlocked.add(new LevelTwo());
 		Game.unlocked.add(new LevelThree());
+	}
+	
+	public void setCurrentMusic(SoundThreadManager stm) {
+		currentMusic = stm;
+	}
+	
+	public SoundThreadManager getCurrentMusic() {
+		return currentMusic;
+	}
+	
+	public void startSound() {
+		currentMusic.start();
+	}
+	
+	public void stopSound() {
+		currentMusic.stop();
 	}
 }
