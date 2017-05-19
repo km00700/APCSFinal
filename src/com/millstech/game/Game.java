@@ -1,10 +1,12 @@
 package com.millstech.game;
 
+import java.io.*;
 import java.util.*;
 
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.*;
 
+import com.millstech.engine.audio.Sound;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
@@ -48,11 +50,17 @@ public class Game {
 	}
 	
 	public static void main(String[] args) {
+		Sound s = new Sound("res/audio/music/theme.wav");
+		//Sound t = new Sound("res/audio/music/theme.wav");
+		File x = new File("res/audio/music/theme.wav");
+		s.play();
+		/*
 		initialize();
 		debug(); //TODO remove debug
 		loop();
 		
 		close();
+		*/
 	}
 	
 	public static void render() {

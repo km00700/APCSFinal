@@ -12,7 +12,7 @@ public class Sound {
 
   public Sound(String fileName)
   {
-    File  soundFile = new File(fileName);
+    File soundFile = new File(fileName);
     AudioInputStream audioInputStream = null;
     try
     {
@@ -56,5 +56,9 @@ public class Sound {
   public void play()
   {
     line.write(audioBytes, 0, numBytes);
+  }
+  
+  public void stop() {
+	  line.stop();
   }
 }
