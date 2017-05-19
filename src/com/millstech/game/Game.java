@@ -220,6 +220,10 @@ public class Game {
 		soundManager.start();
 	}
 	
+	public static void startSoundFromBeginning() {
+		soundManager.startFromBeginning();
+	}
+	
 	public static void stopSound() {
 		if(soundManager != null) soundManager.stop();
 	}

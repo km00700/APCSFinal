@@ -25,7 +25,7 @@ public class TestLevel implements Level {
         loadForeground();
         loadOffMap();
         Game.setCurrentMusic(Sounds.Theme);
-        Game.startSound();
+        Game.startSoundFromBeginning();
 	}
 	
 	@Override
