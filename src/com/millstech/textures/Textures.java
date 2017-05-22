@@ -40,15 +40,26 @@ public class Textures {
 	public static ModelTexture tardisTop = new ModelTexture(Game.loader.loadTexture("map-objects/tardis/top"));
 	public static ModelTexture tardisBottom = new ModelTexture(Game.loader.loadTexture("map-objects/tardis/bottom"));
 	//Pyramid
-	public static ModelTexture pyramid0 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/0"));
-	public static ModelTexture pyramid1 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/1"));
-	public static ModelTexture pyramid2 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/2"));
-	public static ModelTexture pyramid3 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/3"));
-	public static ModelTexture pyramid4 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/4"));
-	public static ModelTexture pyramid5 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/5"));
-	public static ModelTexture pyramid6 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/6"));
-	public static ModelTexture pyramid7 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/7"));
-	public static ModelTexture pyramid8 = new ModelTexture(Game.loader.loadTexture("map-objects/pyramid/8"));
+	public static ModelTexture pyramid0 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/0"));
+	public static ModelTexture pyramid1 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/1"));
+	public static ModelTexture pyramid2 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/2"));
+	public static ModelTexture pyramid3 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/3"));
+	public static ModelTexture pyramid4 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/4"));
+	public static ModelTexture pyramid5 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/5"));
+	public static ModelTexture pyramid6 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/6"));
+	public static ModelTexture pyramid7 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/7"));
+	public static ModelTexture pyramid8 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/8"));
+	//Egypt House
+	public static ModelTexture egyptHouseWall = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/1"));
+	public static ModelTexture egyptHouseDoor = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/2"));
+	public static ModelTexture egyptHouseWindow = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/3"));
+	public static ModelTexture egyptHouseWallEye = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/4"));
+	public static ModelTexture egypthouseDecC = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/5"));
+	public static ModelTexture egyptHouseDecL = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/6"));
+	public static ModelTexture egyptHouseDecR = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/7"));
+	//Egypt Stone Roller
+	public static ModelTexture egyptStoneRollerL = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/stoneroller/1"));
+	public static ModelTexture egyptStoneRollerR = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/stoneroller/2"));
 	//Tree
 	public static ModelTexture tree1 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/1"));
 	public static ModelTexture tree2 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/2"));
