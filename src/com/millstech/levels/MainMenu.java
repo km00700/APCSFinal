@@ -55,17 +55,16 @@ public class MainMenu implements Level {
 		}
         Game.getCamera().setTilePosition(9 * GameConstants.UNIT, Coordinate.X);
         Game.getLight().setTilePosition(9 * GameConstants.UNIT, Coordinate.X);
+        Game.setCurrentMusic(Sounds.TheDoctor);
+        Game.startSoundFromBeginning();
     }
 	
 	public void loadMainMenu() {
-		Game.stopSound();
 		loadEntities();
 		loadBackground();
 		loadPlatforms();
 		loadForeground();
 		loadOffMap();
-		Game.setCurrentMusic(Sounds.TheDoctor);
-        Game.startSoundFromBeginning();
 	}
 
 	@Override
