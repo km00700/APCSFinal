@@ -74,7 +74,14 @@ public class LevelSelector implements Level {
 		
 	@Override
 	public void loadForeground() {
-		// TODO Auto-generated method stub
+		TileUtils.createFGTile(Textures.num1, 2, 4);
+		TileUtils.createFGTile(Textures.num2, 4, 4);
+		TileUtils.createFGTile(Textures.num3, 6, 4);
+		TileUtils.createFGTile(Textures.num4, 8, 4);
+		TileUtils.createFGTile(Textures.num5, 10, 4);
+		TileUtils.createFGTile(Textures.num6, 12, 4);
+		TileUtils.createFGTile(Textures.num7, 14, 4);
+		TileUtils.createFGTile(Textures.num8, 16, 4);
 	}
 
 	@Override

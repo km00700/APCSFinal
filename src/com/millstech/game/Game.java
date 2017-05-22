@@ -5,6 +5,7 @@ import java.util.*;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.util.vector.*;
 
+import com.millstech.engine.audio.*;
 import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
@@ -19,6 +20,7 @@ import com.millstech.toolbox.flags.Player;
 //TODO ADD ANIM LIST
 public class Game {
 	//Private Fields
+	private static SoundThreadManager soundManager;
 	private static List<Entity> entityList = new ArrayList<Entity>();
 	private static Camera camera;
 	private static Light light;
@@ -37,7 +39,7 @@ public class Game {
 	public static PlayerEntity character;
 	
 	public static void loop() {
-		while(!Display.isCloseRequested()){
+		while(!Display.isCloseRequested()) {
             character.move();
             camera.follow(character);
             light.folow(character);
@@ -66,7 +68,7 @@ public class Game {
 	
 	public static void initialize() {
 		unlocked.add(new LevelOne());
-        DisplayManager.createDisplay();
+		DisplayManager.createDisplay();
         Controls.initialize();
 		reset();
 	}
@@ -80,6 +82,7 @@ public class Game {
         lifeHandler = new LifeHandler();
         loadLevel(0);
 	}
+	
 	
 	public static void addToGraphicsLayer(Entity e) {
 		e.increasePosition(0, 0, 2.2f * GameConstants.LAYER_SPACING);
@@ -165,6 +168,9 @@ public class Game {
 	}
 	
 	public static void close() {
+		if(soundManager != null) {
+			soundManager.stop();
+		}
 		renderer.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
@@ -203,5 +209,25 @@ public class Game {
 	public static void debug() {
 		Game.unlocked.add(new LevelTwo());
 		Game.unlocked.add(new LevelThree());
+	}
+	
+	public static void setCurrentMusic(SoundThreadManager stm) {
+		soundManager = stm;
+	}
+	
+	public static SoundThreadManager getCurrentMusic() {
+		return soundManager;
+	}
+	
+	public static void startSound() {
+		soundManager.start();
+	}
+	
+	public static void startSoundFromBeginning() {
+		soundManager.startFromBeginning();
+	}
+	
+	public static void stopSound() {
+		if(soundManager != null) soundManager.stop();
 	}
 }

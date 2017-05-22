@@ -2,6 +2,7 @@ package com.millstech.levels;
 
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
+import com.millstech.game.audio.Sounds;
 import com.millstech.levels.models.*;
 import com.millstech.levels.models.prehistoric.Tree;
 import com.millstech.textures.ModelTexture;
@@ -17,11 +18,14 @@ public class TestLevel implements Level {
 	}
 	
 	public void loadLevel() {
+		Game.stopSound();
 		loadEntities();
 		loadBackground();
         loadPlatforms();
         loadForeground();
         loadOffMap();
+        Game.setCurrentMusic(Sounds.Theme);
+        Game.startSoundFromBeginning();
 	}
 	
 	@Override

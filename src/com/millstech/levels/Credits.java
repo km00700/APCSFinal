@@ -2,6 +2,7 @@ package com.millstech.levels;
 
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
+import com.millstech.game.audio.Sounds;
 import com.millstech.textures.CreditsTextures;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.TileUtils;
@@ -19,11 +20,14 @@ public class Credits implements Level {
 	}
 	
 	public void loadLevel() {
+		Game.stopSound();
 		loadEntities();
 		loadBackground();
         loadPlatforms();
         loadForeground();
         loadOffMap();
+        Game.setCurrentMusic(Sounds.Theme);
+        Game.startSoundFromBeginning();
 	}
 	
 	@Override
