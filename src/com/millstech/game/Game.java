@@ -83,6 +83,7 @@ public class Game {
         loadLevel(0);
 	}
 	
+	
 	public static void addToGraphicsLayer(Entity e) {
 		e.increasePosition(0, 0, 2.2f * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
@@ -167,7 +168,9 @@ public class Game {
 	}
 	
 	public static void close() {
-		soundManager.stop();
+		if(soundManager != null) {
+			soundManager.stop();
+		}
 		renderer.cleanUp();
         loader.cleanUp();
         DisplayManager.closeDisplay();
