@@ -19,19 +19,22 @@ import com.millstech.textures.ModelTexture;
 import com.millstech.textures.Textures;
 
 public class TileUtils {
+	private static RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
+	private static RawModel bgModel = OBJLoader.loadObjModel("models/bg", Game.loader);
+	
 	public enum Layer {
 		GRAPHICS, FOREGROUND, ENTITY, PLATFORM, BACKGROUND, MENUTEXT;
 	}
 	
 	public static PlayerEntity createCharacter(int posX, int posY) {
-		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("models/tile", Game.loader), new ModelTexture(Game.loader.loadTexture("entity/char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		PlayerEntity character = new PlayerEntity(new TexturedModel(model, new ModelTexture(Game.loader.loadTexture("entity/char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
         character.setVisible(true);
 		Game.addToEntityLayer(character);
         return character;
 	}
 	
 	public static PlayerEntity createScriptedCharacter(int posX, int posY, boolean visible, boolean moveEnabled, boolean JumpEnabled, boolean useGravity) {
-		PlayerEntity character = new PlayerEntity(new TexturedModel(OBJLoader.loadObjModel("models/tile", Game.loader), new ModelTexture(Game.loader.loadTexture("entity/char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, moveEnabled, JumpEnabled, useGravity);
+		PlayerEntity character = new PlayerEntity(new TexturedModel(model, new ModelTexture(Game.loader.loadTexture("entity/char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT, moveEnabled, JumpEnabled, useGravity);
         character.setVisible(visible);
 		Game.addToEntityLayer(character);
         return character;
@@ -42,22 +45,20 @@ public class TileUtils {
 	}
 	
 	public static Entity createFGTile(ModelTexture t, int posX, int posY) {
-		RawModel model;
-		model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToForegroundLayer(e);
+		Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
+    	Game.addToForegroundLayer(e);
         return e;
 	}
 	
 	public static Entity createMovingTile(ModelTexture t, int posX, int posY, float dx, float dy, Layer l, float scale) {
-		RawModel model;
-		model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    MovingTile e = new MovingTile(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT * scale, posY * GameConstants.UNIT * scale, -10.0f), 0, 270, 0, GameConstants.UNIT * scale, dx, dy);
+		MovingTile e = new MovingTile(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT * scale, posY * GameConstants.UNIT * scale, -10.0f), 0, 270, 0, GameConstants.UNIT * scale, dx, dy);
 	    switch(l) {
 	    case GRAPHICS:
 	    	Game.addToGraphicsLayer(e);
 	    	break;
 	    case FOREGROUND:
+	    	e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
 	    	Game.addToForegroundLayer(e);
 	    	break;
 	    case PLATFORM:
@@ -67,6 +68,7 @@ public class TileUtils {
 	    	Game.addToEntityLayer(e);
 	    	break;
 	    case BACKGROUND:
+	    	e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
 	    	Game.addToBackgroundLayer(e);
 	    	break;
 	    case MENUTEXT:
@@ -79,25 +81,22 @@ public class TileUtils {
 	}
 	
 	public static Entity createBGTile(ModelTexture t, int posX, int posY) {
-		RawModel model;
-		model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.addToBackgroundLayer(e);
+		Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
+    	Game.addToBackgroundLayer(e);
         return e;
 	}
 	
 	public static CheckPoint createCheckpoint(int posX, int posY) {
-		RawModel model;
-		model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    CheckPoint cp = new CheckPoint(Textures.checkPointList, model, new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-	    Game.registerUpdatable(cp);
+		CheckPoint cp = new CheckPoint(Textures.checkPointList, model, new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		cp.increasePosition(cp.getPosition().x * 0.0002f, 0, 0);
+    	Game.registerUpdatable(cp);
 	    Game.addToBackgroundLayer(cp);
         return cp;
 	}
 	
 	public static Entity createBGImage(ModelTexture t) {
-		RawModel model = OBJLoader.loadObjModel("models/bg", Game.loader);
-	    Entity e = new Entity(new TexturedModel(model, t), new Vector3f(256 * GameConstants.UNIT, 0 * GameConstants.UNIT, -10.003f), 0, 270, 0, 2 * GameConstants.UNIT, true);
+		Entity e = new Entity(new TexturedModel(bgModel, t), new Vector3f(256 * GameConstants.UNIT, 0 * GameConstants.UNIT, -10.003f), 0, 270, 0, 2 * GameConstants.UNIT, true);
 	    e.increasePosition(0, 0, -10 * GameConstants.LAYER_SPACING);
 	    Game.addToBackgroundLayer(e);
         return e;
@@ -105,8 +104,7 @@ public class TileUtils {
 	
 	public static Platform createPlatform(ModelTexture t, int posX, int posY) {
 		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
-		RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
 	    Game.addToPlatformLayer(p);
 	    Game.registerPlatform(posX, posY, p);
 	    return p;
@@ -114,23 +112,20 @@ public class TileUtils {
 	
 	public static Platform createClippablePlatform(ModelTexture t, int posX, int posY) {
 		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
-		RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		Platform p = new Platform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
 	    Game.addToPlatformLayer(p);
 	    return p;
 	}
 	
 	public static Platform createClippableJumpablePlatform(ModelTexture t, int posX, int posY) {
 		Game.platformPos.add(new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, 0));
-	    RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
 	    Platform p = new ClippablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
 	    Game.addToPlatformLayer(p);
 	    return p;
 	}
 	
 	public static Entity createNoInteractionPlatform(ModelTexture t, int posX, int posY) {
-		RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	    Entity p = new ClippablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
+		Entity p = new ClippablePlatform(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
 	    Game.addToPlatformLayer((Platform) p);
 	    return p;
 	}
@@ -180,7 +175,6 @@ public class TileUtils {
 	}
 	
 	public static AnimatedEntity createAnimatedTile(List<ModelTexture> list, float posX, float posY, Layer layer, int animDelay, boolean isPlatform, float scale) {
-		RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
 		AnimatedEntity e;
 		if(animDelay < 0) {
 			e = new AnimatedEntity(new TexturedModel(model, list.get((int) (Math.random() * list.size()))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, scale, animDelay);
@@ -194,6 +188,7 @@ public class TileUtils {
 		    	Game.addToGraphicsLayer(e);
 		    	break;
 		    case FOREGROUND:
+		    	e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
 		    	Game.addToForegroundLayer(e);
 		    	break;
 		    case PLATFORM:
@@ -203,6 +198,7 @@ public class TileUtils {
 		    	Game.addToEntityLayer(e);
 		    	break;
 		    case BACKGROUND:
+		    	e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
 		    	Game.addToBackgroundLayer(e);
 		    	break;
 		    case MENUTEXT:
@@ -236,10 +232,51 @@ public class TileUtils {
 	}
 	
 	public static Entity createSplashTile(ModelTexture t, float x, float y) {
-		RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
 		float scale = 7.0f;
 		Entity e = new Entity(new TexturedModel(model, t), new Vector3f(x * GameConstants.UNIT, y * GameConstants.UNIT, -5.0f), 0, 270, 0, scale);
 		Game.addToForegroundLayer(e);
 		return e;
+	}
+	
+	public static Entity createTile(ModelTexture texture, float posX, float posY, Layer layer, boolean isPlatform, float scale) {
+		Entity e = new Entity(new TexturedModel(model, texture), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, scale);
+		
+		switch(layer) {
+		    case GRAPHICS:
+		    	Game.addToGraphicsLayer(e);
+		    	break;
+		    case FOREGROUND:
+		    	e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
+		    	Game.addToForegroundLayer(e);
+		    	break;
+		    case PLATFORM:
+		    	Game.addToVisualPlatformLayer(e);
+		    	break;
+		    case ENTITY:
+		    	Game.addToEntityLayer(e);
+		    	break;
+		    case BACKGROUND:
+		    	e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
+		    	Game.addToBackgroundLayer(e);
+		    	break;
+		    case MENUTEXT:
+		    	e.setPosition(e.getPosition().x, e.getPosition().y, -4.5f);
+		    	Game.addToForegroundLayer(e);
+		    	break;
+	    }
+
+		if(isPlatform) {
+	    	createPlatform(Textures.invisable, (int) Math.rint(posX), (int) Math.rint(posY));
+	    }
+		
+		return e;
+	}
+	
+	public static void createBlock(ModelTexture texture, int minX, int minY, int maxX, int maxY, Layer layer, boolean isPlatform, float scale) {
+		for(int i = minX; i <= maxX; i++) {
+			for(int j = minY; j <= maxY; j++) {
+				createTile(texture, i, j, layer, isPlatform, scale);
+			}
+		}
 	}
 }

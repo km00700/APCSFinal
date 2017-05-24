@@ -10,7 +10,7 @@ import com.millstech.toolbox.TileUtils;
 
 public class LevelThree implements Level {
 	public int spawnX = 3, spawnY = 4;
-	private final int TARDIS_X = 81, TARDIS_Y = 2;
+	private final int TARDIS_X = 3, TARDIS_Y = 2;
 	
 	@Override
 	public void update() {

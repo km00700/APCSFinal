@@ -49,6 +49,10 @@ public class Textures {
 	public static ModelTexture pyramid6 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/6"));
 	public static ModelTexture pyramid7 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/7"));
 	public static ModelTexture pyramid8 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/8"));
+	public static ModelTexture pyramid9 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/9"));
+	public static ModelTexture pyramid10 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/10"));
+	public static ModelTexture pyramid11 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/11"));
+	public static ModelTexture pyramid12 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/pyramid/12"));
 	//Egypt House
 	public static ModelTexture egyptHouseWall = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/1"));
 	public static ModelTexture egyptHouseDoor = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/house/2"));
@@ -60,6 +64,9 @@ public class Textures {
 	//Egypt Stone Roller
 	public static ModelTexture egyptStoneRollerL = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/stoneroller/1"));
 	public static ModelTexture egyptStoneRollerR = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/stoneroller/2"));
+	//Obelisk
+	public static ModelTexture obeliskBottom = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/obelisk/1"));
+	public static ModelTexture obeliskTop = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/obelisk/2"));
 	//Tree
 	public static ModelTexture tree1 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/1"));
 	public static ModelTexture tree2 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/2"));

@@ -19,7 +19,7 @@ public class MainMenu implements Level {
 	@Override
 	public void update() {
 		if(firstLoad) {
-			if(firstLoadTimer < 2000) {
+			if(firstLoadTimer < 20) {   //2000
 				firstLoadTimer++;
 			} else {
 				firstLoad = false;
