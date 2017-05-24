@@ -6,7 +6,7 @@ import com.millstech.toolbox.TileUtils;
 
 public class Obelisk {
 	public static void createObelisk(float posX, float posY, TileUtils.Layer layer) {
-		TileUtils.createTile(Textures.obeliskBottom, posX, posY, layer, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.obeliskTop, posX, posY + 1, layer, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.obeliskBottom, posX, posY, 0, layer, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.obeliskTop, posX, posY + 1, 0, layer, false, GameConstants.UNIT);
 	}
 }

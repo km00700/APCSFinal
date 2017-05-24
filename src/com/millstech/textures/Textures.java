@@ -67,30 +67,35 @@ public class Textures {
 	//Obelisk
 	public static ModelTexture obeliskBottom = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/obelisk/1"));
 	public static ModelTexture obeliskTop = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/obelisk/2"));
+	//Scarab
+	public static ModelTexture scarab1 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/scarab/1"));
+	public static ModelTexture scarab2 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/scarab/2"));
+	public static ModelTexture scarab3 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/scarab/3"));
+	public static ModelTexture scarab4 = new ModelTexture(Game.loader.loadTexture("map-objects/egypt/scarab/4"));
 	//Tree
-	public static ModelTexture tree1 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/1"));
-	public static ModelTexture tree2 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/2"));
-	public static ModelTexture tree3 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/3"));
-	public static ModelTexture tree4 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/4"));
-	public static ModelTexture tree5 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/5"));
-	public static ModelTexture tree6 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/6"));
-	public static ModelTexture tree7 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/7"));
-	public static ModelTexture tree8 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/8"));
-	public static ModelTexture tree9 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/9"));
-	public static ModelTexture tree10 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/10"));
-	public static ModelTexture tree11 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/11"));
-	public static ModelTexture tree12 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/12"));
-	public static ModelTexture tree13 = new ModelTexture(Game.loader.loadTexture("map-objects/tree/13"));
-	public static ModelTexture log = new ModelTexture(Game.loader.loadTexture("map-objects/tree/log"));
+	public static ModelTexture tree1 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/1"));
+	public static ModelTexture tree2 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/2"));
+	public static ModelTexture tree3 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/3"));
+	public static ModelTexture tree4 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/4"));
+	public static ModelTexture tree5 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/5"));
+	public static ModelTexture tree6 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/6"));
+	public static ModelTexture tree7 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/7"));
+	public static ModelTexture tree8 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/8"));
+	public static ModelTexture tree9 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/9"));
+	public static ModelTexture tree10 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/10"));
+	public static ModelTexture tree11 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/11"));
+	public static ModelTexture tree12 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/12"));
+	public static ModelTexture tree13 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/13"));
+	public static ModelTexture log = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/log"));
 	//Column
-	public static ModelTexture column1 = new ModelTexture(Game.loader.loadTexture("map-objects/column/1"));
-	public static ModelTexture column2 = new ModelTexture(Game.loader.loadTexture("map-objects/column/2"));
-	public static ModelTexture column3 = new ModelTexture(Game.loader.loadTexture("map-objects/column/3"));
+	public static ModelTexture column1 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/column/1"));
+	public static ModelTexture column2 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/column/2"));
+	public static ModelTexture column3 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/column/3"));
 	//Aqueduct
-	public static ModelTexture duct1 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/1"));
-	public static ModelTexture duct2 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/2"));
-	public static ModelTexture duct3 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/3"));
-	public static ModelTexture duct4 = new ModelTexture(Game.loader.loadTexture("map-objects/aqueduct/4"));
+	public static ModelTexture duct1 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/aqueduct/1"));
+	public static ModelTexture duct2 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/aqueduct/2"));
+	public static ModelTexture duct3 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/aqueduct/3"));
+	public static ModelTexture duct4 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/aqueduct/4"));
 	//////////////////////////////
 	//          TERRAIN         //
 	//////////////////////////////

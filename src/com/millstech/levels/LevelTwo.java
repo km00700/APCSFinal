@@ -11,7 +11,7 @@ import com.millstech.toolbox.TileUtils;
 import com.millstech.toolbox.TileUtils.Layer;
 
 public class LevelTwo implements Level {
-	public int spawnX = 0, spawnY = 2;
+	public int spawnX = 0, spawnY = 2; //0, 2
 	private final int TARDIS_X = 85, TARDIS_Y = 4, CHECKPOINT_X = 47, CHECKPOINT_Y = 4;
 	
 	@Override
@@ -42,6 +42,7 @@ public class LevelTwo implements Level {
 	public void loadBackground() {
 		Tardis.loadTardis(85, 4);
 		//TileUtils.createBGImage(Textures.level2);
+		Pyramid.loadPyramidGroup(48, 2);
 	}
 
 	@Override
@@ -65,6 +66,8 @@ public class LevelTwo implements Level {
 		TileUtils.createFGTile(Textures.egyptHouseDecL, 36, 3);
 		TileUtils.createFGBlock(Textures.egypthouseDecC, 37, 3, 40, 3);
 		TileUtils.createFGTile(Textures.egyptHouseDecR, 41, 3);
+		
+		Scarab.loadScarab(71, 8);
 	}
 
 	@Override
@@ -133,38 +136,39 @@ public class LevelTwo implements Level {
 		TileUtils.createNoInteractionPlatform(Textures.egyptHouseWall, 40, 2);
 		
 		Obelisk.createObelisk(42, 2, Layer.PLATFORM);
+		
 		Obelisk.createObelisk(52, 2, Layer.PLATFORM);
 		StoneRoller.createStoneRoller(53, 2);
 		StoneRoller.createStoneRoller(57, 2);
 		StoneRoller.createStoneRoller(60, 2);
-		TileUtils.createTile(Textures.egyptStoneRollerL, 72, 6, Layer.FOREGROUND, true, GameConstants.UNIT);
-		TileUtils.createTile(Textures.egyptStoneRollerR, 73, 6, Layer.FOREGROUND, true, GameConstants.UNIT);
+		TileUtils.createTile(Textures.egyptStoneRollerL, 74, 6, 0, Layer.FOREGROUND, true, GameConstants.UNIT);
+		TileUtils.createTile(Textures.egyptStoneRollerR, 75, 6, 0, Layer.FOREGROUND, true, GameConstants.UNIT);
 	
-		TileUtils.createTile(Textures.pyramid10, 63, 2, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 64, 3, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 65, 4, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 66, 5, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 67, 6, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 68, 7, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 69, 8, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid10, 70, 9, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 63, 2, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 64, 3, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 65, 4, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 66, 5, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 67, 6, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 68, 7, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 69, 8, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid10, 70, 9, 0, Layer.PLATFORM, false, GameConstants.UNIT);
 		
-		TileUtils.createBlock(Textures.pyramid6, 68, 6, 70, 6, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid9, 71, 6, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createBlock(Textures.pyramid6, 72, 6, 74, 6, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createBlock(Textures.pyramid6, 69, 7, 73, 7, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createBlock(Textures.pyramid6, 70, 8, 72, 8, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid6, 71, 9, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid11, 71, 10, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createBlock(Textures.pyramid6, 68, 6, 70, 6, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid9, 71, 6, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createBlock(Textures.pyramid6, 72, 6, 74, 6, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createBlock(Textures.pyramid6, 69, 7, 73, 7, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createBlock(Textures.pyramid6, 70, 8, 72, 8, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid6, 71, 9, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid11, 71, 10, 0, Layer.PLATFORM, false, GameConstants.UNIT);
 		
-		TileUtils.createTile(Textures.pyramid7, 79, 2, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 78, 3, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 77, 4, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 76, 5,Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 75, 6, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 74, 7, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 73, 8, Layer.PLATFORM, false, GameConstants.UNIT);
-		TileUtils.createTile(Textures.pyramid7, 72, 9, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 79, 2, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 78, 3, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 77, 4, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 76, 5, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 75, 6, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 74, 7, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 73, 8, 0, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.pyramid7, 72, 9, 0, Layer.PLATFORM, false, GameConstants.UNIT);
 	}
 	
 	@Override

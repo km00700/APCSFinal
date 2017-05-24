@@ -1,12 +1,16 @@
 package com.millstech.engine.render;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.*;
 
 import com.millstech.toolbox.GameConstants;
 
 public class DisplayManager {
-	private static final int WIDTH = 1280, HEIGHT = 720, FPS_CAP = 120;
+	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	private static final int WIDTH = screenSize.width, HEIGHT = screenSize.height, FPS_CAP = 120;
 	
 	
 	public static void createDisplay() {

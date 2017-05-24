@@ -46,6 +46,7 @@ public class Game {
             checkUpdatables();
             currentLevel.update();
             render();
+            renderPlayer();
         }
 	}
 	
@@ -65,6 +66,10 @@ public class Game {
         renderer.render(light, camera);
         DisplayManager.updateDisplay();         
     }
+	
+	public static void renderPlayer() {
+		renderer.processEntity(character);
+	}
 	
 	public static void initialize() {
 		unlocked.add(new LevelOne());
@@ -90,12 +95,12 @@ public class Game {
 	}
 	
 	public static void addToForegroundLayer(Entity e) {
-		e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
+		e.increasePosition(0, 0, 1.95f * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	
 	public static void addToEntityLayer(Entity e) {
-		e.increasePosition(0, 0, GameConstants.LAYER_SPACING);
+		e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	

@@ -27,9 +27,8 @@ public class TileUtils {
 	}
 	
 	public static PlayerEntity createCharacter(int posX, int posY) {
-		PlayerEntity character = new PlayerEntity(new TexturedModel(model, new ModelTexture(Game.loader.loadTexture("entity/char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-        character.setVisible(true);
-		Game.addToEntityLayer(character);
+		PlayerEntity character = new PlayerEntity(new TexturedModel(model, new ModelTexture(Game.loader.loadTexture("entity/char/char_standingL"))), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT,  -10f + 2*GameConstants.LAYER_SPACING), 0, 270, 0, GameConstants.UNIT); //(3 * GameConstants.LAYER_SPACING) - 10
+		character.setVisible(true);
         return character;
 	}
 	
@@ -238,8 +237,9 @@ public class TileUtils {
 		return e;
 	}
 	
-	public static Entity createTile(ModelTexture texture, float posX, float posY, Layer layer, boolean isPlatform, float scale) {
-		Entity e = new Entity(new TexturedModel(model, texture), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, scale);
+	public static Entity createTile(ModelTexture texture, float posX, float posY, float posZ, Layer layer, boolean isPlatform, float scale) {
+		if(posZ == 0) posZ = -10.0f;
+		Entity e = new Entity(new TexturedModel(model, texture), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, posZ), 0, 270, 0, scale);
 		
 		switch(layer) {
 		    case GRAPHICS:
@@ -272,10 +272,10 @@ public class TileUtils {
 		return e;
 	}
 	
-	public static void createBlock(ModelTexture texture, int minX, int minY, int maxX, int maxY, Layer layer, boolean isPlatform, float scale) {
+	public static void createBlock(ModelTexture texture, int minX, int minY, int maxX, int maxY, float posZ, Layer layer, boolean isPlatform, float scale) {
 		for(int i = minX; i <= maxX; i++) {
 			for(int j = minY; j <= maxY; j++) {
-				createTile(texture, i, j, layer, isPlatform, scale);
+				createTile(texture, i, j, posZ, layer, isPlatform, scale);
 			}
 		}
 	}
