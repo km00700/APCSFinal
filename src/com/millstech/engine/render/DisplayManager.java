@@ -10,7 +10,7 @@ import com.millstech.toolbox.GameConstants;
 
 public class DisplayManager {
 	private static Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	private static final int WIDTH = screenSize.width, HEIGHT = screenSize.height, FPS_CAP = 120;
+	private static final int WIDTH = screenSize.width, HEIGHT = 720, FPS_CAP = 120;
 	
 	
 	public static void createDisplay() {
