@@ -19,7 +19,7 @@ import com.millstech.toolbox.flags.Player;
 public class PlayerEntity extends Entity implements Player, GravityEntity {
 	private static final int animDelay = 5, jumpCooldown = 5;
 	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
-	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; //.058 jump walk 0.038 //accel 0.002
+	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; // jump 0.058 walk 0.038 acceleration 0.002
 	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
 	private List<ModelTexture> walkRight = Textures.walkRight;

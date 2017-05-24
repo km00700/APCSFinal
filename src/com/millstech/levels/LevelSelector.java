@@ -74,19 +74,19 @@ public class LevelSelector implements Level {
 		
 	@Override
 	public void loadForeground() {
-		TileUtils.createFGTile(Textures.num1, 2, 4);
-		TileUtils.createFGTile(Textures.num2, 4, 4);
-		TileUtils.createFGTile(Textures.num3, 6, 4);
-		TileUtils.createFGTile(Textures.num4, 8, 4);
-		TileUtils.createFGTile(Textures.num5, 10, 4);
-		TileUtils.createFGTile(Textures.num6, 12, 4);
-		TileUtils.createFGTile(Textures.num7, 14, 4);
-		TileUtils.createFGTile(Textures.num8, 16, 4);
+		TileUtils.createFGTile(Textures.num1, 2, 1);
+		TileUtils.createFGTile(Textures.num2, 4, 1);
+		TileUtils.createFGTile(Textures.num3, 6, 1);
+		TileUtils.createFGTile(Textures.num4, 8, 1);
+		TileUtils.createFGTile(Textures.num5, 10, 1);
+		TileUtils.createFGTile(Textures.num6, 12, 1);
+		TileUtils.createFGTile(Textures.num7, 14, 1);
+		TileUtils.createFGTile(Textures.num8, 16, 1);
 	}
 
 	@Override
 	public void loadPlatforms() { 
-		TileUtils.createPlatformBlock(Textures.sand, 0, 0, 18, 1);
+		TileUtils.createPlatformBlock(Textures.metalGrate, 0, 0, 18, 1);
 	}
 
 	@Override

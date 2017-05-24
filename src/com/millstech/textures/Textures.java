@@ -99,7 +99,14 @@ public class Textures {
 	//////////////////////////////
 	//          TERRAIN         //
 	//////////////////////////////
+	//Metal
+	public static ModelTexture metalGrate = new ModelTexture(Game.loader.loadTexture("terrain/metal/grate"));
+	//Rocks
 	public static ModelTexture rock = new ModelTexture(Game.loader.loadTexture("terrain/rock"));
+	public static ModelTexture boulder1 = new ModelTexture(Game.loader.loadTexture("terrain/boulder1"));
+	public static ModelTexture boulder2 = new ModelTexture(Game.loader.loadTexture("terrain/boulder2"));
+	public static ModelTexture boulder3 = new ModelTexture(Game.loader.loadTexture("terrain/boulder3"));
+	public static ModelTexture boulder4 = new ModelTexture(Game.loader.loadTexture("terrain/boulder4"));
 	//Dirt Variants
 	public static ModelTexture dirt = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/dirt"));
 	public static ModelTexture grass = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/grass"));

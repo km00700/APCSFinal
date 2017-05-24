@@ -84,7 +84,7 @@ public class MainMenu implements Level {
 
 	@Override
 	public void loadPlatforms() { 
-		TileUtils.createPlatformBlock(Textures.test, 0, 0, 18, 1);
+		TileUtils.createPlatformBlock(Textures.metalGrate, 0, 0, 18, 1);
 	}
 
 	@Override
