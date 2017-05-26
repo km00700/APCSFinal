@@ -102,11 +102,11 @@ public class Textures {
 	//Metal
 	public static ModelTexture metalGrate = new ModelTexture(Game.loader.loadTexture("terrain/metal/grate"));
 	//Rocks
-	public static ModelTexture rock = new ModelTexture(Game.loader.loadTexture("terrain/rock"));
-	public static ModelTexture boulder1 = new ModelTexture(Game.loader.loadTexture("terrain/boulder1"));
-	public static ModelTexture boulder2 = new ModelTexture(Game.loader.loadTexture("terrain/boulder2"));
-	public static ModelTexture boulder3 = new ModelTexture(Game.loader.loadTexture("terrain/boulder3"));
-	public static ModelTexture boulder4 = new ModelTexture(Game.loader.loadTexture("terrain/boulder4"));
+	public static ModelTexture rock = new ModelTexture(Game.loader.loadTexture("terrain/rocks/rock"));
+	public static ModelTexture boulder1 = new ModelTexture(Game.loader.loadTexture("terrain/rocks/boulder/1"));
+	public static ModelTexture boulder2 = new ModelTexture(Game.loader.loadTexture("terrain/rocks/boulder/2"));
+	public static ModelTexture boulder3 = new ModelTexture(Game.loader.loadTexture("terrain/rocks/boulder/3"));
+	public static ModelTexture boulder4 = new ModelTexture(Game.loader.loadTexture("terrain/rocks/boulder/4"));
 	//Dirt Variants
 	public static ModelTexture dirt = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/dirt"));
 	public static ModelTexture grass = new ModelTexture(Game.loader.loadTexture("terrain/ground/dirt/grass"));
@@ -162,6 +162,7 @@ public class Textures {
 	public static ModelTexture loading = new ModelTexture(Game.loader.loadTexture("background/loading"));
 	public static ModelTexture level1 = new ModelTexture(Game.loader.loadTexture("background/l1"));
 	public static ModelTexture credits = new ModelTexture(Game.loader.loadTexture("background/credits"));
+	public static ModelTexture menu = new ModelTexture(Game.loader.loadTexture("background/menu"));
 	//public static ModelTexture  = new ModelTexture(Game.loader.loadTexture(""));
 	//public static ModelTexture  = new ModelTexture(Game.loader.loadTexture(""));
 	//CHECKPOINT
@@ -181,20 +182,31 @@ public class Textures {
 	//////////////////////////////
 	
 	//numerals
-	public static ModelTexture num0 = new ModelTexture(Game.loader.loadTexture("game/text/zero"));
-	public static ModelTexture num1 = new ModelTexture(Game.loader.loadTexture("game/text/one"));
-	public static ModelTexture num2 = new ModelTexture(Game.loader.loadTexture("game/text/two"));
-	public static ModelTexture num3 = new ModelTexture(Game.loader.loadTexture("game/text/three"));
-	public static ModelTexture num4 = new ModelTexture(Game.loader.loadTexture("game/text/four"));
-	public static ModelTexture num5 = new ModelTexture(Game.loader.loadTexture("game/text/five"));
-	public static ModelTexture num6 = new ModelTexture(Game.loader.loadTexture("game/text/six"));
-	public static ModelTexture num7 = new ModelTexture(Game.loader.loadTexture("game/text/seven"));
-	public static ModelTexture num8 = new ModelTexture(Game.loader.loadTexture("game/text/eight"));
-	public static ModelTexture num9 = new ModelTexture(Game.loader.loadTexture("game/text/nine"));
+	public static ModelTexture num0 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/zero"));
+	public static ModelTexture num1 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/one"));
+	public static ModelTexture num2 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/two"));
+	public static ModelTexture num3 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/three"));
+	public static ModelTexture num4 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/four"));
+	public static ModelTexture num5 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/five"));
+	public static ModelTexture num6 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/six"));
+	public static ModelTexture num7 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/seven"));
+	public static ModelTexture num8 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/eight"));
+	public static ModelTexture num9 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/nine"));
+	
+	public static ModelTexture num0_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/zero"));
+	public static ModelTexture num1_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/one"));
+	public static ModelTexture num2_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/two"));
+	public static ModelTexture num3_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/three"));
+	public static ModelTexture num4_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/four"));
+	public static ModelTexture num5_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/five"));
+	public static ModelTexture num6_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/six"));
+	public static ModelTexture num7_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/seven"));
+	public static ModelTexture num8_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/eight"));
+	public static ModelTexture num9_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/nine"));
 	//words
-	public static ModelTexture loadingText1 = new ModelTexture(Game.loader.loadTexture("game/text/1"));
-	public static ModelTexture loadingText2 = new ModelTexture(Game.loader.loadTexture("game/text/2"));
-	public static ModelTexture loadingText3 = new ModelTexture(Game.loader.loadTexture("game/text/3"));
-	public static ModelTexture loadingText4 = new ModelTexture(Game.loader.loadTexture("game/text/4"));
+	public static ModelTexture loadingText1 = new ModelTexture(Game.loader.loadTexture("game/text/loading/1"));
+	public static ModelTexture loadingText2 = new ModelTexture(Game.loader.loadTexture("game/text/loading2"));
+	public static ModelTexture loadingText3 = new ModelTexture(Game.loader.loadTexture("game/text/loading3"));
+	public static ModelTexture loadingText4 = new ModelTexture(Game.loader.loadTexture("game/text/loading4"));
 	public static List<ModelTexture> LodingList = new ArrayList<ModelTexture>(Arrays.asList(loadingText1, loadingText2,loadingText3,loadingText4));
 }

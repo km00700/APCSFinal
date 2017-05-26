@@ -43,6 +43,24 @@ public class CreditsTextures {
 	public static ModelTexture mus2 = new ModelTexture(Game.loader.loadTexture("credits/titles/music/2"));
 	public static ModelTexture mus3 = new ModelTexture(Game.loader.loadTexture("credits/titles/music/3"));
 	
+	//I Am The Doctor
+	public static ModelTexture iatd1 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/1"));
+	public static ModelTexture iatd2 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/2"));
+	public static ModelTexture iatd3 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/3"));
+	public static ModelTexture iatd4 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/4"));
+	public static ModelTexture iatd5 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/5"));
+	public static ModelTexture iatd6 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/6"));
+	public static ModelTexture iatd7 = new ModelTexture(Game.loader.loadTexture("credits/titles/the_doctor/7"));
+	//Doctor Who Theme
+	public static ModelTexture theme1 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/1"));
+	public static ModelTexture theme2 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/2"));
+	public static ModelTexture theme3 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/3"));
+	public static ModelTexture theme4 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/4"));
+	public static ModelTexture theme5 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/5"));
+	public static ModelTexture theme6 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/6"));
+	public static ModelTexture theme7 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/7"));
+	public static ModelTexture theme8 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/8"));
+	public static ModelTexture theme9 = new ModelTexture(Game.loader.loadTexture("credits/titles/theme/9"));
 	//////////////////////////////
 	//          NAMES           //
 	//////////////////////////////
@@ -60,7 +78,11 @@ public class CreditsTextures {
 	public static ModelTexture ryan5 = new ModelTexture(Game.loader.loadTexture("credits/names/ryan/5"));
 	
 	//Murray Gold
-	
+	public static ModelTexture murray1 = new ModelTexture(Game.loader.loadTexture("credits/names/murray/1"));
+	public static ModelTexture murray2 = new ModelTexture(Game.loader.loadTexture("credits/names/murray/2"));
+	public static ModelTexture murray3 = new ModelTexture(Game.loader.loadTexture("credits/names/murray/3"));
+	public static ModelTexture murray4 = new ModelTexture(Game.loader.loadTexture("credits/names/murray/4"));
+	public static ModelTexture murray5 = new ModelTexture(Game.loader.loadTexture("credits/names/murray/5"));
 	
 	//Koji Kondo
 	

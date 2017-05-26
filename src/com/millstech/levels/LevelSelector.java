@@ -70,18 +70,19 @@ public class LevelSelector implements Level {
 		Tardis.loadTardis(12, 2);
 		Tardis.loadTardis(14, 2);
 		Tardis.loadTardis(16, 2);
+		TileUtils.createBGSplashTile(Textures.menu, 9.08f, 2.5f);
 	}
 		
 	@Override
 	public void loadForeground() {
-		TileUtils.createFGTile(Textures.num1, 2, 1);
-		TileUtils.createFGTile(Textures.num2, 4, 1);
-		TileUtils.createFGTile(Textures.num3, 6, 1);
-		TileUtils.createFGTile(Textures.num4, 8, 1);
-		TileUtils.createFGTile(Textures.num5, 10, 1);
-		TileUtils.createFGTile(Textures.num6, 12, 1);
-		TileUtils.createFGTile(Textures.num7, 14, 1);
-		TileUtils.createFGTile(Textures.num8, 16, 1);
+		TileUtils.createFGTile(Textures.num1_white, 2, 1);
+		TileUtils.createFGTile(Textures.num2_white, 4, 1);
+		TileUtils.createFGTile(Textures.num3_white, 6, 1);
+		TileUtils.createFGTile(Textures.num4_white, 8, 1);
+		TileUtils.createFGTile(Textures.num5_white, 10, 1);
+		TileUtils.createFGTile(Textures.num6_white, 12, 1);
+		TileUtils.createFGTile(Textures.num7_white, 14, 1);
+		TileUtils.createFGTile(Textures.num8_white, 16, 1);
 	}
 
 	@Override

@@ -237,6 +237,13 @@ public class TileUtils {
 		return e;
 	}
 	
+	public static Entity createBGSplashTile(ModelTexture t, float x, float y) {
+		float scale = 14.5f;
+		Entity e = new Entity(new TexturedModel(model, t), new Vector3f(x * GameConstants.UNIT, y * GameConstants.UNIT, -10.082f), 0, 270, 0, scale);
+		Game.addToForegroundLayer(e);
+		return e;
+	}
+	
 	public static Entity createTile(ModelTexture texture, float posX, float posY, float posZ, Layer layer, boolean isPlatform, float scale) {
 		if(posZ == 0) posZ = -10.0f;
 		Entity e = new Entity(new TexturedModel(model, texture), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, posZ), 0, 270, 0, scale);

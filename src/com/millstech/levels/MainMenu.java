@@ -47,7 +47,8 @@ public class MainMenu implements Level {
 	public void loadLevel() {
 		Game.stopSound();
 		if(firstLoad) {
-			TileUtils.createSplashTile(Textures.loading, 4.5f, 2.5f);
+			TileUtils.createBGSplashTile(Textures.loading, 9.08f, 2.5f);
+			//TileUtils.createSplashTile(Textures.loading, 4.5f, 2.5f);
 			TileUtils.createAnimatedTile(Textures.LodingList, 7, 0.3f, TileUtils.Layer.MENUTEXT, 15, false, 2.0f);
 			//Game.setCurrentMusic(Sounds);
 		} else {
@@ -75,6 +76,7 @@ public class MainMenu implements Level {
 		Tardis.loadTardis(2, 2);
 		Tardis.loadTardis(9, 2);
 		Tardis.loadTardis(16, 2);
+		TileUtils.createBGSplashTile(Textures.menu, 9.08f, 2.5f);
 	}
 		
 	@Override
