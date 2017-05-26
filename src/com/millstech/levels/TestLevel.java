@@ -3,14 +3,15 @@ package com.millstech.levels;
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.game.audio.Sounds;
+import com.millstech.levels.models.Tardis;
 import com.millstech.levels.models.prehistoric.Tree;
 import com.millstech.textures.ModelTexture;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.TileUtils;
 
 public class TestLevel implements Level {
-	public int spawnX = 3, spawnY = 4;
-	
+	public int spawnX = 0, spawnY = 2; //0, 2
+	private final int TARDIS_X = 85, TARDIS_Y = 4, CHECKPOINT_X = 47, CHECKPOINT_Y = 4;
 	@Override
 	public void update() {
 		// TODO Entity Handling
@@ -36,6 +37,8 @@ public class TestLevel implements Level {
 	@Override
 	public void loadBackground() {
 		TileUtils.createBGImage(Textures.level1);
+		Tardis.loadTardis(TARDIS_X, TARDIS_Y);
+		TileUtils.createCheckpoint(CHECKPOINT_X, CHECKPOINT_Y);
 	}
 
 	@Override

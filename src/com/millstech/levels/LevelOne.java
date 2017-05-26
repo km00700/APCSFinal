@@ -41,9 +41,9 @@ public class LevelOne implements Level {
 	@Override
 	public void loadBackground() {
 		//TARDIS
-		Tardis.loadTardis(81, 2);
+		Tardis.loadTardis(TARDIS_X, TARDIS_Y);
 		//CHECKPOINT
-		TileUtils.createCheckpoint(52, 4);
+		TileUtils.createCheckpoint(CHECKPOINT_X, CHECKPOINT_Y);
 		//BACKGROUND IMAGE
 		TileUtils.createBGImage(Textures.level1);
 	}

@@ -40,8 +40,11 @@ public class LevelTwo implements Level {
 
 	@Override
 	public void loadBackground() {
-		Tardis.loadTardis(85, 4);
-		//TileUtils.createBGImage(Textures.level2);
+		//TARDIS
+		Tardis.loadTardis(TARDIS_X, TARDIS_Y);
+		//CHECKPOINT
+		TileUtils.createCheckpoint(CHECKPOINT_X, CHECKPOINT_Y);
+		//PYRAMIDS
 		Pyramid.loadPyramidGroup(48, 2);
 	}
 
@@ -81,7 +84,6 @@ public class LevelTwo implements Level {
 		TileUtils.createNoInteractionPlatform(Textures.sandR, 26, 2);
 		TileUtils.createNoInteractionPlatform(Textures.sandR, 25, 3);
 		
-		TileUtils.createCheckpoint(47, 4);
 		TileUtils.createPlatformBlock(Textures.sand, 45, 2, 49, 2);
 		TileUtils.createPlatformBlock(Textures.sand, 46, 3, 48, 3);
 		TileUtils.createNoInteractionPlatform(Textures.sandL, 44, 2);
