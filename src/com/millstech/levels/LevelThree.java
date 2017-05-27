@@ -3,33 +3,67 @@ package com.millstech.levels;
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.levels.models.Tardis;
-import com.millstech.levels.models.rome.*;
-import com.millstech.textures.Textures;
 import com.millstech.toolbox.MathUtils;
 import com.millstech.toolbox.TileUtils;
 
 public class LevelThree implements Level {
-	public int spawnX = 3, spawnY = 4;
-	private final int TARDIS_X = 3, TARDIS_Y = 2;
-	
+
+	private int spawnX = 3, spawnY = 2;
+	private final int CHECKPOINT_X = 52, CHECKPOINT_Y = 4, TARDIS_X = 86, TARDIS_Y = 2;
+
 	@Override
 	public void update() {
-		//Win Detection
-		if(MathUtils.convertToBlockPos(Game.character.getPosition().x) == TARDIS_X && MathUtils.convertToBlockPos(Game.character.getPosition().y) == TARDIS_Y) {
+		// Win Detection
+		if (MathUtils.convertToBlockPos(Game.character.getPosition().x) == TARDIS_X
+				&& MathUtils.convertToBlockPos(Game.character.getPosition().y) == TARDIS_Y) {
 			completed();
 		}
-		// TODO Entity Handling
-		
 	}
-	
+
+	@Override
 	public void loadLevel() {
 		loadEntities();
 		loadBackground();
-        loadPlatforms();
-        loadForeground();
-        loadOffMap();
+		loadPlatforms();
+		loadForeground();
+		loadOffMap();
 	}
-	
+
+	@Override
+	public void loadEntities() {
+
+	}
+
+	@Override
+	public void loadBackground() {
+		Tardis.loadTardis(TARDIS_X, TARDIS_Y);
+		TileUtils.createCheckpoint(CHECKPOINT_X, CHECKPOINT_Y);
+	}
+
+	@Override
+	public void loadForeground() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onCheckpointTrigger() {
+		spawnX = CHECKPOINT_X;
+		spawnY = CHECKPOINT_Y;
+	}
+
+	@Override
+	public void loadPlatforms() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void loadOffMap() {
+		// TODO Auto-generated method stub
+
+	}
+
 	@Override
 	public PlayerEntity spawn() {
 		Game.purgePlayers();
@@ -37,57 +71,20 @@ public class LevelThree implements Level {
 	}
 
 	@Override
-	public void loadBackground() {
-		Tardis.loadTardis(81, 2);
-		//TileUtils.createBGImage(Textures.level3);
-	}
-
-	@Override
-	public void loadForeground() {
-		TileUtils.createPlatform(Textures.column3, 5, 2);
-		Column.loadColumn(6, 2, 2);
-		Column.loadColumn(7, 2, 3);
-		Aqueduct.loadDuct(8, 2, 4, 8, true);
-	}
-
-	@Override
-	public void loadPlatforms() {
-		//GROUND
-		TileUtils.createPlatformBlock(Textures.test, 0, 0, 255, 1);
-		//SCENENERY
-		
-	}
-	
-	@Override
-	public void loadEntities() {
-		
-	}
-	
-	@Override
-	public void loadOffMap() {
-		TileUtils.createFGBlock(Textures.test, -9, 0, -1, 1);
-		TileUtils.createFGBlock(Textures.test, 254, 0, 264, 1);
-	}
-
-	@Override
 	public int getMaxX() {
-		return 255;
+		// TODO Auto-generated method stub
+		return 100;
 	}
 
 	@Override
 	public void completed() {
-		// TODO LEVEL 4
-		//Game.unlocked.add(new LevelFour());
+		// Game.unlocked.add(new LevelFour());
 		Game.nextLevel();
 	}
 
 	@Override
-	public void onCheckpointTrigger() {
-		// TODO Auto-generated method stub
-	}
-	
-	@Override
 	public boolean hasDynamicCamera() {
 		return true;
 	}
+
 }
