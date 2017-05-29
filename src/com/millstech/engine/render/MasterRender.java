@@ -76,7 +76,8 @@ public class MasterRender {
 	}
 	
 	public void prepare(float red, float green, float blue) {
-		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		if(GameConstants.PERSPECTIVE) GL11.glEnable(GL11.GL_DEPTH_TEST);
+		else GL11.glDepthFunc(GL11.GL_NEVER);  
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glClearColor(red, green, blue, 1);
 	}
@@ -86,13 +87,27 @@ public class MasterRender {
         float y_scale = (float) ((1f / Math.tan(Math.toRadians(FOV/2f))) * aspectRatio);
         float x_scale = y_scale / aspectRatio;
         float frustum_length = FAR_PLANE - NEAR_PLANE;
+       
+        float scale = (float) Math.tan(Math.toRadians(FOV/2f) * 2.163); 
+        float r = aspectRatio * scale, l = -r; 
+        float t = scale, b = -t; 
         
         projectionMatrix = new Matrix4f();
-        projectionMatrix.m00 = x_scale;
-        projectionMatrix.m11 = y_scale;
-        projectionMatrix.m22 = -((FAR_PLANE + NEAR_PLANE) / frustum_length);
-        projectionMatrix.m23 = -1;
-        projectionMatrix.m32 = -((2 * NEAR_PLANE * FAR_PLANE) / frustum_length);
-        projectionMatrix.m33 = 0;
+        if(GameConstants.PERSPECTIVE) {
+        	projectionMatrix.m00 = x_scale;
+	        projectionMatrix.m11 = y_scale;
+	        projectionMatrix.m22 = -((FAR_PLANE + NEAR_PLANE) / frustum_length);
+	        projectionMatrix.m23 = -1;
+	        projectionMatrix.m32 = -((2 * NEAR_PLANE * FAR_PLANE) / frustum_length);
+	        projectionMatrix.m33 = 0;
+        } else {
+	        projectionMatrix.m00 = 2 / (r - l);
+	        projectionMatrix.m11 = 2 / (t - b);
+	        projectionMatrix.m22 = -2 / (2 * FAR_PLANE - 2 * NEAR_PLANE);
+	        projectionMatrix.m30 = -(r + l) / (r - l);
+	        projectionMatrix.m31 = -(t + b) / (t - b);
+	        projectionMatrix.m32 = -(2 * FAR_PLANE + 2 * NEAR_PLANE) / (2 * FAR_PLANE - 2 * NEAR_PLANE);
+	        projectionMatrix.m33 = 1;
+        }
     }
 }

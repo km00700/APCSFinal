@@ -45,7 +45,7 @@ public class TileUtils {
 	
 	public static Entity createFGTile(ModelTexture t, int posX, int posY) {
 		Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-		e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
     	Game.addToForegroundLayer(e);
         return e;
 	}
@@ -57,7 +57,7 @@ public class TileUtils {
 	    	Game.addToGraphicsLayer(e);
 	    	break;
 	    case FOREGROUND:
-	    	e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
+	    	if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
 	    	Game.addToForegroundLayer(e);
 	    	break;
 	    case PLATFORM:
@@ -67,7 +67,7 @@ public class TileUtils {
 	    	Game.addToEntityLayer(e);
 	    	break;
 	    case BACKGROUND:
-	    	e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
+	    	if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
 	    	Game.addToBackgroundLayer(e);
 	    	break;
 	    case MENUTEXT:
@@ -81,14 +81,14 @@ public class TileUtils {
 	
 	public static Entity createBGTile(ModelTexture t, int posX, int posY) {
 		Entity e = new Entity(new TexturedModel(model, t), new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-		e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
-    	Game.addToBackgroundLayer(e);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
+		Game.addToBackgroundLayer(e);
         return e;
 	}
 	
 	public static CheckPoint createCheckpoint(int posX, int posY) {
 		CheckPoint cp = new CheckPoint(Textures.checkPointList, model, new Vector3f(posX * GameConstants.UNIT, posY * GameConstants.UNIT, -10.0f), 0, 270, 0, GameConstants.UNIT);
-		cp.increasePosition(cp.getPosition().x * 0.0002f, 0, 0);
+		if(GameConstants.PERSPECTIVE) cp.increasePosition(cp.getPosition().x * 0.0002f, 0, 0);
     	Game.registerUpdatable(cp);
 	    Game.addToBackgroundLayer(cp);
         return cp;
@@ -96,7 +96,8 @@ public class TileUtils {
 	
 	public static Entity createBGImage(ModelTexture t) {
 		Entity e = new Entity(new TexturedModel(bgModel, t), new Vector3f(256 * GameConstants.UNIT, 0 * GameConstants.UNIT, -10.003f), 0, 270, 0, 2 * GameConstants.UNIT, true);
-	    e.increasePosition(0, 0, -10 * GameConstants.LAYER_SPACING);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(0, 0, -10 * GameConstants.LAYER_SPACING);
+		else e.increasePosition(0, 0, -100 * GameConstants.LAYER_SPACING);
 	    Game.addToBackgroundLayer(e);
         return e;
 	}
@@ -187,7 +188,7 @@ public class TileUtils {
 		    	Game.addToGraphicsLayer(e);
 		    	break;
 		    case FOREGROUND:
-		    	e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
+		    	if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
 		    	Game.addToForegroundLayer(e);
 		    	break;
 		    case PLATFORM:
@@ -197,7 +198,7 @@ public class TileUtils {
 		    	Game.addToEntityLayer(e);
 		    	break;
 		    case BACKGROUND:
-		    	e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
+		    	if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
 		    	Game.addToBackgroundLayer(e);
 		    	break;
 		    case MENUTEXT:
@@ -253,7 +254,7 @@ public class TileUtils {
 		    	Game.addToGraphicsLayer(e);
 		    	break;
 		    case FOREGROUND:
-		    	e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
+		    	if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * -0.0004f, 0, 0);
 		    	Game.addToForegroundLayer(e);
 		    	break;
 		    case PLATFORM:
@@ -263,7 +264,7 @@ public class TileUtils {
 		    	Game.addToEntityLayer(e);
 		    	break;
 		    case BACKGROUND:
-		    	e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
+		    	if(GameConstants.PERSPECTIVE) e.increasePosition(e.getPosition().x * 0.0002f, 0, 0);
 		    	Game.addToBackgroundLayer(e);
 		    	break;
 		    case MENUTEXT:

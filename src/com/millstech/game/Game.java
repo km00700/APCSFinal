@@ -90,17 +90,20 @@ public class Game {
 	
 	
 	public static void addToGraphicsLayer(Entity e) {
-		e.increasePosition(0, 0, 2.2f * GameConstants.LAYER_SPACING);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(0, 0, 2.2f * GameConstants.LAYER_SPACING);
+		else e.increasePosition(0, 0, 220 * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	
 	public static void addToForegroundLayer(Entity e) {
-		e.increasePosition(0, 0, 1.95f * GameConstants.LAYER_SPACING);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(0, 0, 1.95f * GameConstants.LAYER_SPACING);
+		else e.increasePosition(0, 0, 195 * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	
 	public static void addToEntityLayer(Entity e) {
-		e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(0, 0, 2 * GameConstants.LAYER_SPACING);
+		else e.increasePosition(0, 0, 200 * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	
@@ -116,7 +119,8 @@ public class Game {
 	}
 	
 	public static void addToBackgroundLayer(Entity e) {
-		e.increasePosition(0, 0, -1 * GameConstants.LAYER_SPACING);
+		if(GameConstants.PERSPECTIVE) e.increasePosition(0, 0, -1 * GameConstants.LAYER_SPACING);
+		else e.increasePosition(0, 0, -100 * GameConstants.LAYER_SPACING);
 		allEntityList.add(e);
 	}
 	

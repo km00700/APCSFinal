@@ -16,4 +16,6 @@ public class GameConstants {
 	
 	public static final int DEFAULT_LIVES = 5;
 	public static final int DEFAULT_HEALTH = 5;
+	
+	public static final boolean PERSPECTIVE = true;
 }
