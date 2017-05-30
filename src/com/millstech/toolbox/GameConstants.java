@@ -3,7 +3,7 @@ package com.millstech.toolbox;
 import org.lwjgl.util.vector.Vector3f;
 
 public class GameConstants {
-	public static final String TITLE = "ADD A TITLE HERE YOU DIPSH!TS!";
+	public static final String TITLE = "Doctor Who: Earth Quest";
 	
 	public static final float UNIT = 0.75f;
 	public static final float CAMERA_UNIT = 6.99300703288f;

@@ -108,13 +108,6 @@ public class MasterRender {
 	        projectionMatrix.m31 = -(t + b) / (t - b);
 	        projectionMatrix.m32 = -(2 * FAR_PLANE + 2 * NEAR_PLANE) / (2 * FAR_PLANE - 2 * NEAR_PLANE);
 	        projectionMatrix.m33 = 1;
-	        /*
-        	projectionMatrix.m00 = (float) (1f / Math.tan(Math.toRadians(FOV/2f)));
-	        projectionMatrix.m11 = (float) (1f / Math.tan(Math.toRadians(FOV/2f)) / aspectRatio);
-	        projectionMatrix.m22 = -1;
-	        projectionMatrix.m23 = -1;
-	        projectionMatrix.m32 = -2 * NEAR_PLANE;
-	        */
-	    }
+	   }
     }
 }
