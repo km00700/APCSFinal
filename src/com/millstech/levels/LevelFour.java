@@ -45,12 +45,8 @@ public class LevelFour implements Level {
 		}
 		Game.purgeEntities();
 		drawFood();
-		if(Controls.attack()) {
-			LENGTH++;
-			moveFood();
-		}
 		
-		TileUtils.createTile(Textures.stone, POSX, POSY, -10, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.metalGrate, POSX, POSY, -10, Layer.PLATFORM, false, GameConstants.UNIT);
 		if(direction == DIRECTION.UP) {
 			if(POSY > MAXY) loadLevel();
 			POSY++;
@@ -84,13 +80,14 @@ public class LevelFour implements Level {
 		for(int i = 0; i < positions.size(); i++) {
 			Vector3f v = positions.get(i);
 			//if(i != 0 && v.x == POSX && v.y == POSY) loadLevel();
-			if(LENGTH != 0)TileUtils.createTile(Textures.stone, v.x, v.y, -10, Layer.PLATFORM, false, GameConstants.UNIT);
+			if(LENGTH != 0)TileUtils.createTile(Textures.metalGrate, v.x, v.y, -10, Layer.PLATFORM, false, GameConstants.UNIT);
 		}
 		if(positions.size() >= 1) {
 			for(int i = 0; i < positions.size() - 1; i++) {
 				if(POSX == (int) positions.get(i).x && POSY == (int) positions.get(i).y) loadLevel();
 			}
 		}
+		scoreBoard();
 	}
 	
 	@Override
@@ -109,12 +106,66 @@ public class LevelFour implements Level {
    }
 	
 	public void drawFood() { 
-		TileUtils.createTile(Textures.sand, F_POSX, F_POSY, -10, Layer.PLATFORM, false, GameConstants.UNIT);
+		TileUtils.createTile(Textures.stone, F_POSX, F_POSY, -10, Layer.PLATFORM, false, GameConstants.UNIT);
 	}
 
 	public void moveFood() {
 		F_POSX = (MINX+1) + (int)(Math.random() * (((MAXX-1) - (MINX+1)) + 1));
 		F_POSY = (MINY+1) + (int)(Math.random() * (((MAXY-1) - (MINY+1)) + 1));
+	}
+	
+	public void scoreBoard() {
+		int hundreds = LENGTH / 100;
+		int tens = (LENGTH - 100 * hundreds) / 10;
+		int ones = (LENGTH - 100 * hundreds) % 10;
+		makeDigit(hundreds, 2);
+		makeDigit(tens, 1);
+		makeDigit(ones, 0);
+	}
+	
+	public void makeDigit(int value, int position) {
+		float PosX = -255;
+		
+		if(position == 0) {
+			PosX = 9.4f;
+		} else if(position == 1) {
+			PosX = 9.0f;
+		} else {
+			PosX = 8.6f;
+		}
+		
+		switch(value) {
+			case 0:
+				TileUtils.createTile(Textures.num0, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 1:
+				TileUtils.createTile(Textures.num1, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 2:
+				TileUtils.createTile(Textures.num2, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 3:
+				TileUtils.createTile(Textures.num3, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 4:
+				TileUtils.createTile(Textures.num4, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 5:
+				TileUtils.createTile(Textures.num5, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 6:
+				TileUtils.createTile(Textures.num6, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 7:
+				TileUtils.createTile(Textures.num7, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 8:
+				TileUtils.createTile(Textures.num8, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+			case 9:
+				TileUtils.createTile(Textures.num9, PosX, 9, -10, Layer.FOREGROUND, false, GameConstants.UNIT);
+				break;
+		}
 	}
 	
 	@Override
