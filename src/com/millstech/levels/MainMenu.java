@@ -9,6 +9,7 @@ import com.millstech.textures.Textures;
 import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.MathUtils;
 import com.millstech.toolbox.TileUtils;
+import com.millstech.toolbox.TileUtils.Layer;
 import com.millstech.toolbox.MathUtils.Coordinate;
 
 public class MainMenu implements Level {
@@ -66,11 +67,38 @@ public class MainMenu implements Level {
 		loadPlatforms();
 		loadForeground();
 		loadOffMap();
+		loadTitle();
 	}
 
+	public void loadTitle() {
+		
+		
+		
+		
+		TileUtils.createMovingTile(Textures.dw1, 3, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.dw2, 4, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.dw3, 5, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.dw4, 6, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.dw5, 7, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.dw6, 8, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.dw7, 9, 6, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		
+		TileUtils.createMovingTile(Textures.qott1, 1, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott2, 2, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott3, 3, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott4, 4, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott5, 5, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott6, 6, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott7, 7, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott8, 8, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott9, 9, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott10, 10, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+		TileUtils.createMovingTile(Textures.qott11, 11, 5, 0.0f, 0.0f, Layer.FOREGROUND, 1.5f);
+	}
+	
 	@Override
 	public void loadEntities() { }
-
+	
 	@Override
 	public void loadBackground() { 
 		Tardis.loadTardis(2, 2);

@@ -218,6 +218,7 @@ public class Game {
 	public static void debug() {
 		Game.unlocked.add(new LevelTwo());
 		Game.unlocked.add(new LevelThree());
+		Game.unlocked.add(new LevelFour());
 	}
 	
 	public static void setCurrentMusic(SoundThreadManager stm) {

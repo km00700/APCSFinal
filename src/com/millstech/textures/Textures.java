@@ -181,6 +181,28 @@ public class Textures {
 	//           TEXT           //
 	//////////////////////////////
 	
+	//title
+	public static ModelTexture dw1 = new ModelTexture(Game.loader.loadTexture("game/text/title/1"));
+	public static ModelTexture dw2 = new ModelTexture(Game.loader.loadTexture("game/text/title/2"));
+	public static ModelTexture dw3 = new ModelTexture(Game.loader.loadTexture("game/text/title/3"));
+	public static ModelTexture dw4 = new ModelTexture(Game.loader.loadTexture("game/text/title/4"));
+	public static ModelTexture dw5 = new ModelTexture(Game.loader.loadTexture("game/text/title/5"));
+	public static ModelTexture dw6 = new ModelTexture(Game.loader.loadTexture("game/text/title/6"));
+	public static ModelTexture dw7 = new ModelTexture(Game.loader.loadTexture("game/text/title/7"));
+	
+	public static ModelTexture qott1 = new ModelTexture(Game.loader.loadTexture("game/text/title/8"));
+	public static ModelTexture qott2 = new ModelTexture(Game.loader.loadTexture("game/text/title/9"));
+	public static ModelTexture qott3 = new ModelTexture(Game.loader.loadTexture("game/text/title/10"));
+	public static ModelTexture qott4 = new ModelTexture(Game.loader.loadTexture("game/text/title/11"));
+	public static ModelTexture qott5 = new ModelTexture(Game.loader.loadTexture("game/text/title/12"));
+	public static ModelTexture qott6 = new ModelTexture(Game.loader.loadTexture("game/text/title/13"));
+	public static ModelTexture qott7 = new ModelTexture(Game.loader.loadTexture("game/text/title/14"));
+	public static ModelTexture qott8 = new ModelTexture(Game.loader.loadTexture("game/text/title/15"));
+	public static ModelTexture qott9 = new ModelTexture(Game.loader.loadTexture("game/text/title/16"));
+	public static ModelTexture qott10 = new ModelTexture(Game.loader.loadTexture("game/text/title/17"));
+	public static ModelTexture qott11 = new ModelTexture(Game.loader.loadTexture("game/text/title/18"));
+	
+	
 	//numerals
 	public static ModelTexture num0 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/zero"));
 	public static ModelTexture num1 = new ModelTexture(Game.loader.loadTexture("game/text/num/bordered/one"));

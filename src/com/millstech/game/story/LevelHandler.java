@@ -13,7 +13,7 @@ public class LevelHandler {
 		levels.add(new LevelOne());
 		levels.add(new LevelTwo());
 		levels.add(new LevelThree());
-		//levels.add(new LevelFour());
+		levels.add(new LevelFour());
 		//levels.add(new LevelFive());
 	}
 	

@@ -3,7 +3,7 @@ package com.millstech.game.control;
 import org.lwjgl.input.Keyboard;
 
 public class Controls {
-	private static int right = Keyboard.KEY_D, left = Keyboard.KEY_A, jump = Keyboard.KEY_W, jump2 = Keyboard.KEY_SPACE, attack = Keyboard.KEY_RETURN, exit = Keyboard.KEY_ESCAPE, debug_rl = Keyboard.KEY_R;
+	private static int right = Keyboard.KEY_D, left = Keyboard.KEY_A, jump = Keyboard.KEY_W, crouch = Keyboard.KEY_S, attack = Keyboard.KEY_RETURN, exit = Keyboard.KEY_ESCAPE, debug_rl = Keyboard.KEY_R;
 	
 	public static void initialize() {
 		Keyboard.enableRepeatEvents(true);
@@ -18,7 +18,11 @@ public class Controls {
 	}
 	
 	public static boolean jump() {
-		return (Keyboard.isKeyDown(jump) || Keyboard.isKeyDown(jump2)) && !Keyboard.isRepeatEvent();
+		return Keyboard.isKeyDown(jump) && !Keyboard.isRepeatEvent();
+	}
+	
+	public static boolean crouch() {
+		return Keyboard.isKeyDown(crouch);
 	}
 	
 	public static boolean attack() {
@@ -31,5 +35,21 @@ public class Controls {
 	
 	public static boolean reload() {
 		return Keyboard.isKeyDown(debug_rl);
+	}
+	
+	public static boolean upArrow() {
+		return Keyboard.isKeyDown(Keyboard.KEY_UP);
+	}
+	
+	public static boolean downArrow() {
+		return Keyboard.isKeyDown(Keyboard.KEY_DOWN);
+	}
+	
+	public static boolean leftArrow() {
+		return Keyboard.isKeyDown(Keyboard.KEY_LEFT);
+	}
+	
+	public static boolean rightArrow() {
+		return Keyboard.isKeyDown(Keyboard.KEY_RIGHT);
 	}
 }
