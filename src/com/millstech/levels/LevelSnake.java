@@ -13,7 +13,7 @@ import com.millstech.toolbox.TileUtils;
 import com.millstech.toolbox.TileUtils.Layer;
 import com.millstech.toolbox.MathUtils.Coordinate;
 
-public class LevelFour implements Level {
+public class LevelSnake implements Level {
 	public static boolean firstLoad = true;
 	private static int tickTimer = 0, POSX = 9, POSY = 4, LENGTH = 0, F_POSX = 9, F_POSY = 7;
 	private static ArrayList<Vector3f> positions;
