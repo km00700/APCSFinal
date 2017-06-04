@@ -12,7 +12,7 @@ import com.millstech.toolbox.GameConstants;
 public class Entity {
 	private boolean visible, scriptedVisibility = true, forceRender;
 	private TexturedModel model;
-	protected Vector3f position;
+	public Vector3f position;
 	protected float rotX, rotY, rotZ;
 	protected float scale;
 	

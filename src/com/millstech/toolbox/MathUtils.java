@@ -35,4 +35,8 @@ public class MathUtils {
 	public static int convertToBlockPos(float rawPos) {
 		return (int)(rawPos / GameConstants.UNIT + (GameConstants.UNIT / 2));
 	}
+	
+	public static Vector2f convertToBlockPos(Vector3f rawPos) {
+		return new Vector2f((int)(rawPos.x / GameConstants.UNIT + (GameConstants.UNIT / 2)), (int)(rawPos.y / GameConstants.UNIT + (GameConstants.UNIT / 2)));
+	}
 }

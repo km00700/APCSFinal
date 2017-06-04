@@ -9,17 +9,15 @@ import com.millstech.entities.map.Updatable;
 import com.millstech.models.RawModel;
 import com.millstech.models.TexturedModel;
 import com.millstech.textures.ModelTexture;
-import com.millstech.textures.Textures;
 
 public abstract class WalkingEntity extends Entity implements Updatable {
-	@SuppressWarnings("unused")
-	private boolean facingRight = true, movingRight = true, movingLeft = false;
+	protected boolean facingRight = true, movingRight = true, movingLeft = false;
 	private static final int animDelay = 5;
 	private int frameCounter = 0, wrIndex = 0, wlIndex = 0;
-	protected List<ModelTexture> walkRight = Textures.walkRight;
-	protected List<ModelTexture> walkLeft = Textures.walkLeft;
-	protected ModelTexture idleR = Textures.standR;
-	protected ModelTexture idleL = Textures.standL;
+	protected List<ModelTexture> walkRight = null;
+	protected List<ModelTexture> walkLeft = null;
+	protected ModelTexture idleR = null;
+	protected ModelTexture idleL = null;
 	
 	public WalkingEntity(List<ModelTexture> list, RawModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super(list, model, position, rotX, rotY, rotZ, scale);
@@ -27,12 +25,14 @@ public abstract class WalkingEntity extends Entity implements Updatable {
 	
 	public WalkingEntity (TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super(model, position, rotX, rotY, rotZ, scale);
-		this.setVisibleIsScripted(false);
 	}
 	
 	public abstract void update();
 	
-	public abstract void move();
+	public void idle() {
+		if(facingRight) super.getModel().setTexture(idleR);
+		else super.getModel().setTexture(idleL);
+	}
 	
 	public void animateForward() {
 		if(frameCounter >= animDelay) {

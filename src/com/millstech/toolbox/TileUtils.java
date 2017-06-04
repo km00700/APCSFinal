@@ -19,8 +19,8 @@ import com.millstech.textures.ModelTexture;
 import com.millstech.textures.Textures;
 
 public class TileUtils {
-	private static RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
-	private static RawModel bgModel = OBJLoader.loadObjModel("models/bg", Game.loader);
+	public static RawModel model = OBJLoader.loadObjModel("models/tile", Game.loader);
+	public static RawModel bgModel = OBJLoader.loadObjModel("models/bg", Game.loader);
 	
 	public enum Layer {
 		GRAPHICS, FOREGROUND, ENTITY, PLATFORM, BACKGROUND, MENUTEXT;

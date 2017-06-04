@@ -20,7 +20,6 @@ public class LevelOne implements Level {
 			completed();
 		}
 		// TODO Entity Handling
-		
 	}
 	
 	@Override
@@ -226,7 +225,6 @@ public class LevelOne implements Level {
 	
 	@Override
 	public void loadEntities() {
-		
 	}
 	
 	@Override

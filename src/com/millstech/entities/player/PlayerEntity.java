@@ -17,7 +17,7 @@ import com.millstech.toolbox.flags.Player;
 public class PlayerEntity extends WalkingEntity implements Player, GravityEntity {
 	private static final int jumpCooldown = 5;
 	private int cooldownCounter = 0;
-	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; // jump 0.058 walk 0.038 acceleration 0.002
+	private double walkSpeed = 0.04, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; // jump 0.058 walk 0.038 acceleration 0.002
 	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
 	
@@ -26,11 +26,19 @@ public class PlayerEntity extends WalkingEntity implements Player, GravityEntity
 		moveEnabled = movable;
 		jumpEnabled = jumpable;
 		useGravity = gravity;
+		idleL = Textures.standL;
+		idleR = Textures.standR;
+		walkRight = Textures.walkRight;
+		walkLeft = Textures.walkLeft;
 	}
 	
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super(model, position, rotX, rotY, rotZ, scale);
 		this.setVisibleIsScripted(false);
+		idleL = Textures.standL;
+		idleR = Textures.standR;
+		walkRight = Textures.walkRight;
+		walkLeft = Textures.walkLeft;
 	}
 	@Override
 	public void move() {                                                                                                                                                                     
