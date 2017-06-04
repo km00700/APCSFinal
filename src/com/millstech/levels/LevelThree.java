@@ -31,35 +31,36 @@ public class LevelThree implements Level {
 
 	@Override
 	public void loadEntities() {
-
+		//empty - nothing needed
 	}
 
 	@Override
 	public void loadBackground() {
 		Tardis.loadTardis(TARDIS_X, TARDIS_Y);
 		TileUtils.createCheckpoint(CHECKPOINT_X, CHECKPOINT_Y);
+		//BACKGROUND IMAGE ADD HERE										///////////
 	}
 
 	@Override
-	public void loadForeground() {
-		// TODO Auto-generated method stub
+	public void loadForeground() {									
+		// TODO FOREGROUND
 
 	}
 
 	@Override
-	public void onCheckpointTrigger() {
+	public void onCheckpointTrigger() {	
 		spawnX = CHECKPOINT_X;
 		spawnY = CHECKPOINT_Y;
 	}
 
 	@Override
-	public void loadPlatforms() {
+	public void loadPlatforms() {										///////////
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void loadOffMap() {
+	public void loadOffMap() {											///////////
 		// TODO Auto-generated method stub
 
 	}
@@ -72,8 +73,7 @@ public class LevelThree implements Level {
 
 	@Override
 	public int getMaxX() {
-		// TODO Auto-generated method stub
-		return 100;
+		return 90;
 	}
 
 	@Override
