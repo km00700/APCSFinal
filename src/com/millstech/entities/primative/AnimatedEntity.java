@@ -1,9 +1,10 @@
-package com.millstech.entities;
+package com.millstech.entities.primative;
 
 import org.lwjgl.util.vector.Vector3f;
 
 import java.util.*;
 
+import com.millstech.entities.Entity;
 import com.millstech.entities.map.Updatable;
 import com.millstech.models.TexturedModel;
 import com.millstech.textures.ModelTexture;

@@ -1,6 +1,6 @@
 package com.millstech.levels;
 
-import com.millstech.entities.PlayerEntity;
+import com.millstech.entities.player.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.levels.models.Tardis;

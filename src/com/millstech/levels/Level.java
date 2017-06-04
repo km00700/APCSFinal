@@ -1,6 +1,6 @@
 package com.millstech.levels;
 
-import com.millstech.entities.PlayerEntity;
+import com.millstech.entities.player.PlayerEntity;
 
 public interface Level {
 	public void update();

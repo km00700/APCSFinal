@@ -10,6 +10,7 @@ import com.millstech.engine.render.*;
 import com.millstech.entities.*;
 import com.millstech.entities.map.Platform;
 import com.millstech.entities.map.Updatable;
+import com.millstech.entities.player.PlayerEntity;
 import com.millstech.game.control.Controls;
 import com.millstech.game.playerinfo.LifeHandler;
 import com.millstech.game.story.LevelHandler;

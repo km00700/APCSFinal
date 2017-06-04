@@ -1,10 +1,11 @@
-package com.millstech.entities;
+package com.millstech.entities.player;
 
 import org.lwjgl.util.vector.Vector3f;
 
 import com.millstech.engine.physics.GravityEntity;
 import com.millstech.entities.map.ClippablePlatform;
 import com.millstech.entities.map.Platform;
+import com.millstech.entities.primative.WalkingEntity;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.models.TexturedModel;

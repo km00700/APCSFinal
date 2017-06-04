@@ -5,13 +5,13 @@ import java.util.List;
 import org.lwjgl.util.vector.Vector3f;
 
 import com.millstech.engine.render.OBJLoader;
-import com.millstech.entities.AnimatedEntity;
 import com.millstech.entities.Entity;
-import com.millstech.entities.PlayerEntity;
 import com.millstech.entities.map.CheckPoint;
 import com.millstech.entities.map.ClippablePlatform;
 import com.millstech.entities.map.MovingTile;
 import com.millstech.entities.map.Platform;
+import com.millstech.entities.player.PlayerEntity;
+import com.millstech.entities.primative.AnimatedEntity;
 import com.millstech.game.Game;
 import com.millstech.models.RawModel;
 import com.millstech.models.TexturedModel;

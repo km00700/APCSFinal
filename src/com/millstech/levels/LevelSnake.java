@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.lwjgl.util.vector.Vector3f;
 
-import com.millstech.entities.PlayerEntity;
+import com.millstech.entities.player.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.textures.Textures;
