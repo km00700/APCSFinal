@@ -1,7 +1,5 @@
 package com.millstech.entities;
 
-import java.util.List;
-
 import org.lwjgl.util.vector.Vector3f;
 
 import com.millstech.engine.physics.GravityEntity;
@@ -10,22 +8,17 @@ import com.millstech.entities.map.Platform;
 import com.millstech.game.Game;
 import com.millstech.game.control.Controls;
 import com.millstech.models.TexturedModel;
-import com.millstech.textures.ModelTexture;
 import com.millstech.textures.Textures;
 import com.millstech.toolbox.GameConstants;
 import com.millstech.toolbox.MathUtils;
 import com.millstech.toolbox.flags.Player;
 
-public class PlayerEntity extends Entity implements Player, GravityEntity {
-	private static final int animDelay = 5, jumpCooldown = 5;
-	private int frameCounter = 0, cooldownCounter = 0, wrIndex = 0, wlIndex = 0;
+public class PlayerEntity extends WalkingEntity implements Player, GravityEntity {
+	private static final int jumpCooldown = 5;
+	private int cooldownCounter = 0;
 	private double walkSpeed = 0.038, fallSpeed = 0, maxFallSpeed = 0.5, acceleration = 0.002, jumpPower = 0.058; // jump 0.058 walk 0.038 acceleration 0.002
 	private boolean isGrounded = true, jumping = false, colliding = false, hasClearance = false, moveEnabled = true, jumpEnabled = true, useGravity = true;
 	private boolean facingRight = true;
-	private List<ModelTexture> walkRight = Textures.walkRight;
-	private List<ModelTexture> walkLeft = Textures.walkLeft;
-	private ModelTexture idleR = Textures.standR;
-	private ModelTexture idleL = Textures.standL;
 	
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale, boolean movable, boolean jumpable, boolean gravity) {
 		this(model, position, rotX, rotY, rotZ, scale);
@@ -37,16 +30,13 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	public PlayerEntity(TexturedModel model, Vector3f position, float rotX, float rotY, float rotZ, float scale) {
 		super(model, position, rotX, rotY, rotZ, scale);
 		this.setVisibleIsScripted(false);
-		
 	}
-	
+	@Override
 	public void move() {                                                                                                                                                                     
 		checkJumpClearance();
 		checkForCollision();
 		checkIfGrounded();
 		if((Controls.right() && Controls.left()) || (!Controls.right() && !Controls.left())) {
-			wrIndex = 0;
-			wrIndex = 0;
 			if(facingRight) super.getModel().setTexture(idleR);
 			else super.getModel().setTexture(idleL);
 		} else {
@@ -76,46 +66,6 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 		}
 		cooldownCounter++;
 		fall();
-	}
-	
-	public void animateForward() {
-		if(frameCounter >= animDelay) {
-			frameCounter = 0;
-			super.getModel().setTexture(walkRightNext());
-		} else {
-			frameCounter++;
-		}
-	}
-	
-	public void animateBackward() {
-		if(frameCounter >= animDelay) {
-			frameCounter = 0;
-			super.getModel().setTexture(walkLeftNext());
-		} else {
-			frameCounter++;
-		}
-	}
-	
-	private ModelTexture walkRightNext() {
-		if(wrIndex < walkRight.size()) {
-			ModelTexture t = walkRight.get(wrIndex);
-			wrIndex++;
-			return t;
-		} else {
-			wrIndex = 0;
-			return walkRight.get(0);
-		}
-	}
-	
-	private ModelTexture walkLeftNext() {
-		if(wlIndex < walkLeft.size()) {
-			ModelTexture t = walkLeft.get(wlIndex);
-			wlIndex++;
-			return t;
-		} else {
-			wlIndex = 0;
-			return walkLeft.get(0);
-		}
 	}
 	
 	public void fall() {
@@ -224,5 +174,8 @@ public class PlayerEntity extends Entity implements Player, GravityEntity {
 	public enum PlayerType {
 		DOCTOR, MARIO;
 	}
+
+	@Override
+	public void update() { }
 	
 }
