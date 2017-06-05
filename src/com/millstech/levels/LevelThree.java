@@ -57,7 +57,39 @@ public class LevelThree implements Level {
 
 	@Override
 	public void loadPlatforms() {										///////////
-		// TODO Auto-generated method stub
+		
+		/*
+		TileUtils.createNoInteractionPlatform(Textures.pot, 6, 2);
+		
+		Column.loadColumn(14,2,3);
+		Column.loadColumn(17,2,3);
+		
+		TileUtils.createNoInteractionPlatform(Textures.bush1, 25, 2);
+		TileUtils.createNoInteractionPlatform(Textures.bush2, 25, 3);
+		
+		TileUtils.createNoInteractionPlatform(Textures.fountain1, 27, 2);
+		TileUtils.createNoInteractionPlatform(Textures.fountain2, 27, 3);
+		TileUtils.createNoInteractionPlatform(Textures.fountain3, 28, 2);
+		TileUtils.createNoInteractionPlatform(Textures.fountain4, 28, 3);
+		
+		TileUtils.createNoInteractionPlatform(Textures.bush1, 30, 2);
+		TileUtils.createNoInteractionPlatform(Textures.bush2, 30, 3);
+
+		TileUtils.createNoInteractionPlatform(Textures.pot, 35, 2);
+		
+		TileUtils.createNoInteractionPlatform(Textures.pot, 41, 2);
+		
+		RomanHouse.loadHouse(8,2,1);
+		RomanHouse.loadHouse(19,2,2);
+		RomanHouse.loadHouse(31,2,3);
+		
+		Column.loadColumn(39,2,2);
+
+		Aqueduct.loadDuct(42, 2, 1, false);
+		
+		Aqueduct.loadDuct(46, 2, 7, true);
+		
+		*/
 
 	}
 
