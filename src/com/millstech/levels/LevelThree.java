@@ -41,6 +41,8 @@ public class LevelThree implements Level {
 		//BACKGROUND IMAGE ADD HERE										///////////
 	}
 
+	//TODO THIS IS A COMMENT
+	
 	@Override
 	public void loadForeground() {									
 		// TODO FOREGROUND
