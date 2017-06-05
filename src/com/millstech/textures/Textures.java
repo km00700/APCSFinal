@@ -227,8 +227,8 @@ public class Textures {
 	public static ModelTexture num9_white = new ModelTexture(Game.loader.loadTexture("game/text/num/white/nine"));
 	//words
 	public static ModelTexture loadingText1 = new ModelTexture(Game.loader.loadTexture("game/text/loading/1"));
-	public static ModelTexture loadingText2 = new ModelTexture(Game.loader.loadTexture("game/text/loading2"));
-	public static ModelTexture loadingText3 = new ModelTexture(Game.loader.loadTexture("game/text/loading3"));
-	public static ModelTexture loadingText4 = new ModelTexture(Game.loader.loadTexture("game/text/loading4"));
-	public static List<ModelTexture> LodingList = new ArrayList<ModelTexture>(Arrays.asList(loadingText1, loadingText2,loadingText3,loadingText4));
+	public static ModelTexture loadingText2 = new ModelTexture(Game.loader.loadTexture("game/text/loading/2"));
+	public static ModelTexture loadingText3 = new ModelTexture(Game.loader.loadTexture("game/text/loading/3"));
+	public static ModelTexture loadingText4 = new ModelTexture(Game.loader.loadTexture("game/text/loading/4"));
+	public static List<ModelTexture> LoadingList = new ArrayList<ModelTexture>(Arrays.asList(loadingText1, loadingText2,loadingText3,loadingText4));
 }

@@ -20,7 +20,7 @@ public class MainMenu implements Level {
 	@Override
 	public void update() {
 		if(firstLoad) {
-			if(firstLoadTimer < 20) {   //2000
+			if(firstLoadTimer < 200) {   //2000
 				firstLoadTimer++;
 			} else {
 				firstLoad = false;
@@ -50,7 +50,7 @@ public class MainMenu implements Level {
 		if(firstLoad) {
 			TileUtils.createBGSplashTile(Textures.loading, 9.08f, 2.5f);
 			//TileUtils.createSplashTile(Textures.loading, 4.5f, 2.5f);
-			TileUtils.createAnimatedTile(Textures.LodingList, 7, 0.3f, TileUtils.Layer.MENUTEXT, 15, false, 2.0f);
+			TileUtils.createAnimatedTile(Textures.LoadingList, 7, 0.3f, TileUtils.Layer.MENUTEXT, 15, false, 2.0f);
 			//Game.setCurrentMusic(Sounds);
 		} else {
 			loadMainMenu();
@@ -123,7 +123,8 @@ public class MainMenu implements Level {
 	@Override
 	public PlayerEntity spawn() {
 		Game.purgePlayers();
-		return TileUtils.createScriptedCharacter(9, 2, true, true, false, true);
+		if(firstLoad) return TileUtils.createScriptedCharacter(9, 2, false, true, false, true);
+		else return TileUtils.createScriptedCharacter(9, 2, true, true, false, true);
 	}
 
 	@Override

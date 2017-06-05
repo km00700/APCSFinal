@@ -139,4 +139,8 @@ public class Entity {
 	public void setVisibleIsScripted(boolean scripted) {
 		scriptedVisibility = scripted;
 	}
+	
+	public boolean inRenderDistance() {
+		return Math.abs(position.x - Game.getCamera().getTilePosition().x) < GameConstants.RENDER_DISTANCE;
+	}
 }
