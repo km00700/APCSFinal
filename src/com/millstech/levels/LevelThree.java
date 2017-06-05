@@ -9,7 +9,7 @@ import com.millstech.toolbox.TileUtils;
 public class LevelThree implements Level {
 
 	private int spawnX = 3, spawnY = 2;
-	private final int CHECKPOINT_X = 52, CHECKPOINT_Y = 4, TARDIS_X = 86, TARDIS_Y = 2;
+	private final int CHECKPOINT_X = 53, CHECKPOINT_Y = 4, TARDIS_X = 86, TARDIS_Y = 2;
 
 	@Override
 	public void update() {
@@ -60,6 +60,9 @@ public class LevelThree implements Level {
 		
 		/*
 		TileUtils.createNoInteractionPlatform(Textures.pot, 6, 2);
+		
+		Column.loadColumn(14,2,3);
+		Column.loadColumn(17,2,3);
 		
 		Decorations.createBush(25, 2);
 		
