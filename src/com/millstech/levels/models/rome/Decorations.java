@@ -7,7 +7,7 @@ public class Decorations {
 		TileUtils.createNoInteractionPlatform(Textures.bush1, posX, posY);
 		TileUtils.createNoInteractionPlatform(Textures.bush2, posX, posY + 1);
 	}
-	public void createFountain(int posX, int posY)
+	public void loadFountain(int posX, int posY)
 	{
 		TileUtils.createPlatform(Textures.fountain1, posX, posY);
 		TileUtils.createNoInteractionPlatform(Textures.fountain2, posX, posY + 1);

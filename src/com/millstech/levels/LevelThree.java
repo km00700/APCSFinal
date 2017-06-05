@@ -3,6 +3,7 @@ package com.millstech.levels;
 import com.millstech.entities.PlayerEntity;
 import com.millstech.game.Game;
 import com.millstech.levels.models.Tardis;
+import com.millstech.textures.Textures;
 import com.millstech.toolbox.MathUtils;
 import com.millstech.toolbox.TileUtils;
 
@@ -56,20 +57,25 @@ public class LevelThree implements Level {
 	}
 
 	@Override
-	public void loadPlatforms() {										///////////
+	public void loadPlatforms() {								
 		
 		/*
+		
+		
+		TileUtils.createPlatformBlock(Textures.stone, 0, 0, getMaxX(), 1);
+		 
+		 
 		TileUtils.createNoInteractionPlatform(Textures.pot, 6, 2);
 		
 		Column.loadColumn(14,2,3);
 		Column.loadColumn(17,2,3);
 		
-		Decorations.createBush(25, 2);
+		Decorations.loadBush(25, 2);
 		
 		
-		Decorations.createFountain(27, 2);
+		Decorations.loadFountain(27, 2);
 		
-		Decorations.createBush(30, 2);
+		Decorations.loadBush(30, 2);
 
 		TileUtils.createNoInteractionPlatform(Textures.pot, 35, 2);
 		
@@ -91,7 +97,16 @@ public class LevelThree implements Level {
 
 	@Override
 	public void loadOffMap() {											///////////
-		// TODO Auto-generated method stub
+		//LEFT OF MAP
+		TileUtils.createClippablePlatformBlock(Textures.stone, -9, 0, -1, 1);
+		TileUtils.createNoInteractionPlatform(Textures.pot, -1, 2);
+		TileUtils.createNoInteractionPlatform(Textures.pot, -1, 3);
+		TileUtils.createNoInteractionPlatform(Textures.pot, -2, 2);
+		
+		
+		
+		//RIGHT OF MAP
+		TileUtils.createClippablePlatformBlock(Textures.stone, -9, 0, -1, 1);
 
 	}
 
