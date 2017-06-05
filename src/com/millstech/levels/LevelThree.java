@@ -67,9 +67,9 @@ public class LevelThree implements Level {
 		TileUtils.createNoInteractionPlatform(Textures.bush1, 25, 2);
 		TileUtils.createNoInteractionPlatform(Textures.bush2, 25, 3);
 		
-		TileUtils.createNoInteractionPlatform(Textures.fountain1, 27, 2);
+		TileUtils.createPlatform(Textures.fountain1, 27, 2);
 		TileUtils.createNoInteractionPlatform(Textures.fountain2, 27, 3);
-		TileUtils.createNoInteractionPlatform(Textures.fountain3, 28, 2);
+		TileUtils.createPlatform(Textures.fountain3, 28, 2);
 		TileUtils.createNoInteractionPlatform(Textures.fountain4, 28, 3);
 		
 		TileUtils.createNoInteractionPlatform(Textures.bush1, 30, 2);
