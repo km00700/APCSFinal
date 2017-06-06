@@ -87,6 +87,33 @@ public class Textures {
 	public static ModelTexture tree12 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/12"));
 	public static ModelTexture tree13 = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/13"));
 	public static ModelTexture log = new ModelTexture(Game.loader.loadTexture("map-objects/prehistoric/tree/log"));
+	//House
+	public static ModelTexture backgroundInterior = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/1"));
+	public static ModelTexture wallTopCenter = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/2"));
+	public static ModelTexture columnRTop = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/3"));
+	public static ModelTexture columnR = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/4"));
+	public static ModelTexture columnLTop = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/5"));
+	public static ModelTexture columnL = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/6"));
+	public static ModelTexture columnLWithDoor = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/7"));
+	public static ModelTexture doorEntrance = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/8"));
+	public static ModelTexture openEnteranceR = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/9"));
+	public static ModelTexture openEnteranceL = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/10"));
+	public static ModelTexture wallLCorner = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/11"));
+	public static ModelTexture wallL = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/12"));
+	public static ModelTexture tableL = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/13"));
+	public static ModelTexture tableRCouchL = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/14"));
+	public static ModelTexture opemEntranceCouchR = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/15"));
+	public static ModelTexture wallTopLWindow = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/16"));
+	public static ModelTexture windowL = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/17"));
+	public static ModelTexture wallTopRWindow = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/18"));
+	public static ModelTexture windowR = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/19"));
+	public static ModelTexture wallTop = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/20"));
+	public static ModelTexture wallRCorner = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/21"));
+	public static ModelTexture wallR = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/22"));
+	public static ModelTexture roofTileLSmall = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/23"));
+	public static ModelTexture roofTileLLarge = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/24"));
+	public static ModelTexture roofTileRLarge = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/25"));
+	public static ModelTexture roofTileRSmall = new ModelTexture(Game.loader.loadTexture("map-objects/rome/house/26"));
 	//Column
 	public static ModelTexture column1 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/column/1"));
 	public static ModelTexture column2 = new ModelTexture(Game.loader.loadTexture("map-objects/rome/column/2"));

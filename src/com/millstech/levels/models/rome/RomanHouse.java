@@ -7,7 +7,7 @@ public class RomanHouse {
 	public static void loadHouse(int posX, int posY, int version){
 	if(version == 1)
 	{
-		/*
+
 		TileUtils.createNoInteractionPlatform(columnLWithDoor, posX, posY);
 		TileUtils.createPlatform(columnLeftTop, posX, posY + 1);
 		TileUtils.createNoInteractionPlatform(roofTileLSmall, posX, posY + 2);
@@ -31,12 +31,12 @@ public class RomanHouse {
 		TileUtils.createNoInteractionPlatform(wallR, posX + 4, posY + 1);
 		TileUtils.createPlatform(wallRCorner, posX + 4, posY + 2);
 		TileUtils.createNoInteractionPlatform(roofTileRSmall, posX + 4, posY + 3);
-		*/
+
 		
 	}
 	else if(version == 2)
 	{
-		/*
+
 		TileUtils.createNoInteractionPlatform(openEntranceL, posX, posY);
 		TileUtils.createNoInteractionPlatform(wallL, posX, posY + 1);
 		TileUtils.createPlatform(wallLCorner, posX, posY + 2);
@@ -61,14 +61,13 @@ public class RomanHouse {
 		TileUtils.createNoInteractionPlatform(columnR, posX + 5, posY);
 		TileUtils.createPlatform(ColumnRTop, posX + 5, posY + 1);
 		TileUtils.createNoInteractionPlatform(roofTileRSmall, posX + 5, posY + 2);
-		*/
+
 		
 		
 		
 	}
 	else if(version == 3)
 	{
-		/*
 		TileUtils.createNoInteractionPlatform(columnL, posX, posY);
 		TileUtils.createPlatform(columnLTop, posX, posY + 1);
 		TileUtils.createNoInteractionPlatform(roolTileLSmall, posX, posY + 2);
@@ -93,7 +92,6 @@ public class RomanHouse {
 		TileUtils.createNoInteractionPlatform(openEnteranceR, posX + 5, posY + 1);
 		TileUtils.createPlatform(wallRCorner, posX + 5, posY + 2);
 		TileUtils.createNoInteractionPlatform(roofTileRSmall, posX + 5, posY + 3);
-		*/
 		
 	}
 	}
