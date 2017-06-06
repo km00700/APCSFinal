@@ -59,11 +59,11 @@ public class LevelThree implements Level {
 	@Override
 	public void loadPlatforms() {								
 		
-		/*
+		
 		
 		
 		TileUtils.createPlatformBlock(Textures.stone, 0, 0, getMaxX(), 1);
-		 
+		/*
 		 
 		TileUtils.createNoInteractionPlatform(Textures.pot, 6, 2);
 		
@@ -99,9 +99,9 @@ public class LevelThree implements Level {
 	public void loadOffMap() {											///////////
 		//LEFT OF MAP
 		TileUtils.createClippablePlatformBlock(Textures.stone, -9, 0, -1, 1);
-		TileUtils.createNoInteractionPlatform(Textures.pot, -1, 2);
-		TileUtils.createNoInteractionPlatform(Textures.pot, -1, 3);
-		TileUtils.createNoInteractionPlatform(Textures.pot, -2, 2);
+		//TileUtils.createNoInteractionPlatform(Textures.pot, -1, 2);
+		//TileUtils.createNoInteractionPlatform(Textures.pot, -1, 3);
+		//TileUtils.createNoInteractionPlatform(Textures.pot, -2, 2);
 		
 		
 		
